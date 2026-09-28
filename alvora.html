@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALVORA · Encuentra al psicólogo que encaje contigo</title>
+  <meta name="description" content="ALVORA te sugiere psicólogos verificados según tu modalidad, horario y presupuesto. Gratis, por WhatsApp.">
+  <meta property="og:title" content="ALVORA · Encuentra al psicólogo que encaje contigo">
+  <meta property="og:description" content="Psicólogos verificados según tu modalidad, horario y presupuesto. Gratis.">
+  <meta property="og:image" content="https://aaronacostaamarillo98-blip.github.io/aravora-web/compartir.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,650&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <!-- Pixel de Meta (ID 1428355635968530) -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1428355635968530');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1428355635968530&ev=PageView&noscript=1" alt=""></noscript>
+  <!-- Fin del Pixel de Meta -->
+  <style>
+    :root { --niebla:#EDF0EE; --papel:#F8FAF9; --tinta:#15232B; --pizarra:#5E6E73; --aurora:#2F6F65; --menta:#9FD4C6; --alba:#CFE3DC; --linea:#D5DDDA; --display:"Bricolage Grotesque", "Segoe UI", sans-serif; --texto:"Newsreader", Georgia, serif; }
+    @media (prefers-color-scheme: dark) { :root { --niebla:#0F181C; --papel:#152127; --tinta:#E4ECE9; --pizarra:#97A8AB; --aurora:#86C9BA; --alba:#1D3A36; --linea:#25353B; } }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--niebla); color:var(--tinta); font-family:var(--texto); font-size:1.15rem; line-height:1.6; }
+    a { color:var(--aurora); }
+    :focus-visible { outline:3px solid var(--aurora); outline-offset:3px; }
+    .contenedor { width:min(100% - 3rem, 1040px); margin:0 auto; }
+    header { padding:1.4rem 0; }
+    header .contenedor { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .logo { font-family:var(--display); font-weight:650; font-size:1.3rem; text-decoration:none; color:var(--tinta); }
+    header nav a { font-family:var(--display); font-size:1rem; text-decoration:none; }
+    h1, h2, h3 { font-family:var(--display); font-weight:650; letter-spacing:-0.02em; line-height:1.1; margin:0; }
+    .hero { padding:clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5rem); }
+    .etiqueta { display:inline-block; font-family:var(--display); font-size:.95rem; color:var(--aurora); border:1.5px solid var(--aurora); border-radius:999px; padding:.3rem .9rem; margin:0 0 1.4rem; }
+    .hero h1 { font-size:clamp(2.4rem, 6vw, 4.2rem); max-width:15ch; }
+    .hero .bajada { margin-top:1.3rem; max-width:48ch; color:var(--pizarra); font-size:1.25rem; }
+    .boton { display:inline-block; font-family:var(--display); font-size:1.05rem; text-decoration:none; background:var(--aurora); color:#F8FAF9; border:2px solid var(--aurora); border-radius:999px; padding:.95rem 1.6rem; }
+    .boton:hover { background:transparent; color:var(--aurora); }
+    .boton-secundario { background:transparent; color:var(--aurora); }
+    .boton-secundario:hover { background:var(--aurora); color:#F8FAF9; }
+    .acciones { margin-top:2rem; display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; }
+    .nota { font-size:1rem; color:var(--pizarra); margin-top:1rem; }
+    section.bloque { padding:clamp(3rem, 7vw, 5rem) 0; border-top:1px solid var(--linea); }
+    section.bloque h2 { font-size:clamp(1.8rem, 4vw, 2.6rem); max-width:20ch; }
+    .pasos { list-style:none; padding:0; margin:2.4rem 0 0; display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem; counter-reset:paso; }
+    .pasos li { counter-increment:paso; border-top:3px solid var(--aurora); padding-top:1.1rem; }
+    .pasos li::before { content:counter(paso); font-family:var(--display); font-weight:650; font-size:1.8rem; color:var(--aurora); display:block; }
+    .pasos h3 { font-size:1.25rem; margin:.4rem 0 .5rem; }
+    .pasos p, .dos p { margin:0; color:var(--pizarra); }
+    .dos { margin-top:2.4rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .tarjeta { background:var(--papel); border:1px solid var(--linea); border-radius:22px; padding:1.8rem; }
+    .tarjeta h3 { font-size:1.25rem; margin-bottom:.6rem; }
+    .crisis { margin-top:2.4rem; background:#FBECE8; color:#5A3A33; border-left:5px solid #B5523E; border-radius:14px; padding:1.3rem 1.5rem; }
+    @media (prefers-color-scheme: dark) { .crisis { background:#2A1B18; color:#F0D6CF; } }
+    .psicologos { background:var(--tinta); color:var(--niebla); border-radius:28px; padding:clamp(2rem, 5vw, 3.2rem); }
+    .psicologos h2 { color:var(--niebla); }
+    .psicologos p { color:#C9D4D0; max-width:52ch; }
+    .psicologos .boton { background:var(--menta); border-color:var(--menta); color:#15232B; }
+    .psicologos .boton:hover { background:transparent; color:var(--menta); }
+    @media (prefers-color-scheme: dark) { .psicologos { background:#1B2A31; } }
+    footer { padding:2.5rem 0 3rem; border-top:1px solid var(--linea); font-size:1rem; color:var(--pizarra); }
+    footer nav { display:flex; gap:1.2rem; flex-wrap:wrap; margin-top:.8rem; font-family:var(--display); }
+    @media (max-width: 760px) { .pasos, .dos { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor">
+      <a class="logo" href="index.html">aravora</a>
+      <nav aria-label="Principal"><a href="index.html#kits">Kits</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="contenedor">
+        <p class="etiqueta">ALVORA · beta</p>
+        <h1>Encuentra al psicólogo que encaje contigo.</h1>
+        <p class="bajada">Cuéntanos lo básico y te sugerimos dos psicólogos verificados según tu modalidad, horario y presupuesto. Sin costo para ti.</p>
+        <div class="acciones">
+          <a class="boton" data-wa="Hola, quiero encontrar un psicólogo con ALVORA.
+• Modalidad (presencial u online):
+• Ciudad o zona:
+• Días y horarios que me quedan bien:
+• Presupuesto por sesión:
+• Tema general (ansiedad, estrés, pareja, duelo, autoestima, otro):
+• Confirmo que tengo 18 años o más." href="#" target="_blank" rel="noopener">Buscar psicólogo por WhatsApp</a>
+        </div>
+        <p class="nota">Estamos en beta: los cupos son limitados. Respondemos en menos de 24 horas.</p>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <div class="contenedor">
+        <h2>Así funciona</h2>
+        <ol class="pasos">
+          <li><h3>Cuéntanos lo básico</h3><p>Modalidad, zona, horarios y presupuesto. No hace falta que cuentes detalles personales: eso lo hablas con tu psicólogo.</p></li>
+          <li><h3>Recibe dos opciones</h3><p>En menos de 24 horas te enviamos dos profesionales verificados, con su enfoque y su forma de trabajar.</p></li>
+          <li><h3>Elige y escríbele</h3><p>Te pasamos su contacto y coordinas directamente tu primera sesión, a tu ritmo.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <div class="contenedor">
+        <h2>Lo que significa «verificado»</h2>
+        <div class="dos">
+          <div class="tarjeta"><h3>Revisamos cada perfil</h3><p>Solo sugerimos profesionales con título de Licenciatura en Psicología y registro profesional vigente ante la autoridad de salud. Revisamos ambos documentos antes de publicar cada perfil.</p></div>
+          <div class="tarjeta"><h3>Tus datos, al mínimo</h3><p>Solo te pedimos lo necesario para sugerirte profesionales, y nunca vendemos tu información. Lee nuestra <a href="privacidad.html">política de privacidad</a>.</p></div>
+        </div>
+        <p class="crisis"><strong>ALVORA no es un servicio de emergencias.</strong> Si estás en crisis o en peligro, llama ahora al 911 o al número de emergencias de tu país. ALVORA es para mayores de 18 años: si eres menor, pide a un adulto de confianza que te acompañe a buscar ayuda.</p>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <div class="contenedor">
+        <div class="psicologos">
+          <h2>¿Eres psicólogo o psicóloga?</h2>
+          <p>Súmate a la beta de ALVORA y recibe consultas de personas que buscan justo lo que ofreces. Durante la beta es gratis: sin comisión ni suscripción.</p>
+          <div class="acciones"><a class="boton" data-wa="Hola, soy psicólogo/a y quiero sumarme a la beta de ALVORA." href="#" target="_blank" rel="noopener">Quiero sumarme</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="contenedor">
+      <p>ALVORA es un servicio de aravora. El contenido es orientativo y no reemplaza la atención de un profesional de la salud.</p>
+      <nav aria-label="Enlaces del pie"><a href="index.html">Inicio</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a><a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a></nav>
+    </div>
+  </footer>
+  <script>
+    var WHATSAPP = "595992955763";
+    document.querySelectorAll("[data-wa]").forEach(function (a) {
+      a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(a.dataset.wa);
+      /* Solo un evento genérico: no enviamos a Meta ningún dato sobre salud */
+      a.addEventListener("click", function () { if (typeof window.fbq === "function") window.fbq("track", "Contact"); });
+    });
+  </script>
+</body>
+</html>
