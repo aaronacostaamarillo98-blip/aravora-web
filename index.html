@@ -75,6 +75,8 @@
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; }
+    /* Nada se sale por los costados (los resplandores sobresalen a propósito): evita que el celular achique la página */
+    html, body { overflow-x: clip; }
     p { margin: 0; }
     #cielo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
 
@@ -227,15 +229,6 @@
     .principio p { color: var(--alba); font-size: 1.05rem; }
 
     /* ============ COLECCIÓN: comparativa + tarjetas de kit con insignia ============ */
-    .comparar { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
-    .comp { display: flex; flex-direction: column; gap: .8rem; padding: 1.4rem; color: inherit; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
-    .comp:hover { border-color: rgba(159, 212, 198, .45); transform: translateY(-2px); }
-    .comp .insignia { align-self: flex-start; }
-    .comp .para { color: var(--alba); font-size: 1.02rem; line-height: 1.45; }
-    .comp .pie-comp { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--display); }
-    .comp .pie-comp strong { font-weight: 500; font-size: 1.15rem; }
-    .comp .pie-comp span { color: var(--alba); font-size: .9rem; }
-
     .kit-item {
       display: grid; grid-template-columns: minmax(220px, 330px) 1fr;
       gap: clamp(1.6rem, 4vw, 3.5rem); align-items: center;
@@ -335,21 +328,31 @@
       .menu { display: none; }
       .fichas { grid-template-columns: repeat(2, 1fr); }
       .ficha { padding: 1.2rem 1.1rem; }
-      .ficha .dato { font-size: clamp(1.35rem, 6.2vw, 1.8rem); white-space: nowrap; }
-      .principios, .comparar, .ofertas { grid-template-columns: 1fr; }
+      .ficha .dato { font-size: clamp(1.25rem, 6.2vw, 1.8rem); }
+      .principios, .ofertas { grid-template-columns: 1fr; }
       .kit-item { grid-template-columns: 1fr; }
       .kit-portada { max-width: 260px; margin-inline: auto; }
     }
+    /* Precios de las fichas en una línea desde 360 px (más angosto, pueden ocupar dos) */
+    @media (min-width: 360px) and (max-width: 860px) {
+      .ficha .dato { white-space: nowrap; }
+    }
     @media (max-width: 520px) {
       .maqueta { grid-template-columns: 1fr; }
-      .funciones { grid-template-columns: 1fr 1fr; }
-      .funcion { flex-direction: column; align-items: flex-start; font-size: .95rem; }
+      /* En celular, cada chip en su propia fila */
+      .funciones { grid-template-columns: 1fr; gap: .7rem; }
+      .funcion { min-width: 0; padding: .75rem .9rem; font-size: .92rem; }
+      .funcion svg { width: 34px; height: 34px; padding: 7px; }
       .oferta { grid-template-columns: 1fr; justify-items: center; text-align: center; }
       .cabecera .boton { display: none; }
     }
+    /* Chips en una sola línea desde 340 px de ancho (en pantallas más angostas pueden ocupar dos) */
+    @media (min-width: 340px) and (max-width: 520px) {
+      .funcion { white-space: nowrap; font-size: clamp(.8rem, 3.5vw, .92rem); }
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .boton, .comp, .kit-portada img, .disco { transition: none !important; }
+      .boton, .kit-portada img, .ficha, .disco { transition: none !important; }
     }
   </style>
 </head>
@@ -402,7 +405,7 @@
             </div>
             <div class="funcion tarjeta">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
-              Lo completas desde el celular o la computadora
+              En el celular, la computadora o impreso
             </div>
           </div>
 
@@ -420,7 +423,7 @@
           <div class="funciones">
             <div class="funcion tarjeta">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6M10 3.5v5.2L5.2 17a2.4 2.4 0 0 0 2.1 3.5h9.4a2.4 2.4 0 0 0 2.1-3.5L14 8.7V3.5"/><path d="M7.5 14h9"/></svg>
-              Basado en evidencia
+              Basado en evidencia científica
             </div>
             <div class="funcion tarjeta">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5v5h5M9 13l2 2 4-4"/></svg>
@@ -487,24 +490,6 @@
           <p class="etiqueta">La colección</p>
           <h2>La colección <em>«¿Por qué...?»</em></h2>
           <p class="intro">Cada kit responde una pregunta que mucha gente se hace en silencio. Son guías en PDF que puedes completar desde el celular, con ejercicios de pocos minutos.</p>
-        </div>
-
-        <div class="comparar">
-          <a class="comp tarjeta" href="#kit-001">
-            <span class="insignia ins-001">Kit #001 · Energía</span>
-            <p class="para">Para cuando descansas pero no te sientes descansado.</p>
-            <p class="pie-comp"><strong>15.000 Gs.</strong><span>Ver kit ↓</span></p>
-          </a>
-          <a class="comp tarjeta" href="#kit-002">
-            <span class="insignia ins-002">Kit #002 · Ansiedad</span>
-            <p class="para">Para entender tu alarma interna y bajarla a tu ritmo.</p>
-            <p class="pie-comp"><strong>20.000 Gs.</strong><span>Ver kit ↓</span></p>
-          </a>
-          <a class="comp tarjeta" href="#kit-003">
-            <span class="insignia ins-003">Kit #003 · Sueño</span>
-            <p class="para">Para cuando el celular te gana la noche.</p>
-            <p class="pie-comp"><strong>25.000 Gs.</strong><span>Ver kit ↓</span></p>
-          </a>
         </div>
 
         <article class="kit-item tarjeta" data-kit="001" id="kit-001">
