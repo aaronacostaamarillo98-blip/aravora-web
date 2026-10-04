@@ -15,7 +15,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315232B'/%3E%3Cg fill='none' stroke='%239FD4C6' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M12 40a20 20 0 0 1 40 0'/%3E%3Cpath d='M19 40a13 13 0 0 1 26 0' opacity='.6'/%3E%3Cpath d='M26 40a6 6 0 0 1 12 0' opacity='.35'/%3E%3C/g%3E%3Cline x1='9' y1='47' x2='55' y2='47' stroke='%23EDF0EE' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,650&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,650&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 
   <!-- Pixel de Meta (ID 1428355635968530) -->
   <script>
@@ -31,471 +31,335 @@
   <!-- Fin del Pixel de Meta -->
 
   <style>
-    /* ============ BRANDING ARAVORA ============ */
+    /* ================= SISTEMA ARAVORA · WEB NOCTURNA (de la noche al amanecer) ================= */
     :root {
-      --niebla: #EDF0EE;   /* fondo */
-      --papel: #F8FAF9;    /* superficies */
-      --tinta: #15232B;    /* texto principal */
-      --pizarra: #5E6E73;  /* texto secundario */
-      --aurora: #2F6F65;   /* acción, botones */
-      --alba: #CFE3DC;     /* brillo suave */
-      --linea: #D5DDDA;
-
+      /* Fondo de la web: se aclara al bajar */
+      --crepusculo: #1F3540;
+      --hora-azul: #2B4B53;
+      --amanecer: #3D6563;
+      /* Marca */
+      --niebla: #EDF0EE;        /* texto normal */
+      --alba: #CFE3DC;          /* texto secundario y etiquetas */
+      --menta: #9FD4C6;         /* botones y acentos */
+      --aurora-claro: #86C9BA;  /* palabra en cursiva de los títulos */
+      --tinta: #15232B;         /* texto sobre botones Menta */
+      --violeta: #4F4A94;       /* Kit #002 */
+      --noche: #34598A;         /* Kit #003 */
+      /* Superficies */
+      --tarjeta: rgba(237, 240, 238, .07);
+      --borde: rgba(237, 240, 238, .13);
+      /* Tipografías */
       --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-      --texto: "Newsreader", Georgia, "Times New Roman", serif;
-
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      /* Medidas comunes */
       --ancho: 1140px;
-      --radio-panel: 28px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --niebla: #0F181C;
-        --papel: #16232A;
-        --tinta: #E4ECE9;
-        --pizarra: #97A8AB;
-        --aurora: #86C9BA;
-        --alba: #1F3B37;
-        --linea: #25353B;
-      }
+      --radio: 28px;
+      --radio-chico: 16px;
+      --seccion: clamp(4.5rem, 9vw, 7.5rem);
+      --gap: clamp(1rem, 2.2vw, 1.5rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
+    html {
+      /* Respaldo sin JavaScript: el mismo recorrido de color, sin estrellas */
+      background: linear-gradient(180deg, var(--crepusculo) 0%, var(--hora-azul) 55%, var(--amanecer) 100%);
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
     body {
       margin: 0;
-      background: var(--niebla);
-      color: var(--tinta);
-      font-family: var(--texto);
+      color: var(--niebla);
+      font-family: var(--serif);
       font-size: 1.1875rem;
       line-height: 1.62;
       -webkit-font-smoothing: antialiased;
     }
-
-    img, svg { max-width: 100%; }
-
-    a { color: inherit; }
-
-    :focus-visible {
-      outline: 3px solid var(--aurora);
-      outline-offset: 3px;
-      border-radius: 6px;
-    }
-
-    .contenedor {
-      width: min(100% - 3rem, var(--ancho));
-      margin-inline: auto;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--display);
-      font-weight: 650;
-      letter-spacing: -0.028em;
-      line-height: 1.04;
-      margin: 0;
-    }
-
+    img { max-width: 100%; }
     p { margin: 0; }
+    #cielo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
 
+    .contenedor { width: min(100% - 2.5rem, var(--ancho)); margin-inline: auto; }
+    section { padding-block: var(--seccion); }
+
+    /* Etiqueta pequeña arriba de cada título */
+    .etiqueta {
+      display: inline-flex; align-items: center; gap: .65em;
+      margin: 0 0 1.1rem;
+      font-family: var(--display); font-size: .78rem; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--alba);
+    }
+    .etiqueta::before {
+      content: ""; width: .45em; height: .45em; border-radius: 50%;
+      background: var(--menta); box-shadow: 0 0 10px var(--menta);
+    }
+
+    /* Títulos: Newsreader, una palabra en cursiva en Aurora claro */
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1.08; margin: 0; }
+    h1 em, h2 em, h3 em { font-style: italic; font-weight: 400; color: var(--aurora-claro); }
+    h1 { font-size: clamp(2.6rem, 6.4vw, 5rem); }
+    h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); max-width: 22ch; }
+    h3 { font-size: 1.45rem; }
+    .encabezado { margin-bottom: clamp(2rem, 4vw, 3rem); }
+    .encabezado .intro { margin-top: 1rem; max-width: 52ch; color: var(--alba); }
+    .centrado { text-align: center; }
+    .centrado h2, .centrado .intro { margin-inline: auto; }
+    .secundario { color: var(--alba); }
+
+    /* Botones */
     .boton {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      font-family: var(--display);
-      font-weight: 500;
-      font-size: 1.02rem;
-      text-decoration: none;
-      padding: .95rem 1.6rem;
-      border-radius: 999px;
-      border: 1.5px solid var(--aurora);
-      background: var(--aurora);
-      color: var(--niebla);
-      cursor: pointer;
-      transition: background-color .2s, color .2s;
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .9rem 1.5rem; border: 0; border-radius: 999px; cursor: pointer;
+      font-family: var(--display); font-weight: 500; font-size: 1rem; line-height: 1.2; text-decoration: none;
+      background: var(--menta); color: var(--tinta);
+      box-shadow: 0 10px 34px rgba(159, 212, 198, .28);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .boton:hover { background: transparent; color: var(--aurora); }
+    .boton:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(159, 212, 198, .45); }
+    .boton-secundario { background: transparent; color: var(--niebla); border: 1px solid rgba(237, 240, 238, .38); box-shadow: none; }
+    .boton-secundario:hover { color: var(--menta); border-color: var(--menta); box-shadow: none; }
+    :focus-visible { outline: 2px solid var(--menta); outline-offset: 3px; }
 
-    .boton-secundario {
-      background: transparent;
-      color: var(--aurora);
+    /* Tarjetas translúcidas */
+    .tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); }
+    @media (min-width: 860px) { .tarjeta { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); } }
+
+    /* Resplandor suave detrás de portadas y bloques destacados */
+    .resplandor { position: relative; isolation: isolate; }
+    .resplandor::before {
+      content: ""; position: absolute; inset: -14%; z-index: -1; pointer-events: none;
+      background: radial-gradient(closest-side, var(--brillo, rgba(159, 212, 198, .30)), rgba(47, 111, 101, .10) 60%, transparent);
+      filter: blur(14px);
     }
-    .boton-secundario:hover { background: var(--aurora); color: var(--niebla); }
 
-    /* ============ CABECERA ============ */
+    /* Insignias de color */
+    .insignia {
+      display: inline-flex; align-items: center; gap: .45em;
+      padding: .38rem .85rem; border-radius: 999px;
+      font-family: var(--display); font-size: .84rem; font-weight: 500; line-height: 1.2;
+    }
+    .ins-001 { background: var(--aurora-claro); color: var(--tinta); }
+    .ins-002 { background: var(--violeta); color: var(--niebla); }
+    .ins-003 { background: var(--noche); color: var(--niebla); }
+    .ins-ahorro { background: rgba(159, 212, 198, .18); color: var(--niebla); border: 1px solid rgba(159, 212, 198, .35); }
+
+    /* ============ HEADER ============ */
     .cabecera {
-      padding-block: 1.6rem;
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(31, 53, 64, .62);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--borde);
     }
-    .cabecera .contenedor {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
+    .cabecera .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: .85rem; }
     .marca {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      text-decoration: none;
-      font-family: var(--display);
-      font-weight: 650;
-      font-size: 1.45rem;
-      letter-spacing: -0.035em;
+      display: flex; align-items: center; gap: .7rem;
+      color: var(--niebla); text-decoration: none;
+      font-family: "Poppins", var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -0.02em;
     }
-    .marca {
-      font-family: "Poppins", var(--display);
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      gap: .7rem;
-    }
-    .marca svg { width: 48px; height: 32px; }
-    .marca .arcos { stroke: var(--aurora); }
-    .menu {
-      display: flex;
-      gap: 1.8rem;
-      font-family: var(--display);
-      font-size: .98rem;
-    }
-    .menu a { text-decoration: none; color: var(--pizarra); }
-    .menu a:hover { color: var(--tinta); }
+    .marca svg { width: 44px; height: 30px; }
+    .marca .arcos { stroke: var(--menta); }
+    .navegacion { display: flex; align-items: center; gap: 1.6rem; }
+    .menu { display: flex; gap: 1.6rem; font-family: var(--display); font-size: .95rem; }
+    .menu a { color: var(--alba); text-decoration: none; }
+    .menu a:hover { color: var(--niebla); }
+    .cabecera .boton { padding: .6rem 1.1rem; font-size: .92rem; }
 
-    /* ============ HERO ============ */
-    .hero {
-      padding-block: clamp(3rem, 8vw, 6.5rem) clamp(4rem, 9vw, 7.5rem);
-    }
-    .hero .contenedor {
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: clamp(2.5rem, 6vw, 5rem);
-      align-items: center;
-    }
-    .hero h1 {
-      font-size: clamp(2.7rem, 6.2vw, 5.1rem);
-      max-width: 13ch;
-    }
-    .hero .bajada {
-      margin-top: 1.6rem;
-      max-width: 36ch;
-      font-size: 1.3rem;
-      color: var(--pizarra);
-    }
-    .hero .acciones { margin-top: 2.3rem; }
-
-    /* Herramienta de respiración: el elemento protagonista */
-    .pausa {
-      background: var(--papel);
-      border-radius: var(--radio-panel);
-      padding: 2.2rem 2rem 2rem;
-      text-align: center;
-      border: 1px solid var(--linea);
-    }
-    .pausa h2 {
-      font-size: 1.35rem;
-      letter-spacing: -0.015em;
-    }
-    .pausa .instruccion {
-      color: var(--pizarra);
-      font-size: 1.02rem;
-      margin-top: .4rem;
-    }
-    .orbita {
-      position: relative;
-      width: min(240px, 70vw);
-      aspect-ratio: 1;
-      margin: 1.8rem auto 1.4rem;
-      display: grid;
-      place-items: center;
-    }
-    .orbita::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1.5px dashed var(--linea);
-    }
-    .disco {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: var(--alba);
-      transform: scale(.55);
-      transition-property: transform;
-      transition-timing-function: cubic-bezier(.45, 0, .55, 1);
-    }
-    .fase {
-      position: relative;
-      font-family: var(--display);
-      font-weight: 500;
-      font-size: 1.35rem;
-      min-height: 2rem;
-    }
-    .ciclo {
-      color: var(--pizarra);
-      font-size: .95rem;
-      min-height: 1.5rem;
-      margin-bottom: 1.2rem;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .disco { transition: none !important; }
-    }
-
-    /* ============ MÉTODO ============ */
-    .metodo {
-      padding-block: clamp(4rem, 9vw, 7rem);
-      border-top: 1px solid var(--linea);
-    }
-    .metodo .encabezado {
-      font-size: clamp(2rem, 3.8vw, 3.1rem);
-      max-width: 18ch;
-    }
-    .principios {
-      margin-top: 3.5rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(2rem, 4vw, 3.5rem);
-    }
-    .principio h3 {
-      font-size: 1.4rem;
-      letter-spacing: -0.02em;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--aurora);
-      max-width: 14ch;
-    }
-    .principio p { color: var(--pizarra); }
-
-    /* ============ COLECCIÓN ============ */
-    .coleccion {
-      padding-block: clamp(4rem, 9vw, 7rem);
-      background: var(--papel);
-    }
-    .coleccion .intro h2 { font-size: clamp(2rem, 4vw, 3.2rem); max-width: 16ch; }
-    .coleccion .intro p { margin-top: 1.2rem; max-width: 48ch; color: var(--pizarra); }
-    .kits {
+    /* ============ HERO: maqueta central con funciones a los costados ============ */
+    .hero { padding-top: clamp(3rem, 7vw, 5.5rem); }
+    .hero .titular { text-align: center; }
+    .hero h1 { max-width: 16ch; margin-inline: auto; }
+    .hero .bajada { max-width: 40ch; margin: 1.4rem auto 0; color: var(--alba); font-size: 1.3rem; }
+    .hero .acciones { margin-top: 2rem; }
+    .maqueta {
       margin-top: clamp(3rem, 6vw, 4.5rem);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(2.5rem, 4vw, 3.5rem);
-      align-items: start;
+      display: grid; grid-template-columns: 1fr minmax(300px, 380px) 1fr;
+      gap: var(--gap); align-items: center;
     }
-    .kit-item { display: flex; flex-direction: column; }
-    .kit-portada {
-      display: block;
-      width: 100%;
-      aspect-ratio: 210 / 297;
-      border: 0;
-      padding: 0;
-      background: none;
-      border-radius: 8px;
-      cursor: zoom-in;
-      box-shadow: 14px 16px 0 var(--sombra, var(--alba));
-      margin-right: 14px;
+    .funciones { display: grid; gap: var(--gap); }
+    .funcion {
+      display: flex; align-items: center; gap: .85rem;
+      padding: 1rem 1.2rem; border-radius: var(--radio-chico);
+      font-family: var(--display); font-size: 1rem; line-height: 1.3;
     }
-    .kit-portada img { width: 100%; height: 100%; display: block; border-radius: 8px; object-fit: cover; }
-    .kit-item[data-kit="002"] { --sombra: #DCD9F0; --acento: #4F4A94; }
-    .kit-item[data-kit="003"] { --sombra: #D5E0EE; --acento: #34598A; }
-    .kit-item .tema {
-      margin-top: 2.2rem;
-      font-family: var(--display);
-      font-size: .95rem;
-      color: var(--acento, var(--aurora));
+    .funcion svg {
+      flex: none; width: 38px; height: 38px; padding: 8px; border-radius: 12px;
+      background: rgba(159, 212, 198, .14);
+      fill: none; stroke: var(--menta); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
     }
-    .kit-item h3 { margin-top: .5rem; font-size: 1.55rem; letter-spacing: -0.02em; line-height: 1.12; }
-    .kit-item .resumen { margin-top: .9rem; color: var(--pizarra); font-size: 1.06rem; }
-    .kit-item .rotulo {
-      margin-top: 1.2rem;
-      font-family: var(--display);
-      font-size: .78rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--acento, var(--aurora));
+    .pausa { padding: 2rem 1.6rem; text-align: center; }
+    .pausa h2 { font-size: 1.5rem; max-width: none; }
+    .pausa .instruccion { color: var(--alba); font-size: 1.02rem; margin-top: .4rem; }
+    .orbita { position: relative; width: min(220px, 62vw); aspect-ratio: 1; margin: 1.6rem auto 1.2rem; display: grid; place-items: center; }
+    .orbita::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgba(237, 240, 238, .28); }
+    .disco {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: radial-gradient(circle, rgba(159, 212, 198, .55), rgba(47, 111, 101, .35));
+      box-shadow: 0 0 40px rgba(159, 212, 198, .25);
+      transform: scale(.55);
+      transition-property: transform; transition-timing-function: cubic-bezier(.45, 0, .55, 1);
     }
-    .kit-item .incluye {
-      list-style: none; padding: 0; margin: .45rem 0 0;
-      font-size: 1rem; border-top: 1px solid var(--linea);
-    }
-    .kit-item .incluye li { padding: .55rem 0; border-bottom: 1px solid var(--linea); }
-    .kit-item .precio { margin-top: 1.4rem; font-size: 1.9rem; }
-    .kit-item .acciones-kit { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .7rem; }
-    .kit-item .boton { padding: .8rem 1.3rem; }
-    @media (prefers-color-scheme: dark) {
-      .kit-item[data-kit="002"] { --sombra: #2A2850; --acento: #B3AEE8; }
-      .kit-item[data-kit="003"] { --sombra: #1F3450; --acento: #A9C0DE; }
-    }
-    .precio {
-      font-family: var(--display);
-      font-weight: 650;
-      font-size: 2.2rem;
-      letter-spacing: -0.03em;
-    }
-    .entrega {
-      margin-top: clamp(2.5rem, 5vw, 3.5rem);
-      font-size: 1.02rem;
-      color: var(--pizarra);
-      max-width: 60ch;
-    }
+    .fase { position: relative; font-family: var(--display); font-weight: 500; font-size: 1.35rem; min-height: 2rem; }
+    .ciclo { color: var(--alba); font-size: .95rem; min-height: 1.5rem; margin-bottom: 1.1rem; }
 
-    /* ============ PACKS ============ */
-    .packs { padding-block: clamp(4rem, 9vw, 6.5rem); border-top: 1px solid var(--linea); }
-    .packs h2 { font-size: clamp(2rem, 4vw, 3rem); max-width: 18ch; }
-    .packs .bajada-packs { margin-top: 1rem; color: var(--pizarra); max-width: 46ch; }
-    .ofertas { margin-top: 2.8rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.5rem; }
-    .oferta {
-      display: grid; grid-template-columns: auto 1fr; gap: 1.6rem; align-items: center;
-      padding: 1.8rem; border-radius: var(--radio-panel);
-      background: var(--papel); border: 1px solid var(--linea);
-    }
-    .oferta.destacada { background: var(--tinta); color: var(--niebla); border-color: var(--tinta); }
-    .pila { position: relative; width: 104px; height: 140px; }
-    .pila img {
-      position: absolute; width: 84px; height: auto; border-radius: 5px;
-      box-shadow: 0 1px 0 rgba(0,0,0,.08);
-    }
-    .pila img:nth-child(1) { left: 0; top: 0; transform: rotate(-6deg); }
-    .pila img:nth-child(2) { left: 12px; top: 8px; }
-    .pila img:nth-child(3) { left: 24px; top: 16px; transform: rotate(6deg); }
-    .pila.dos img:nth-child(2) { left: 20px; top: 12px; transform: rotate(5deg); }
-    .oferta h3 { font-size: 1.35rem; letter-spacing: -0.015em; }
-    .oferta .que { margin-top: .35rem; font-size: 1rem; opacity: .8; }
-    .oferta .valor { margin-top: .9rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem .9rem; }
-    .oferta .precio { font-size: 1.9rem; }
-    .oferta .antes { font-family: var(--display); font-size: 1rem; text-decoration: line-through; opacity: .6; }
-    .oferta .ahorro { font-family: var(--display); font-size: .95rem; color: var(--aurora); }
-    .oferta.destacada .ahorro { color: #9FD4C6; }
-    .oferta .boton { margin-top: 1.1rem; }
-    .oferta.destacada .boton { background: #9FD4C6; border-color: #9FD4C6; color: #15232B; }
-    .oferta.destacada .boton:hover { background: transparent; color: #9FD4C6; }
-    .gracias { margin-top: 1.8rem; font-size: 1.02rem; color: var(--pizarra); max-width: 60ch; }
+    /* ============ DE UN VISTAZO: fichas de datos ============ */
+    .vistazo { padding-top: 0; }
+    .fichas { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+    .ficha { display: flex; flex-direction: column; padding: 1.5rem 1.4rem; color: inherit; text-decoration: none; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+    .ficha .chico { font-family: var(--display); font-size: .88rem; color: var(--alba); }
+    .ficha .dato { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.1; margin-top: .35rem; }
+    .ficha .flecha { display: inline-block; font-family: var(--display); font-size: .7em; color: var(--menta); transition: transform .2s ease; }
+    .ficha:hover { transform: translateY(-3px); border-color: rgba(159, 212, 198, .5); background: rgba(237, 240, 238, .1); }
+    .ficha:hover .flecha { transform: translateX(4px); }
+    /* La ficha de WhatsApp es un botón claro */
+    .ficha-wa { background: var(--menta); color: var(--tinta); border-radius: var(--radio); justify-content: space-between; box-shadow: 0 10px 34px rgba(159, 212, 198, .28); }
+    .ficha-wa .chico { color: var(--tinta); }
+    .ficha-wa .accion { font-family: var(--display); font-weight: 500; font-size: 1.12rem; line-height: 1.25; margin-top: .6rem; }
+    .ficha-wa .flecha { color: var(--tinta); font-size: 1em; }
+    .ficha-wa:hover { background: #B3DED3; box-shadow: 0 14px 44px rgba(159, 212, 198, .45); }
 
-    /* ============ VISTA PREVIA ============ */
+    /* ============ CÓMO TRABAJAMOS: tarjetas numeradas ============ */
+    .principios { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .principio { padding: 2rem 1.8rem; }
+    .principio .cabeza-tarjeta { display: flex; align-items: center; justify-content: space-between; }
+    .numero { font-family: var(--display); font-size: .82rem; letter-spacing: .16em; color: var(--alba); }
+    .principio svg { width: 40px; height: 40px; fill: none; stroke: var(--menta); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .principio h3 { margin: 1.4rem 0 .7rem; }
+    .principio p { color: var(--alba); font-size: 1.05rem; }
+
+    /* ============ COLECCIÓN: comparativa + tarjetas de kit con insignia ============ */
+    .comparar { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .comp { display: flex; flex-direction: column; gap: .8rem; padding: 1.4rem; color: inherit; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
+    .comp:hover { border-color: rgba(159, 212, 198, .45); transform: translateY(-2px); }
+    .comp .insignia { align-self: flex-start; }
+    .comp .para { color: var(--alba); font-size: 1.02rem; line-height: 1.45; }
+    .comp .pie-comp { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--display); }
+    .comp .pie-comp strong { font-weight: 500; font-size: 1.15rem; }
+    .comp .pie-comp span { color: var(--alba); font-size: .9rem; }
+
+    .kit-item {
+      display: grid; grid-template-columns: minmax(220px, 330px) 1fr;
+      gap: clamp(1.6rem, 4vw, 3.5rem); align-items: center;
+      padding: clamp(1.4rem, 3vw, 2.4rem); margin-top: var(--gap);
+    }
+    .kit-item[data-kit="001"] { --brillo: rgba(134, 201, 186, .42); }
+    .kit-item[data-kit="002"] { --brillo: rgba(122, 116, 210, .55); }
+    .kit-item[data-kit="003"] { --brillo: rgba(84, 132, 196, .55); }
+    .kit-portada { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+    .kit-portada img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); transition: transform .3s ease; }
+    .kit-portada:hover img { transform: translateY(-4px) rotate(-.6deg); }
+    .kit-item h3 { font-size: clamp(1.6rem, 2.6vw, 2rem); margin-top: 1rem; }
+    .kit-item .resumen { margin-top: .9rem; color: var(--alba); }
+    .rotulo { margin-top: 1.3rem; font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--alba); }
+    .incluye { list-style: none; padding: 0; margin: .5rem 0 0; }
+    .incluye li { display: flex; gap: .7rem; align-items: baseline; padding: .55rem 0; border-bottom: 1px solid rgba(237, 240, 238, .1); font-size: 1.05rem; }
+    .incluye li::before { content: ""; flex: none; width: .5rem; height: .5rem; border-radius: 50%; background: var(--menta); transform: translateY(-.1rem); }
+    .precio { margin-top: 1.4rem; font-family: var(--display); font-size: 1.9rem; font-weight: 500; }
+    .acciones-kit { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .7rem; }
+    .nota { margin-top: clamp(1.8rem, 4vw, 2.6rem); text-align: center; color: var(--alba); max-width: 56ch; margin-inline: auto; font-size: 1.05rem; }
+
+    /* ============ CÓMO RECIBES TU KIT: pasos en carrusel ============ */
+    .carrusel { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); list-style: none; padding: 0; margin: 0; }
+    .paso { padding: 1.5rem 1.3rem; }
+    .paso .numero { display: block; }
+    .paso h3 { font-size: 1.3rem; margin: .9rem 0 .5rem; }
+    .paso p { color: var(--alba); font-size: 1rem; line-height: 1.5; }
+    .puntos { display: none; }
+
+    /* ============ PACKS: tarjetas de precio con insignia de ahorro ============ */
+    .ofertas { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
+    .oferta { display: grid; grid-template-columns: auto 1fr; gap: 1.8rem; align-items: center; padding: clamp(1.6rem, 3vw, 2.2rem); }
+    .oferta.destacada { border-color: rgba(159, 212, 198, .45); --brillo: rgba(159, 212, 198, .32); }
+    .pila { position: relative; width: 150px; height: 196px; }
+    .pila img { position: absolute; top: 0; width: 118px; height: auto; border-radius: 6px; box-shadow: 0 14px 30px rgba(0, 0, 0, .35); }
+    .pila img:nth-child(1) { left: 0; transform: rotate(-7deg); }
+    .pila img:nth-child(2) { left: 16px; transform: rotate(0deg); }
+    .pila img:nth-child(3) { left: 32px; transform: rotate(7deg); }
+    .pila.dos img:nth-child(2) { left: 28px; transform: rotate(6deg); }
+    .oferta .que { color: var(--alba); margin-top: .4rem; font-size: 1.02rem; }
+    .oferta .precio { margin-top: 1rem; }
+    .separado { color: var(--alba); font-size: .98rem; margin-top: .15rem; }
+    .oferta .insignia { margin-top: .8rem; }
+    .oferta .boton { margin-top: 1.2rem; }
+    .gracias { margin-top: clamp(1.8rem, 4vw, 2.6rem); text-align: center; color: var(--alba); font-size: 1.05rem; }
+
+    /* ============ ALVORA: bloque destacado ============ */
+    .alvora .bloque { padding: clamp(2.2rem, 6vw, 4.5rem) clamp(1.4rem, 5vw, 4rem); text-align: center; --brillo: rgba(159, 212, 198, .34); }
+    .alvora h2 { margin-inline: auto; max-width: 20ch; }
+    .alvora .texto { margin: 1.2rem auto 0; max-width: 46ch; color: var(--alba); }
+    .alvora .acciones { margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
+
+    /* ============ PIE: el amanecer ============ */
+    .pie-sitio { padding-block: 1rem clamp(3rem, 6vw, 4.5rem); }
+    .pie-sitio .aviso { padding: 1.5rem 1.7rem; font-size: 1.02rem; background: rgba(21, 35, 43, .32); } /* el aviso del 911 siempre bien legible */
+    .pie-sitio .aviso strong { font-weight: 600; color: var(--niebla); }
+    .pie-sitio .final { margin-top: 1.6rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+    .enlaces { display: flex; flex-wrap: wrap; gap: 1.4rem; font-family: var(--display); font-size: .95rem; }
+    .enlaces a { color: var(--alba); text-decoration: none; }
+    .enlaces a:hover { color: var(--niebla); }
+    .derechos { color: var(--alba); font-family: var(--display); font-size: .9rem; }
+
+    /* ============ TRAMO FINAL (Amanecer): contraste ============
+       Desde Packs, el fondo es más claro: el texto secundario pasa a Niebla y la palabra
+       en cursiva de los títulos grandes pasa a Menta (la única forma de llegar a 3:1 ahí). */
+    .packs .intro, .packs .que, .packs .separado, .gracias,
+    .alvora .texto, .alvora .etiqueta, .enlaces a, .derechos { color: var(--niebla); }
+    .alvora h2 em { color: var(--menta); }
+    .alvora .bloque { --brillo: rgba(159, 212, 198, .18); }
+
+    /* ============ VISTA PREVIA DE CADA KIT ============ */
     .vista {
-      width: min(100% - 2rem, 1040px); max-height: calc(100% - 2rem);
-      border: 0; border-radius: var(--radio-panel); padding: 0;
-      background: var(--niebla); color: var(--tinta);
+      width: min(980px, 94vw); max-height: 92vh; padding: 0; border: 1px solid var(--borde); border-radius: 22px;
+      background: var(--crepusculo); color: var(--niebla);
     }
-    .vista::backdrop { background: rgba(21, 35, 43, .72); }
-    .vista .barra {
-      position: sticky; top: 0; z-index: 1;
-      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-      padding: 1rem 1.4rem; background: var(--niebla); border-bottom: 1px solid var(--linea);
-    }
-    .vista .barra h2 { font-size: 1.15rem; letter-spacing: -0.01em; }
-    .vista .cerrar { padding: .55rem 1.1rem; font-size: .95rem; }
-    .vista .paginas {
-      display: flex; gap: 1rem; overflow-x: auto; padding: 1.4rem;
-      scroll-snap-type: x mandatory;
-    }
-    .vista .paginas img {
-      flex: 0 0 auto; width: min(420px, 82vw); height: auto;
-      border-radius: 6px; scroll-snap-align: center; border: 1px solid var(--linea);
-    }
-    .vista .pie-vista { padding: 0 1.4rem 1.4rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
-    .vista .pie-vista p { color: var(--pizarra); font-size: .98rem; }
+    .vista::backdrop { background: rgba(10, 18, 22, .72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    .vista .barra { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.4rem; border-bottom: 1px solid var(--borde); }
+    .vista .barra h2 { font-size: 1.2rem; max-width: none; }
+    .vista .cerrar { padding: .5rem 1rem; }
+    .vista .paginas { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 1.2rem 1.4rem; }
+    .vista .paginas img { flex: none; height: min(64vh, 620px); width: auto; border-radius: 8px; scroll-snap-align: center; }
+    .vista .pie-vista { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: 1rem 1.4rem 1.3rem; border-top: 1px solid var(--borde); }
+    .vista .pie-vista p { color: var(--alba); font-size: .95rem; }
 
+    /* ============ CELULAR ============ */
     @media (max-width: 960px) {
-      .kits { grid-template-columns: 1fr; max-width: 520px; }
-      .kit-portada { max-width: 300px; }
-      .ofertas { grid-template-columns: 1fr; }
+      .maqueta { grid-template-columns: 1fr 1fr; }
+      .maqueta .pausa { grid-column: 1 / -1; order: -1; max-width: 420px; width: 100%; margin-inline: auto; }
+      .carrusel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .4rem; scrollbar-width: none; }
+      .carrusel::-webkit-scrollbar { display: none; }
+      .paso { flex: 0 0 min(78%, 320px); scroll-snap-align: start; }
+      .puntos { display: flex; justify-content: center; gap: .5rem; margin-top: 1rem; }
+      .puntos span { width: 8px; height: 8px; border-radius: 50%; background: rgba(237, 240, 238, .3); transition: background .2s, transform .2s; }
+      .puntos span.activo { background: var(--menta); transform: scale(1.25); }
     }
-    @media (max-width: 520px) {
-      .oferta { grid-template-columns: 1fr; }
-    }
-
-    /* ============ AURA ============ */
-    .aura {
-      padding-block: clamp(4.5rem, 10vw, 8rem);
-      background: var(--tinta);
-      color: var(--niebla);
-    }
-    @media (prefers-color-scheme: dark) {
-      .aura { background: #0A1114; color: var(--tinta); }
-    }
-    .aura .estado {
-      display: inline-block;
-      font-family: var(--display);
-      font-size: .95rem;
-      padding: .35rem .9rem;
-      border-radius: 999px;
-      border: 1px solid #9FD4C6;
-      color: #9FD4C6;
-      margin-bottom: 1.8rem;
-    }
-    .aura h2 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      max-width: 17ch;
-    }
-    .aura .texto {
-      margin-top: 1.6rem;
-      max-width: 50ch;
-      opacity: .82;
-      font-size: 1.25rem;
-    }
-    .aura .acciones {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .aura .boton {
-      background: #9FD4C6;
-      border-color: #9FD4C6;
-      color: #15232B;
-    }
-    .aura .boton:hover { background: transparent; color: #9FD4C6; }
-    .aura .boton-secundario { background: transparent; color: #9FD4C6; }
-    .aura .boton-secundario:hover { background: #9FD4C6; color: #15232B; }
-
-    /* ============ PIE ============ */
-    .pie-sitio {
-      padding-block: 3.5rem 2.5rem;
-      font-size: 1rem;
-      color: var(--pizarra);
-    }
-    .pie-sitio .contenedor {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 2.5rem;
-    }
-    .aviso { max-width: 52ch; }
-    .aviso strong { color: var(--tinta); font-weight: 500; }
-    .enlaces {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .8rem 1.6rem;
-      justify-content: flex-end;
-      align-content: start;
-      font-family: var(--display);
-    }
-    .enlaces a { text-decoration: none; }
-    .enlaces a:hover { color: var(--tinta); }
-    .derechos {
-      grid-column: 1 / -1;
-      padding-top: 1.8rem;
-      border-top: 1px solid var(--linea);
-      font-family: var(--display);
-      font-size: .9rem;
-    }
-
-    /* ============ MÓVIL ============ */
     @media (max-width: 860px) {
       .menu { display: none; }
-      .hero .contenedor,
-      .kit .contenedor,
-      .pie-sitio .contenedor { grid-template-columns: 1fr; }
-      .principios { grid-template-columns: 1fr; }
-      .portada { max-width: 300px; }
-      .enlaces { justify-content: flex-start; }
+      .fichas { grid-template-columns: repeat(2, 1fr); }
+      .ficha { padding: 1.2rem 1.1rem; }
+      .ficha .dato { font-size: clamp(1.35rem, 6.2vw, 1.8rem); white-space: nowrap; }
+      .principios, .comparar, .ofertas { grid-template-columns: 1fr; }
+      .kit-item { grid-template-columns: 1fr; }
+      .kit-portada { max-width: 260px; margin-inline: auto; }
+    }
+    @media (max-width: 520px) {
+      .maqueta { grid-template-columns: 1fr; }
+      .funciones { grid-template-columns: 1fr 1fr; }
+      .funcion { flex-direction: column; align-items: flex-start; font-size: .95rem; }
+      .oferta { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .cabecera .boton { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .boton, .comp, .kit-portada img, .disco { transition: none !important; }
     }
   </style>
 </head>
 <body>
 
+  <canvas id="cielo" aria-hidden="true"></canvas>
+
   <header class="cabecera">
     <div class="contenedor">
-      <a href="#" class="marca" aria-label="Aravora, inicio">
+      <a href="#" class="marca" aria-label="aravora, inicio">
         <svg viewBox="0 0 240 160" aria-hidden="true">
           <g class="arcos" fill="none" stroke-width="12" stroke-linecap="round">
             <path d="M20 130a100 100 0 0 1 200 0"/>
@@ -506,88 +370,149 @@
         </svg>
         aravora
       </a>
-      <nav class="menu" aria-label="Principal">
-        <a href="#metodo">Cómo trabajamos</a>
-        <a href="#kits">Kits</a>
-        <a href="#packs">Packs</a>
-        <a href="alvora.html">ALVORA</a>
-      </nav>
+      <div class="navegacion">
+        <nav class="menu" aria-label="Principal">
+          <a href="#metodo">Cómo trabajamos</a>
+          <a href="#kits">Kits</a>
+          <a href="#packs">Packs</a>
+          <a href="alvora.html">ALVORA</a>
+        </nav>
+        <a href="#kits" class="boton">Ver los kits</a>
+      </div>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
+    <!-- 1 · HERO: maqueta central con funciones a los costados -->
     <section class="hero">
       <div class="contenedor">
-        <div>
-          <h1>Psicología con evidencia, convertida en herramientas simples.</h1>
-          <p class="bajada">
-            Creamos guías y tecnología para que entiendas lo que te pasa
-            y sepas cuál es tu siguiente paso.
-          </p>
-          <div class="acciones">
-            <a href="#kits" class="boton">Ver los kits</a>
-          </div>
+        <div class="titular">
+          <p class="etiqueta">Psicología con evidencia</p>
+          <h1>Psicología con evidencia, convertida en herramientas <em>simples</em>.</h1>
+          <p class="bajada">Creamos guías y tecnología para que entiendas lo que te pasa y sepas cuál es tu siguiente paso.</p>
+          <div class="acciones"><a href="#kits" class="boton">Ver los kits</a></div>
         </div>
 
-        <aside class="pausa" aria-labelledby="pausa-titulo">
-          <h2 id="pausa-titulo">Prueba una pausa de un minuto</h2>
-          <p class="instruccion">Inhala mientras el círculo crece, exhala mientras se achica.</p>
-          <div class="orbita">
-            <div class="disco" id="disco"></div>
-            <p class="fase" id="fase" aria-live="polite">Cuando quieras</p>
+        <div class="maqueta">
+          <div class="funciones">
+            <div class="funcion tarjeta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+              Ejercicios de pocos minutos
+            </div>
+            <div class="funcion tarjeta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+              Lo completas desde el celular o la computadora
+            </div>
           </div>
-          <p class="ciclo" id="ciclo"></p>
-          <button class="boton" id="boton-pausa" type="button">Empezar pausa</button>
-        </aside>
+
+          <aside class="pausa tarjeta resplandor" aria-labelledby="pausa-titulo">
+            <h2 id="pausa-titulo">Prueba una pausa de un minuto</h2>
+            <p class="instruccion">Inhala mientras el círculo crece, exhala mientras se achica.</p>
+            <div class="orbita">
+              <div class="disco" id="disco"></div>
+              <p class="fase" id="fase" aria-live="polite">Cuando quieras</p>
+            </div>
+            <p class="ciclo" id="ciclo"></p>
+            <button class="boton" id="boton-pausa" type="button">Empezar pausa</button>
+          </aside>
+
+          <div class="funciones">
+            <div class="funcion tarjeta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6M10 3.5v5.2L5.2 17a2.4 2.4 0 0 0 2.1 3.5h9.4a2.4 2.4 0 0 0 2.1-3.5L14 8.7V3.5"/><path d="M7.5 14h9"/></svg>
+              Basado en evidencia
+            </div>
+            <div class="funcion tarjeta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><path d="M14 2.5v5h5M9 13l2 2 4-4"/></svg>
+              PDF interactivo
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- MÉTODO -->
+    <!-- 2 · DE UN VISTAZO: fichas de datos -->
+    <section class="vistazo" aria-labelledby="vistazo-titulo">
+      <div class="contenedor">
+        <p class="etiqueta" id="vistazo-titulo">De un vistazo</p>
+        <div class="fichas">
+          <a class="ficha tarjeta" href="#kits"><span class="chico">Colección</span><span class="dato">3 kits <span class="flecha" aria-hidden="true">→</span></span></a>
+          <a class="ficha tarjeta" href="#kits"><span class="chico">Desde</span><span class="dato">15.000 Gs. <span class="flecha" aria-hidden="true">→</span></span></a>
+          <a class="ficha tarjeta" href="#packs"><span class="chico">Packs desde</span><span class="dato">30.000 Gs. <span class="flecha" aria-hidden="true">→</span></span></a>
+          <a class="ficha ficha-wa" data-wa="Hola, quiero consultar por los kits de aravora" data-evento="ConsultaWhatsApp" data-origen="De un vistazo" href="#" target="_blank" rel="noopener"><span class="chico">Entrega por WhatsApp</span><span class="accion">Escríbenos por WhatsApp <span class="flecha" aria-hidden="true">→</span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · CÓMO TRABAJAMOS: tarjetas numeradas -->
     <section class="metodo" id="metodo">
       <div class="contenedor">
-        <h2 class="encabezado">La ciencia ya sabe mucho. Nosotros la hacemos fácil de usar.</h2>
+        <div class="encabezado">
+          <p class="etiqueta">Cómo trabajamos</p>
+          <h2>La ciencia ya sabe mucho. Nosotros la hacemos <em>fácil</em> de usar.</h2>
+        </div>
         <div class="principios">
-          <article class="principio">
+          <article class="principio tarjeta">
+            <div class="cabeza-tarjeta">
+              <span class="numero">01</span>
+              <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M15 6h10M16.5 6v9L8 30a4 4 0 0 0 3.5 6h17a4 4 0 0 0 3.5-6L23.5 15V6"/><path d="M11.5 24h17"/></svg>
+            </div>
             <h3>Partimos de la evidencia</h3>
-            <p>
-              Usamos técnicas que la psicología estudia desde hace décadas, como
-              el registro de pensamientos o los experimentos conductuales, en lugar
-              de consejos de moda.
-            </p>
+            <p>Usamos técnicas que la psicología estudia desde hace décadas, como el registro de pensamientos o los experimentos conductuales, en lugar de consejos de moda.</p>
           </article>
-          <article class="principio">
+          <article class="principio tarjeta">
+            <div class="cabeza-tarjeta">
+              <span class="numero">02</span>
+              <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13"/><path d="M20 12v8l5 3"/></svg>
+            </div>
             <h3>Lo hacemos simple</h3>
-            <p>
-              Cada herramienta cabe en tu día: minutos, no horas. Si algo es
-              difícil de usar, no te sirve cuando más lo necesitas.
-            </p>
+            <p>Cada herramienta cabe en tu día: minutos, no horas. Si algo es difícil de usar, no te sirve cuando más lo necesitas.</p>
           </article>
-          <article class="principio">
+          <article class="principio tarjeta">
+            <div class="cabeza-tarjeta">
+              <span class="numero">03</span>
+              <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="14" r="5"/><circle cx="27" cy="16" r="4"/><path d="M5 33c0-5 4-9 9-9s9 4 9 9M22 33c.4-4 2.8-7 6-7 3.4 0 6 3 6 7"/></svg>
+            </div>
             <h3>Te acercamos a un profesional</h3>
-            <p>
-              Nada de esto reemplaza la terapia. Cuando algo necesita más atención,
-              te ayudamos a encontrar a quien pueda acompañarte.
-            </p>
+            <p>Nada de esto reemplaza la terapia. Cuando algo necesita más atención, te ayudamos a encontrar a quien pueda acompañarte.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- COLECCIÓN -->
+    <!-- 4 · COLECCIÓN: comparativa rápida + tarjetas de kit con insignia de color -->
     <section class="coleccion" id="kits">
       <div class="contenedor">
-        <div class="intro">
-          <h2>La colección «¿Por qué...?»</h2>
-          <p>Cada kit responde una pregunta que mucha gente se hace en silencio. Son guías en PDF que puedes completar desde el celular, con ejercicios de pocos minutos.</p>
+        <div class="encabezado">
+          <p class="etiqueta">La colección</p>
+          <h2>La colección <em>«¿Por qué...?»</em></h2>
+          <p class="intro">Cada kit responde una pregunta que mucha gente se hace en silencio. Son guías en PDF que puedes completar desde el celular, con ejercicios de pocos minutos.</p>
         </div>
-        <div class="kits">
-          <article class="kit-item" data-kit="001">
-            <button class="kit-portada" type="button" data-vista="001" aria-label="Ver por dentro el Kit #001">
-              <img src="img/kit001-portada.webp" alt="Portada del Kit #001: ¿Por qué estoy tan cansado, si dormí?" width="640" height="905" loading="lazy">
-            </button>
-            <p class="tema">Kit #001 · Energía</p>
+
+        <div class="comparar">
+          <a class="comp tarjeta" href="#kit-001">
+            <span class="insignia ins-001">Kit #001 · Energía</span>
+            <p class="para">Para cuando descansas pero no te sientes descansado.</p>
+            <p class="pie-comp"><strong>15.000 Gs.</strong><span>Ver kit ↓</span></p>
+          </a>
+          <a class="comp tarjeta" href="#kit-002">
+            <span class="insignia ins-002">Kit #002 · Ansiedad</span>
+            <p class="para">Para entender tu alarma interna y bajarla a tu ritmo.</p>
+            <p class="pie-comp"><strong>20.000 Gs.</strong><span>Ver kit ↓</span></p>
+          </a>
+          <a class="comp tarjeta" href="#kit-003">
+            <span class="insignia ins-003">Kit #003 · Sueño</span>
+            <p class="para">Para cuando el celular te gana la noche.</p>
+            <p class="pie-comp"><strong>25.000 Gs.</strong><span>Ver kit ↓</span></p>
+          </a>
+        </div>
+
+        <article class="kit-item tarjeta" data-kit="001" id="kit-001">
+          <button class="kit-portada resplandor" type="button" data-vista="001" aria-label="Ver por dentro el Kit #001">
+            <img src="img/kit001-portada.webp" alt="Portada del Kit #001: ¿Por qué estoy tan cansado, si dormí?" width="640" height="905" loading="lazy">
+          </button>
+          <div>
+            <span class="insignia ins-001">Kit #001 · Energía</span>
             <h3>¿Por qué estoy tan cansado, si dormí?</h3>
             <p class="resumen">Para cuando descansas pero no te sientes descansado. Descubre qué está consumiendo tu energía y prueba cambios pequeños que puedas sostener.</p>
             <p class="rotulo">Incluye:</p>
@@ -601,12 +526,15 @@
               <a class="boton" data-wa="Hola, quiero comprar el Kit #001 «¿Por qué estoy tan cansado, si dormí?»" data-producto="Kit #001" data-valor="15000" href="#" target="_blank" rel="noopener">Comprar por WhatsApp</a>
               <button class="boton boton-secundario" type="button" data-vista="001">Ver por dentro</button>
             </div>
-          </article>
-          <article class="kit-item" data-kit="002">
-            <button class="kit-portada" type="button" data-vista="002" aria-label="Ver por dentro el Kit #002">
-              <img src="img/kit002-portada.webp" alt="Portada del Kit #002: ¿Por qué siento ansiedad, si no pasa nada?" width="640" height="905" loading="lazy">
-            </button>
-            <p class="tema">Kit #002 · Ansiedad</p>
+          </div>
+        </article>
+
+        <article class="kit-item tarjeta" data-kit="002" id="kit-002">
+          <button class="kit-portada resplandor" type="button" data-vista="002" aria-label="Ver por dentro el Kit #002">
+            <img src="img/kit002-portada.webp" alt="Portada del Kit #002: ¿Por qué siento ansiedad, si no pasa nada?" width="640" height="905" loading="lazy">
+          </button>
+          <div>
+            <span class="insignia ins-002">Kit #002 · Ansiedad</span>
             <h3>¿Por qué siento ansiedad, si no pasa nada?</h3>
             <p class="resumen">Para entender tu alarma interna y bajarla con herramientas de la terapia cognitivo-conductual, a tu ritmo.</p>
             <p class="rotulo">Incluye:</p>
@@ -620,12 +548,15 @@
               <a class="boton" data-wa="Hola, quiero comprar el Kit #002 «¿Por qué siento ansiedad, si no pasa nada?»" data-producto="Kit #002" data-valor="20000" href="#" target="_blank" rel="noopener">Comprar por WhatsApp</a>
               <button class="boton boton-secundario" type="button" data-vista="002">Ver por dentro</button>
             </div>
-          </article>
-          <article class="kit-item" data-kit="003">
-            <button class="kit-portada" type="button" data-vista="003" aria-label="Ver por dentro el Kit #003">
-              <img src="img/kit003-portada.webp" alt="Portada del Kit #003: ¿Por qué me acuesto tan tarde, si mañana madrugo?" width="640" height="905" loading="lazy">
-            </button>
-            <p class="tema">Kit #003 · Sueño</p>
+          </div>
+        </article>
+
+        <article class="kit-item tarjeta" data-kit="003" id="kit-003">
+          <button class="kit-portada resplandor" type="button" data-vista="003" aria-label="Ver por dentro el Kit #003">
+            <img src="img/kit003-portada.webp" alt="Portada del Kit #003: ¿Por qué me acuesto tan tarde, si mañana madrugo?" width="640" height="905" loading="lazy">
+          </button>
+          <div>
+            <span class="insignia ins-003">Kit #003 · Sueño</span>
             <h3>¿Por qué me acuesto tan tarde, si mañana madrugo?</h3>
             <p class="resumen">Para cuando el celular te gana la noche. Qué le hace de verdad a tu sueño, y un plan simple para recuperar tus horas.</p>
             <p class="rotulo">Incluye:</p>
@@ -639,31 +570,55 @@
               <a class="boton" data-wa="Hola, quiero comprar el Kit #003 «¿Por qué me acuesto tan tarde, si mañana madrugo?»" data-producto="Kit #003" data-valor="25000" href="#" target="_blank" rel="noopener">Comprar por WhatsApp</a>
               <button class="boton boton-secundario" type="button" data-vista="003">Ver por dentro</button>
             </div>
-          </article>
-        </div>
-        <p class="entrega">Guías en PDF interactivo: puedes escribir y marcar en ellas desde el celular o imprimirlas. Te las enviamos por WhatsApp apenas confirmamos tu pago.</p>
+          </div>
+        </article>
+
+        <p class="nota">Guías en PDF interactivo: puedes escribir y marcar en ellas desde el celular o imprimirlas. Te las enviamos por WhatsApp apenas confirmamos tu pago.</p>
       </div>
     </section>
 
-    <!-- PACKS -->
+    <!-- 5 · CÓMO RECIBES TU KIT: pasos en carrusel -->
+    <section class="pasos" id="como-recibes">
+      <div class="contenedor">
+        <div class="encabezado">
+          <p class="etiqueta">Cómo recibes tu kit</p>
+          <h2>Así recibes tu <em>kit</em></h2>
+        </div>
+        <ol class="carrusel" aria-label="Pasos para recibir tu kit">
+          <li class="paso tarjeta"><span class="numero">PASO 01</span><h3>Eliges tu kit</h3><p>Nos escribes por WhatsApp desde el botón del kit que quieras.</p></li>
+          <li class="paso tarjeta"><span class="numero">PASO 02</span><h3>Pagas por transferencia</h3><p>La compra se cierra en el mismo chat de WhatsApp.</p></li>
+          <li class="paso tarjeta"><span class="numero">PASO 03</span><h3>Te lo enviamos</h3><p>Por WhatsApp, apenas confirmamos tu pago.</p></li>
+          <li class="paso tarjeta"><span class="numero">PASO 04</span><h3>Lo completas</h3><p>Desde el celular o impreso: puedes escribir y marcar en él.</p></li>
+          <li class="paso tarjeta"><span class="numero">PASO 05</span><h3>Nos cuentas qué te pareció</h3><p>Y te enviamos un descuento para el próximo.</p></li>
+        </ol>
+        <div class="puntos" aria-hidden="true"><span class="activo"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <!-- 6 · PACKS: tarjetas de precio con insignia de ahorro -->
     <section class="packs" id="packs">
       <div class="contenedor">
-        <h2>Llévate más de uno y paga menos</h2>
-        <p class="bajada-packs">El cansancio, la ansiedad y el mal dormir suelen ir juntos. Los packs te dan las herramientas para trabajar en los tres.</p>
+        <div class="encabezado">
+          <p class="etiqueta">Packs</p>
+          <h2>Llévate más de uno y paga <em>menos</em></h2>
+          <p class="intro">El cansancio, la ansiedad y el mal dormir suelen ir juntos. Los packs te dan las herramientas para trabajar en los tres.</p>
+        </div>
         <div class="ofertas">
-          <article class="oferta">
-            <div class="pila dos" aria-hidden="true">
+          <article class="oferta tarjeta">
+            <div class="pila dos resplandor" aria-hidden="true">
               <img src="img/kit001-portada.webp" alt="" width="640" height="905" loading="lazy">
               <img src="img/kit002-portada.webp" alt="" width="640" height="905" loading="lazy">
             </div>
             <div>
               <h3>Pack Energía + Ansiedad</h3>
               <p class="que">Kit #001 y Kit #002</p>
-              <div class="valor"><p class="precio">30.000 Gs.</p><p class="antes">35.000 Gs.</p><p class="ahorro">Ahorras 5.000 Gs.</p></div>
+              <p class="precio">30.000 Gs.</p>
+              <p class="separado">Por separado: 35.000 Gs.</p>
+              <span class="insignia ins-ahorro">Ahorras 5.000 Gs.</span><br>
               <a class="boton" data-wa="Hola, quiero comprar el Pack Energía + Ansiedad (Kit #001 y Kit #002)" data-producto="Pack #001 + #002" data-valor="30000" href="#" target="_blank" rel="noopener">Comprar el pack</a>
             </div>
           </article>
-          <article class="oferta destacada">
+          <article class="oferta tarjeta destacada resplandor">
             <div class="pila" aria-hidden="true">
               <img src="img/kit001-portada.webp" alt="" width="640" height="905" loading="lazy">
               <img src="img/kit002-portada.webp" alt="" width="640" height="905" loading="lazy">
@@ -672,7 +627,9 @@
             <div>
               <h3>Colección completa</h3>
               <p class="que">Los 3 kits: energía, ansiedad y sueño</p>
-              <div class="valor"><p class="precio">45.000 Gs.</p><p class="antes">60.000 Gs.</p><p class="ahorro">Ahorras 15.000 Gs.</p></div>
+              <p class="precio">45.000 Gs.</p>
+              <p class="separado">Por separado: 60.000 Gs.</p>
+              <span class="insignia ins-ahorro">Ahorras 15.000 Gs.</span><br>
               <a class="boton" data-wa="Hola, quiero comprar la Colección completa (Kits #001, #002 y #003)" data-producto="Colección completa" data-valor="45000" href="#" target="_blank" rel="noopener">Comprar la colección</a>
             </div>
           </article>
@@ -681,20 +638,17 @@
       </div>
     </section>
 
-    <!-- ALVORA -->
-    <section class="aura" id="alvora">
+    <!-- 7 · ALVORA: bloque destacado -->
+    <section class="alvora" id="alvora">
       <div class="contenedor">
-        <p class="estado">ALVORA · beta con cupos limitados</p>
-        <h2>Encontrar al psicólogo adecuado no debería ser cuestión de suerte.</h2>
-        <p class="texto">
-          Cuéntanos lo básico —modalidad, horarios y presupuesto— y te sugerimos
-          psicólogos verificados que encajan contigo. Gratis.
-        </p>
-        <div class="acciones">
-          <a class="boton" href="alvora.html">Buscar psicólogo</a>
-          <a class="boton boton-secundario" data-wa="Hola, soy psicólogo/a y quiero sumarme a la beta de ALVORA" href="#" target="_blank" rel="noopener">
-            Soy psicólogo/a y quiero sumarme
-          </a>
+        <div class="bloque tarjeta resplandor">
+          <p class="etiqueta">ALVORA · Beta · Solo en Paraguay</p>
+          <h2>Encontrar al profesional adecuado no debería ser cuestión de <em>suerte</em>.</h2>
+          <p class="texto">Cuéntanos lo básico —modalidad, horarios y presupuesto— y te sugerimos profesionales verificados que encajan contigo. Gratis.</p>
+          <div class="acciones">
+            <a class="boton" href="alvora.html">Buscar psicólogo/a</a>
+            <a class="boton boton-secundario" data-wa="Hola, soy psicólogo/a y quiero sumarme a la beta de ALVORA" href="#" target="_blank" rel="noopener">Soy psicólogo/a y quiero sumarme</a>
+          </div>
         </div>
       </div>
     </section>
@@ -713,23 +667,24 @@
     </div>
   </dialog>
 
+  <!-- 8 · PIE: el amanecer -->
   <footer class="pie-sitio">
     <div class="contenedor">
-      <p class="aviso">
-        El contenido de Aravora es educativo y no reemplaza la atención de un
-        profesional de salud mental. <strong>Si estás en riesgo o en crisis,
-        llama al 911</strong> o acude al servicio de urgencias más cercano.
+      <p class="aviso tarjeta">
+        El contenido de aravora es educativo y no reemplaza la atención de un profesional de salud mental.
+        <strong>Si estás en riesgo o en crisis, llama al 911</strong> o acude al servicio de urgencias más cercano.
       </p>
-      <nav class="enlaces" aria-label="Enlaces del pie">
-        <a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://facebook.com/aravora.studio" target="_blank" rel="noopener">Facebook</a>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="terminos.html">Términos</a>
-      </nav>
-      <p class="derechos">© 2026 Aravora</p>
+      <div class="final">
+        <nav class="enlaces" aria-label="Enlaces del pie">
+          <a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/aravora.studio" target="_blank" rel="noopener">Facebook</a>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="terminos.html">Términos</a>
+        </nav>
+        <p class="derechos">© 2026 aravora</p>
+      </div>
     </div>
   </footer>
-
   <script>
     /* ========= CAMBIA SOLO ESTA LÍNEA: tu número con 595, sin 0 ni espacios ========= */
     const WHATSAPP = "595992955763";
@@ -739,6 +694,8 @@
     /* Si el Pixel de Meta está activo, registra cada clic en un botón de compra como "Contact" */
     function rastrear(enlace) {
       if (typeof window.fbq !== "function") return;
+      /* Consultas (no compras): evento propio para saber desde dónde escribe la gente */
+      if (enlace.dataset.evento) { window.fbq("trackCustom", enlace.dataset.evento, { origen: enlace.dataset.origen || "" }); return; }
       var datos = { content_name: enlace.dataset.producto || enlace.dataset.wa };
       if (enlace.dataset.valor) { datos.value = Number(enlace.dataset.valor); datos.currency = "PYG"; }
       window.fbq("track", "Contact", datos);
@@ -821,6 +778,139 @@
       botonPausa.textContent = "Detener";
       paso(0);
     });
+  </script>
+
+  <script>
+    /* ========= Carrusel de pasos: puntos que siguen al paso visible (solo celular) ========= */
+    (function () {
+      var lista = document.querySelector(".carrusel"), puntos = document.querySelectorAll(".puntos span");
+      if (!lista || !puntos.length || !("IntersectionObserver" in window)) return;
+      var obs = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var i = Array.prototype.indexOf.call(lista.children, e.target);
+          puntos.forEach(function (p, j) { p.classList.toggle("activo", j === i); });
+        });
+      }, { root: lista, threshold: .6 });
+      Array.prototype.forEach.call(lista.children, function (paso) { obs.observe(paso); });
+    })();
+  </script>
+
+  <script>
+    /* ========= Cielo de la página: de la noche al amanecer =========
+       Canvas fijo detrás de todo. El color sigue el scroll: Crepúsculo → Hora azul → Amanecer,
+       con un resplandor Aurora + Menta que crece hacia abajo. Estrellas Menta y Alba que titilan,
+       parallax leve con el cursor y el scroll. Menos estrellas en celular, estático con movimiento
+       reducido y en pausa cuando la pestaña no se ve. */
+    (function () {
+      var canvas = document.getElementById("cielo");
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext("2d");
+      var quieto = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var TONOS = [[31, 53, 64], [43, 75, 83], [61, 101, 99]];   // Crepúsculo, Hora azul, Amanecer
+      var COLORES = ["159,212,198", "207,227,220"];                // Menta y Alba
+      var W = 0, H = 0, dpr = 1, celular = null, estrellas = [];
+      var mouseX = 0, mouseY = 0, suaveX = 0, suaveY = 0;
+      var corriendo = false, raf = 0, ultimo = 0, pendiente = false;
+
+      var semilla = 11;   // azar con semilla: el cielo es siempre el mismo
+      function azar() { semilla = (semilla * 16807) % 2147483647; return (semilla - 1) / 2147483646; }
+
+      function sembrar() {
+        semilla = 11; estrellas = [];
+        var cantidad = celular ? 60 : 160;
+        for (var i = 0; i < cantidad; i++) {
+          estrellas.push({
+            x: azar(), y: azar(),                 // posición relativa a la pantalla (0 a 1)
+            r: .5 + azar() * 1.25,
+            prof: .2 + azar() * .8,               // las más "cercanas" se mueven más
+            fase: azar() * 6.283, vel: .5 + azar() * 1.5,
+            color: COLORES[azar() < .62 ? 0 : 1], base: .35 + azar() * .5
+          });
+        }
+      }
+
+      function medir() {
+        var esCelular = window.innerWidth < 760;
+        dpr = Math.min(window.devicePixelRatio || 1, esCelular ? 1.5 : 2);
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (esCelular !== celular) { celular = esCelular; sembrar(); }
+      }
+
+      function progreso() {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      }
+      function tono(p) {
+        var a = p < .5 ? TONOS[0] : TONOS[1], b = p < .5 ? TONOS[1] : TONOS[2], k = p < .5 ? p / .5 : (p - .5) / .5;
+        return a.map(function (c, i) { return Math.round(c + (b[i] - c) * k); });
+      }
+
+      function dibujar(t) {
+        var p = progreso(), mov = !quieto.matches;
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "rgb(" + tono(p).join(",") + ")";
+        ctx.fillRect(0, 0, W, H);
+
+        // Resplandor Aurora + Menta desde abajo: crece al bajar (el amanecer)
+        var a = .06 + .16 * p, R = Math.max(W, H) * (.7 + .3 * p);   // suave: el texto del tramo final tiene que seguir leyéndose
+        var g = ctx.createRadialGradient(W * .5, H * 1.12, 0, W * .5, H * 1.12, R);
+        g.addColorStop(0, "rgba(159,212,198," + (a * .9).toFixed(3) + ")");
+        g.addColorStop(.45, "rgba(47,111,101," + (a * .7).toFixed(3) + ")");
+        g.addColorStop(1, "rgba(47,111,101,0)");
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+        // Una nebulosa Aurora muy suave arriba a la derecha (profundidad)
+        var n = ctx.createRadialGradient(W * .82, H * .12, 0, W * .82, H * .12, Math.max(W, H) * .45);
+        n.addColorStop(0, "rgba(47,111,101," + (.22 * (1 - p * .6)).toFixed(3) + ")");
+        n.addColorStop(1, "rgba(47,111,101,0)");
+        ctx.fillStyle = n; ctx.fillRect(0, 0, W, H);
+
+        // Estrellas: titilan y se mueven apenas con el cursor y el scroll; se apagan un poco al amanecer
+        suaveX += (mouseX - suaveX) * .08; suaveY += (mouseY - suaveY) * .08;
+        var sc = window.scrollY;
+        for (var i = 0; i < estrellas.length; i++) {
+          var e = estrellas[i];
+          var brillo = mov ? e.base + Math.sin(t / 1000 * e.vel + e.fase) * .25 : e.base;
+          var x = e.x * W + (mov ? suaveX * 12 * e.prof : 0);
+          var y = e.y * H - (mov ? sc * .06 * e.prof : 0) + (mov ? suaveY * 8 * e.prof : 0);
+          y = ((y % H) + H) % H;
+          ctx.globalAlpha = Math.max(0, Math.min(1, brillo)) * (1 - p * .55);
+          ctx.fillStyle = "rgb(" + e.color + ")";
+          ctx.beginPath(); ctx.arc(x, y, e.r, 0, 6.283); ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      function cuadro(t) {
+        if (!corriendo) return;
+        if (t - ultimo > 33) { dibujar(t); ultimo = t; }   // ~30 cuadros por segundo alcanzan
+        raf = requestAnimationFrame(cuadro);
+      }
+      function actualizar() {
+        var debe = !document.hidden && !quieto.matches;
+        if (debe && !corriendo) { corriendo = true; raf = requestAnimationFrame(cuadro); }
+        if (!debe && corriendo) { corriendo = false; cancelAnimationFrame(raf); }
+        if (!corriendo) dibujar(0);   // versión estática
+      }
+
+      medir(); actualizar();
+      document.documentElement.classList.add("cielo-activo");
+      document.addEventListener("visibilitychange", actualizar);
+      window.addEventListener("scroll", function () {
+        if (corriendo || pendiente) return;   // en modo estático, solo redibuja el color al bajar
+        pendiente = true;
+        requestAnimationFrame(function () { pendiente = false; dibujar(0); });
+      }, { passive: true });
+      window.addEventListener("pointermove", function (ev) {
+        mouseX = ev.clientX / W * 2 - 1; mouseY = ev.clientY / H * 2 - 1;
+      }, { passive: true });
+      var espera;
+      window.addEventListener("resize", function () { clearTimeout(espera); espera = setTimeout(function () { medir(); actualizar(); }, 120); });
+      if (quieto.addEventListener) quieto.addEventListener("change", actualizar); else quieto.addListener(actualizar);
+    })();
   </script>
 </body>
 </html>
