@@ -192,8 +192,6 @@ button { font: inherit; color: inherit; }
 .pack--claro .rotulo, .pack--claro em { color: var(--aurora); }
 .pack--claro .pack-texto, .pack--claro .ahorro { color: var(--amanecer); }
 .pack--claro .cifra span { color: inherit; }
-.pack-otro { align-self: center; font-family: var(--sans); font-size: 14px; color: var(--aurora); text-align: center; }
-.pack-otro:hover { color: var(--tinta); }
 
 /* Cómo funciona */
 .como { display: flex; flex-direction: column; gap: 40px; padding-bottom: 120px; }
@@ -411,7 +409,6 @@ button { font: inherit; color: inherit; }
   .cifra span { font-size: 15px; }
   .ahorro { font-size: 14px; }
   .pack .boton { padding: 15px 24px; }
-  .pack-otro { padding: 10px 0; }
 
   .como { gap: 18px; padding-bottom: 40px; }
 
