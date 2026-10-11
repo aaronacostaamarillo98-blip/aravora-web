@@ -111,12 +111,42 @@ button { font: inherit; color: inherit; }
 .faq-item h3 { margin-bottom: 8px; font-weight: 500; font-size: 21px; }
 .faq-item p { font-size: 17px; line-height: 1.6; color: var(--alba); }
 
+/* Preguntas como acordeón (inicio) */
+details.faq-item { padding: 0; }
+details.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; padding: 14px 0; cursor: pointer; list-style: none; }
+details.faq-item summary::-webkit-details-marker { display: none; }
+details.faq-item summary h3 { margin: 0; transition: color .2s ease; }
+details.faq-item summary:hover h3 { color: var(--menta); }
+details.faq-item > p { max-width: 640px; padding-bottom: 24px; }
+.faq-signo { position: relative; flex: none; width: 36px; height: 36px; border: 1px solid var(--linea-fuerte); border-radius: 999px; transition: background-color .2s ease, border-color .2s ease; }
+.faq-signo::before, .faq-signo::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; margin: -.75px 0 0 -6px; border-radius: 2px; background: var(--niebla); transition: transform .25s ease, background-color .2s ease; }
+.faq-signo::after { transform: rotate(90deg); }
+details[open] .faq-signo { border-color: var(--menta); background: var(--menta); }
+details[open] .faq-signo::before, details[open] .faq-signo::after { background: var(--tinta); }
+details[open] .faq-signo::after { transform: rotate(0deg); }
+
 /* Pie */
 .pie { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; padding-top: 40px; padding-bottom: 56px; border-top: 1px solid var(--linea-media); font-family: var(--sans); font-size: 14px; color: var(--niebla); }
 .pie p { max-width: 620px; line-height: 1.6; }
 .pie-enlaces { display: flex; flex-wrap: wrap; gap: 20px; }
 .pie-enlaces a { color: var(--niebla); }
 .pie-enlaces a:hover { color: var(--menta); }
+
+/* Pie del inicio: marca y enlaces arriba; aviso y derechos abajo */
+.pie--inicio { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 0; align-items: center; padding-top: 48px; }
+.pie-marca { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.pie-lema { font-family: var(--serif); font-size: 17px; color: var(--alba); }
+.pie--inicio .pie-enlaces { gap: 28px; }
+.pie--inicio .pie-enlaces a { text-decoration: none; }
+.pie--inicio .pie-enlaces a:hover { text-decoration: underline; }
+.pie--inicio .pie-aviso { max-width: none; padding-top: 28px; padding-right: max(0px, calc(100% - 620px)); border-top: 1px solid var(--linea); color: var(--alba); }
+.pie-aviso strong { font-weight: 500; color: var(--niebla); }
+.pie-derechos { align-self: stretch; padding-top: 28px; padding-left: 40px; border-top: 1px solid var(--linea); color: var(--alba); text-align: right; }
+.pie--inicio .pie-enlaces { padding-left: 40px; }
+
+/* Aparición suave al llegar con el scroll (solo si sitio.js la activa) */
+.animar [data-aparece] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.animar [data-aparece].aparecido { opacity: 1; transform: none; }
 
 /* ================= INICIO ================= */
 /* Portada */
@@ -200,27 +230,33 @@ button { font: inherit; color: inherit; }
 .pausa { padding-bottom: 120px; }
 .pausa-caja { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; padding: 56px 40px; border: 1px solid var(--linea); border-radius: 28px; background: rgba(237, 240, 238, .06); }
 .respira { position: relative; flex: none; display: grid; place-items: center; width: 200px; height: 200px; margin: 0 auto; border-radius: 999px; background: radial-gradient(circle, rgba(159, 212, 198, .45) 0%, rgba(159, 212, 198, .12) 60%, rgba(159, 212, 198, 0) 72%); }
-.respira-aro { position: absolute; width: 110px; height: 110px; border: 1.5px solid var(--menta); border-radius: 999px; transition-property: transform; transition-timing-function: cubic-bezier(.45, 0, .55, 1); }
-.respira-fase { position: relative; font-family: var(--sans); font-size: 14px; color: var(--niebla); }
+.respira-progreso { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.respira-progreso circle { fill: none; stroke-width: 1.5; }
+.respira-progreso .pista { stroke: rgba(237, 240, 238, .14); }
+.respira-progreso .avance { stroke: var(--menta); stroke-linecap: round; stroke-dasharray: 609.5; stroke-dashoffset: 609.5; }
+.respira-aro { position: absolute; width: 110px; height: 110px; border: 1.5px solid var(--menta); border-radius: 999px; background: rgba(159, 212, 198, .12); transition-property: transform; transition-timing-function: cubic-bezier(.45, 0, .55, 1); }
+.respira-fase { position: relative; font-family: var(--sans); font-weight: 500; font-size: 15px; color: var(--niebla); }
 .pausa-texto { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
 .pausa-texto h2 { font-size: 40px; line-height: 1.1; }
 .pausa-texto > p:not(.rotulo) { font-size: 18px; line-height: 1.6; color: var(--alba); }
 .pausa-accion { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-.pausa-ciclo { font-family: var(--sans); font-size: 14px; color: var(--alba); }
+.pausa-ciclo { font-family: var(--sans); font-size: 14px; color: var(--alba); font-variant-numeric: tabular-nums; }
 
 /* Quién hace aravora */
-.quien { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; padding-bottom: 120px; }
-.quien-firma { flex: 1 1 280px; display: flex; flex-direction: column; gap: 14px; }
-.quien-persona { display: flex; align-items: center; gap: 14px; }
+.quien { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 40px; align-items: start; padding-bottom: 120px; }
+.quien-cuerpo { margin: 0; display: flex; flex-direction: column; gap: 32px; }
+.quien-cita { margin: 0; font-size: clamp(26px, 2.9vw, 40px); line-height: 1.3; letter-spacing: -.4px; }
+.quien-persona { display: flex; align-items: center; gap: 14px; padding-top: 24px; border-top: 1px solid var(--linea); }
 .quien-foto { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid var(--linea-media); border-radius: 999px; background: var(--hora-azul); }
 .quien-foto svg { width: 30px; height: 20px; }
 .quien-nombre { font-size: 18px; }
-.quien-nombre span { display: block; font-size: 15px; color: var(--alba); }
-.quien-cita { flex: 2 1 520px; min-width: 0; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.4; }
+.quien-nombre span { display: block; font-family: var(--sans); font-size: 14px; color: var(--alba); }
 
 /* alvora, en el inicio */
 .banda { padding-bottom: 100px; }
-.banda-caja { display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; padding: 56px 48px; border-radius: 28px; background: var(--tinta); }
+.banda-caja { position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; padding: 56px 48px; border: 1px solid rgba(237, 240, 238, .14); border-radius: 28px; background: var(--tinta); box-shadow: 0 30px 60px rgba(0, 0, 0, .25); }
+.banda-caja::before { content: ""; position: absolute; right: -120px; bottom: -220px; width: 520px; height: 520px; border-radius: 999px; background: radial-gradient(closest-side, rgba(159, 212, 198, .2), rgba(159, 212, 198, 0)); pointer-events: none; }
+.banda-caja > * { position: relative; }
 .banda-texto { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
 .banda-texto h2 { font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; }
 .banda-botones { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -418,9 +454,20 @@ button { font: inherit; color: inherit; }
   .pausa-texto h2 { font-size: 30px; }
   .pausa-texto > p:not(.rotulo) { font-size: 16px; line-height: 1.55; }
 
-  .quien { gap: 20px; padding-bottom: 40px; }
-  .quien-firma, .quien-cita { flex-basis: 100%; }
-  .quien-cita { font-size: 22px; }
+  .quien { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-bottom: 40px; }
+  .quien-cuerpo { gap: 22px; }
+  .quien-cita { font-size: 24px; line-height: 1.32; letter-spacing: 0; }
+  .quien-persona { padding-top: 18px; }
+  details.faq-item { padding: 0; }
+  details.faq-item summary { min-height: 60px; padding: 10px 0; gap: 14px; }
+  details.faq-item > p { padding-bottom: 18px; }
+  .faq-signo { width: 32px; height: 32px; }
+  .pie--inicio { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 32px; }
+  .pie--inicio .pie-enlaces { gap: 0 24px; }
+  .pie--inicio .pie-aviso { padding-top: 20px; padding-right: 0; }
+  .pie--inicio .pie-enlaces { padding-left: 0; }
+  .pie-derechos { padding: 0; border-top: 0; text-align: left; }
+  .banda-caja::before { right: -200px; bottom: -300px; }
 
   .banda { padding-bottom: 40px; }
   .banda-caja { gap: 20px; padding: 28px 24px; border-radius: 24px; }
@@ -496,7 +543,7 @@ button { font: inherit; color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .boton, .pildora, .pieza-portada img, .respira-aro { transition: none !important; }
+  .boton, .pildora, .pieza-portada img, .respira-aro, .faq-signo, .faq-signo::before, .faq-signo::after { transition: none !important; }
 }
 
 /* ================= CIELO ESTRELLADO =================

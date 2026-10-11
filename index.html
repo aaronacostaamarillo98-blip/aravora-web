@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilo.css?v=20261011">
+  <link rel="stylesheet" href="estilo.css?v=20261012">
 
   <!-- Pixel de Meta (ID 1428355635968530) -->
   <script>
@@ -243,8 +243,9 @@
 
       <!-- Pausa gratis -->
       <section class="pausa ancho" id="pausa">
-        <div class="pausa-caja">
+        <div class="pausa-caja" data-aparece>
           <div class="respira">
+            <svg class="respira-progreso" viewBox="0 0 200 200" aria-hidden="true"><circle class="pista" cx="100" cy="100" r="97"/><circle class="avance" id="avance" cx="100" cy="100" r="97"/></svg>
             <span class="respira-aro" id="aro"></span>
             <span class="respira-fase" id="fase" aria-live="polite">Inhala</span>
           </div>
@@ -261,32 +262,44 @@
       </section>
 
       <!-- Quién hace aravora -->
-      <section class="quien ancho">
-        <div class="quien-firma">
-          <p class="rotulo"><span class="punto"></span>Quién hace aravora</p>
-          <div class="quien-persona">
+      <section class="quien ancho" data-aparece>
+        <p class="rotulo"><span class="punto"></span>Quién hace aravora</p>
+        <figure class="quien-cuerpo">
+          <blockquote class="quien-cita">«Me formé en psicología clínica y creé aravora para que cualquiera pueda acceder a herramientas de psicología <em>accesibles y económicas</em> para entenderse mejor.»</blockquote>
+          <figcaption class="quien-persona">
             <!-- PENDIENTE: reemplazar por la foto de Aaron (img/aaron.webp, cuadrada). Mientras tanto va el sol de aravora. -->
             <div class="quien-foto" aria-hidden="true"><svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg></div>
             <p class="quien-nombre">Aaron Acosta<span>Fundador de aravora</span></p>
-          </div>
-        </div>
-        <p class="quien-cita">«Me formé en psicología clínica y creé aravora para que cualquiera pueda acceder a herramientas de psicología <em>accesibles y económicas</em> para entenderse mejor.»</p>
+          </figcaption>
+        </figure>
       </section>
 
       <!-- Preguntas frecuentes -->
-      <section class="faq ancho">
+      <section class="faq ancho" data-aparece>
         <h2>Preguntas <em>frecuentes</em></h2>
         <div class="faq-lista">
-          <div class="faq-item"><h3>¿Cómo pago?</h3><p>Por transferencia, en el mismo chat de WhatsApp.</p></div>
-          <div class="faq-item"><h3>¿Cuándo lo recibo?</h3><p>Te enviamos el PDF por WhatsApp apenas confirmamos tu pago.</p></div>
-          <div class="faq-item"><h3>¿Puedo usarlo en el celular?</h3><p>Sí. Puedes completarlo con Adobe Acrobat Reader (gratis) o imprimirlo.</p></div>
-          <div class="faq-item"><h3>¿Reemplaza a un psicólogo?</h3><p>No. Es material educativo y de autocuidado. Si necesitas más apoyo, alvora puede ayudarte a encontrar un profesional.</p></div>
+          <details class="faq-item" open>
+            <summary><h3>¿Cómo pago?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <p>Por transferencia, en el mismo chat de WhatsApp.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3>¿Cuándo lo recibo?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <p>Te enviamos el PDF por WhatsApp apenas confirmamos tu pago.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3>¿Puedo usarlo en el celular?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <p>Sí. Puedes completarlo con Adobe Acrobat Reader (gratis) o imprimirlo.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3>¿Reemplaza a un psicólogo?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <p>No. Es material educativo y de autocuidado. Si necesitas más apoyo, alvora puede ayudarte a encontrar un profesional.</p>
+          </details>
         </div>
       </section>
 
       <!-- alvora -->
       <section class="banda ancho">
-        <div class="banda-caja">
+        <div class="banda-caja" data-aparece>
           <div class="banda-texto">
             <p class="rotulo"><span class="logotipo-mini">alvora</span> · Beta en Paraguay · Gratis</p>
             <h2>Encontrar al profesional adecuado no debería ser cuestión de <em>suerte</em>.</h2>
@@ -301,15 +314,22 @@
     </main>
 
     <!-- Pie -->
-    <footer class="pie ancho">
-      <p>Material educativo. No reemplaza la atención de un profesional de salud mental. Si estás en riesgo o en crisis, llama al 911 o acude a urgencias.</p>
+    <footer class="pie pie--inicio ancho">
+      <div class="pie-marca">
+        <a href="#inicio" class="marca" aria-label="aravora, inicio">
+        <svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="logotipo">aravora</span>
+      </a>
+        <p class="pie-lema">Psicología con evidencia, convertida en herramientas simples.</p>
+      </div>
       <nav class="pie-enlaces" aria-label="Enlaces del pie">
         <a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a>
         <a href="https://facebook.com/aravora.studio" target="_blank" rel="noopener">Facebook</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="terminos.html">Términos</a>
-        <span>© 2026 aravora</span>
       </nav>
+      <p class="pie-aviso">Material educativo. No reemplaza la atención de un profesional de salud mental. <strong>Si estás en riesgo o en crisis, llama al 911 o acude a urgencias.</strong></p>
+      <p class="pie-derechos">© 2026 aravora</p>
     </footer>
   </div>
 
@@ -332,6 +352,6 @@
     </div>
   </dialog>
 
-  <script src="sitio.js?v=20261011"></script>
+  <script src="sitio.js?v=20261012"></script>
 </body>
 </html>

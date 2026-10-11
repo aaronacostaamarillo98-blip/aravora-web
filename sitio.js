@@ -70,10 +70,26 @@
     vista.addEventListener("click", function (e) { if (e.target === vista) vista.close(); });
   })();
 
+  /* ========= Aparición suave de los bloques del final al llegar con el scroll =========
+     Sin JS o con «reducir movimiento», los bloques se ven normales desde el principio. */
+  (function () {
+    var bloques = document.querySelectorAll("[data-aparece]");
+    if (!bloques.length || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.documentElement.classList.add("animar");
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("aparecido"); obs.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+    bloques.forEach(function (b) { obs.observe(b); });
+  })();
+
   /* ========= Pausa de un minuto: 6 ciclos de 4 s inhalando y 6 s exhalando ========= */
   (function () {
     var aro = document.getElementById("aro"), fase = document.getElementById("fase");
     var ciclo = document.getElementById("ciclo"), boton = document.getElementById("boton-pausa");
+    var avance = document.getElementById("avance");   // anillo que se completa en el minuto
     if (!aro || !fase || !ciclo || !boton) return;
     var TOTAL_CICLOS = 6;
     var FASES = [
@@ -81,6 +97,13 @@
       { texto: "Exhala", ms: 6000, escala: 1 }
     ];
     var activa = false, temporizador = null, ciclosHechos = 0;
+    var TOTAL_MS = TOTAL_CICLOS * (FASES[0].ms + FASES[1].ms);
+
+    function progreso(lleno, ms) {
+      if (!avance) return;
+      avance.style.transition = ms ? "stroke-dashoffset " + ms + "ms linear" : "none";
+      avance.style.strokeDashoffset = lleno ? "0" : "";
+    }
 
     function paso(i) {
       if (!activa) return;
@@ -103,6 +126,7 @@
       clearTimeout(temporizador);
       aro.style.transitionDuration = "800ms";
       aro.style.transform = "scale(1)";
+      if (!completa) progreso(false, 0);
       fase.textContent = completa ? "Listo" : "Inhala";
       ciclo.textContent = completa ? "¿Cómo te sientes ahora?" : "";
       boton.textContent = completa ? "Repetir pausa" : "Empezar pausa";
@@ -113,6 +137,9 @@
       activa = true;
       ciclosHechos = 0;
       boton.textContent = "Detener";
+      progreso(false, 0);
+      void aro.offsetWidth;   // fuerza un repintado para que el anillo arranque de cero
+      progreso(true, TOTAL_MS);
       paso(0);
     });
   })();
