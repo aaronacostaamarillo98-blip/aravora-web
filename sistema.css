@@ -1,0 +1,223 @@
+/* aravora · sistema de la web nocturna (compartido por todas las páginas) */
+/* ================= SISTEMA ARAVORA · WEB NOCTURNA (de la noche al amanecer) ================= */
+:root {
+  /* Fondo de la web: se aclara al bajar */
+  --crepusculo: #1F3540;
+  --hora-azul: #2B4B53;
+  --amanecer: #3D6563;
+  /* Marca */
+  --niebla: #EDF0EE;        /* texto normal */
+  --alba: #CFE3DC;          /* texto secundario y etiquetas */
+  --menta: #9FD4C6;         /* botones y acentos */
+  --aurora-claro: #86C9BA;  /* palabra en cursiva de los títulos */
+  --tinta: #15232B;         /* texto sobre botones Menta */
+  --violeta: #4F4A94;       /* Kit #002 */
+  --noche: #34598A;         /* Kit #003 */
+  /* Superficies */
+  --tarjeta: rgba(237, 240, 238, .07);
+  --borde: rgba(237, 240, 238, .13);
+  /* Tipografías */
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  /* Medidas comunes */
+  --ancho: 1140px;
+  --radio: 28px;
+  --radio-chico: 16px;
+  --seccion: clamp(4.5rem, 9vw, 7.5rem);
+  --gap: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  /* Respaldo sin JavaScript: el mismo recorrido de color, sin estrellas */
+  background: linear-gradient(180deg, var(--crepusculo) 0%, var(--hora-azul) 55%, var(--amanecer) 100%);
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+body {
+  margin: 0;
+  color: var(--niebla);
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+/* Nada se sale por los costados (los resplandores sobresalen a propósito): evita que el celular achique la página */
+html, body { overflow-x: clip; }
+p { margin: 0; }
+#cielo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+
+.contenedor { width: min(100% - 2.5rem, var(--ancho)); margin-inline: auto; }
+section { padding-block: var(--seccion); }
+
+/* Etiqueta pequeña arriba de cada título */
+.etiqueta {
+  display: inline-flex; align-items: center; gap: .65em;
+  margin: 0 0 1.1rem;
+  font-family: var(--display); font-size: .78rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--alba);
+}
+.etiqueta::before {
+  content: ""; width: .45em; height: .45em; border-radius: 50%;
+  background: var(--menta); box-shadow: 0 0 10px var(--menta);
+}
+
+/* Títulos: Newsreader, una palabra en cursiva en Aurora claro */
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1.08; margin: 0; }
+h1 em, h2 em, h3 em { font-style: italic; font-weight: 400; color: var(--aurora-claro); }
+h1 { font-size: clamp(2.6rem, 6.4vw, 5rem); }
+h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); max-width: 22ch; }
+h3 { font-size: 1.45rem; }
+.encabezado { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.encabezado .intro { margin-top: 1rem; max-width: 52ch; color: var(--alba); }
+.centrado { text-align: center; }
+.centrado h2, .centrado .intro { margin-inline: auto; }
+.secundario { color: var(--alba); }
+
+/* Botones */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .9rem 1.5rem; border: 0; border-radius: 999px; cursor: pointer;
+  font-family: var(--display); font-weight: 500; font-size: 1rem; line-height: 1.2; text-decoration: none;
+  background: var(--menta); color: var(--tinta);
+  box-shadow: 0 10px 34px rgba(159, 212, 198, .28);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(159, 212, 198, .45); }
+.boton-secundario { background: transparent; color: var(--niebla); border: 1px solid rgba(237, 240, 238, .38); box-shadow: none; }
+.boton-secundario:hover { color: var(--menta); border-color: var(--menta); box-shadow: none; }
+:focus-visible { outline: 2px solid var(--menta); outline-offset: 3px; }
+
+/* Tarjetas translúcidas */
+.tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); }
+@media (min-width: 860px) { .tarjeta { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); } }
+
+/* Resplandor suave detrás de portadas y bloques destacados */
+.resplandor { position: relative; isolation: isolate; }
+.resplandor::before {
+  content: ""; position: absolute; inset: -14%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, var(--brillo, rgba(159, 212, 198, .30)), rgba(47, 111, 101, .10) 60%, transparent);
+  filter: blur(14px);
+}
+
+/* Insignias de color */
+.insignia {
+  display: inline-flex; align-items: center; gap: .45em;
+  padding: .38rem .85rem; border-radius: 999px;
+  font-family: var(--display); font-size: .84rem; font-weight: 500; line-height: 1.2;
+}
+.ins-001 { background: var(--aurora-claro); color: var(--tinta); }
+.ins-002 { background: var(--violeta); color: var(--niebla); }
+.ins-003 { background: var(--noche); color: var(--niebla); }
+.ins-ahorro { background: rgba(159, 212, 198, .18); color: var(--niebla); border: 1px solid rgba(159, 212, 198, .35); }
+
+/* ============ HEADER: píldora flotante con el botón destacado siempre visible ============ */
+.cabecera { position: sticky; top: .75rem; z-index: 20; padding-inline: .75rem; margin-top: .75rem; }
+.cabecera .contenedor {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  width: min(100%, 1040px); padding: .5rem .5rem .5rem 1.1rem;
+  background: rgba(24, 41, 50, .72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgba(237, 240, 238, .16); border-radius: 999px;
+  box-shadow: 0 14px 40px rgba(8, 16, 20, .35), inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+.marca {
+  display: flex; align-items: center; gap: .6rem; flex: none;
+  color: var(--niebla); text-decoration: none;
+  font-family: "Poppins", var(--display); font-weight: 500; font-size: 1.25rem; letter-spacing: -0.02em;
+}
+.marca svg { width: 40px; height: 27px; }
+.marca .arcos { stroke: var(--menta); }
+.navegacion { display: flex; align-items: center; gap: 1.4rem; }
+.menu { display: flex; gap: 1.4rem; font-family: var(--display); font-size: .95rem; }
+.menu a { color: var(--alba); text-decoration: none; }
+.menu a:hover, .menu a[aria-current="page"] { color: var(--niebla); }
+/* Botón destacado: lleva a la pausa de respiración, con un punto que respira */
+.boton-pausa { padding: .62rem 1.1rem .62rem .95rem; font-size: .92rem; white-space: nowrap; }
+.boton-pausa .respira { width: .62rem; height: .62rem; border-radius: 50%; background: var(--tinta); opacity: .75; animation: respira 6s ease-in-out infinite; }
+@keyframes respira { 0%, 100% { transform: scale(.6); } 40% { transform: scale(1.15); } }
+/* Menú del celular: botón «Menú» que abre una hoja simple debajo de la píldora */
+.abrir-menu { display: none; flex: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(237, 240, 238, .22); background: transparent; color: var(--niebla); cursor: pointer; place-items: center; }
+.abrir-menu span, .abrir-menu span::before, .abrir-menu span::after { display: block; width: 16px; height: 1.6px; border-radius: 2px; background: currentColor; position: relative; transition: transform .25s ease, background .25s ease; }
+.abrir-menu span::before, .abrir-menu span::after { content: ""; position: absolute; left: 0; }
+.abrir-menu span::before { top: -5px; } .abrir-menu span::after { top: 5px; }
+.abrir-menu[aria-expanded="true"] span { background: transparent; }
+.abrir-menu[aria-expanded="true"] span::before { transform: translateY(5px) rotate(45deg); }
+.abrir-menu[aria-expanded="true"] span::after { transform: translateY(-5px) rotate(-45deg); }
+.hoja-menu {
+  position: absolute; left: 0; right: 0; top: calc(100% + .5rem);
+  display: grid; gap: .2rem; padding: .7rem;
+  background: rgba(24, 41, 50, .94); border: 1px solid rgba(237, 240, 238, .16); border-radius: 24px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(8, 16, 20, .4);
+}
+.hoja-menu[hidden] { display: none; }
+.hoja-menu a { padding: .8rem 1rem; border-radius: 14px; font-family: var(--display); color: var(--niebla); text-decoration: none; }
+.hoja-menu a:hover { background: rgba(237, 240, 238, .08); }
+
+/* ============ PIE: el amanecer, por columnas y con el sello de aravora ============ */
+.pie-sitio { padding-block: 1rem clamp(3rem, 6vw, 4.5rem); }
+.pie-sitio .aviso { padding: 1.5rem 1.7rem; font-size: 1.02rem; background: rgba(21, 35, 43, .32); } /* el aviso del 911 siempre bien legible */
+.pie-sitio .aviso strong { font-weight: 600; color: var(--niebla); }
+.pie-columnas {
+  display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: clamp(1.6rem, 4vw, 3rem);
+  margin-top: clamp(2.4rem, 5vw, 3.5rem); padding-top: clamp(2.2rem, 5vw, 3rem); border-top: 1px solid rgba(237, 240, 238, .18);
+}
+.pie-marca { display: flex; flex-direction: column; gap: 1.1rem; align-items: flex-start; }
+.pie-marca p { font-family: var(--serif); font-size: 1.1rem; line-height: 1.45; color: var(--niebla); max-width: 24ch; }
+.sello { width: 128px; height: 128px; }
+.sello svg { width: 100%; height: 100%; overflow: visible; }
+.sello .anillo { transform-origin: 70px 70px; animation: girar 48s linear infinite; }
+.sello .letras { font-family: var(--display); font-size: 11.5px; letter-spacing: 2.4px; fill: var(--niebla); }
+@keyframes girar { to { transform: rotate(360deg); } }
+.pie-columna h3 { font-family: var(--display); font-size: .78rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--niebla); opacity: .8; margin-bottom: 1rem; }
+.pie-columna h3.minuscula { text-transform: none; letter-spacing: .06em; font-size: .9rem; }   /* «aravora» siempre en minúsculas */
+.pie-columna a { display: block; padding: .3rem 0; font-family: var(--display); font-size: .98rem; color: var(--niebla); text-decoration: none; }
+.pie-columna a:hover { color: var(--menta); }
+.pie-sitio .final { margin-top: clamp(2.2rem, 5vw, 3rem); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+.derechos { color: var(--niebla); font-family: var(--display); font-size: .9rem; }
+
+/* ============ CELULAR (comunes) ============ */
+@media (max-width: 860px) {
+  .menu { display: none; }
+  .abrir-menu { display: grid; }
+  .navegacion { gap: .5rem; }
+  .pie-columnas { grid-template-columns: 1fr 1fr; }
+  .pie-marca { grid-column: 1 / -1; align-items: center; text-align: center; }
+  .pie-marca p { max-width: 30ch; }
+}
+@media (max-width: 420px) {
+  .marca .palabra { display: none; }            /* en pantallas muy angostas queda el isotipo solo */
+  .cabecera .contenedor { padding-left: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .boton { transition: none !important; }
+  .boton-pausa .respira, .sello .anillo { animation: none; }
+}
+
+
+/* ============ PÁGINAS INTERIORES (ALVORA, Privacidad, Términos) ============ */
+.pagina-hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(2rem, 5vw, 3.5rem); }
+.pagina-hero .bajada { margin-top: 1.3rem; max-width: 46ch; color: var(--alba); font-size: 1.25rem; }
+.pagina-hero .acciones { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .8rem; }
+.pagina-hero .nota-chica { margin-top: 1.1rem; color: var(--alba); font-size: 1rem; }
+.volver { display: flex; width: fit-content; gap: .4rem; margin-bottom: 1.6rem; font-family: var(--display); font-size: .95rem; color: var(--alba); text-decoration: none; }
+.volver:hover { color: var(--menta); }
+
+/* Documento legal: índice + texto en una tarjeta de lectura cómoda */
+.documento { padding-top: 0; }
+.documento .tarjeta { padding: clamp(1.6rem, 4vw, 3rem); max-width: 820px; margin-inline: auto; }
+.documento h2 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); max-width: none; margin: 2.2rem 0 .6rem; padding-top: 1.6rem; border-top: 1px solid var(--borde); }
+.documento h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.documento p { max-width: 65ch; color: var(--niebla); }
+.documento p + p { margin-top: .8rem; }
+.documento a { color: var(--menta); }
+.fecha { margin-top: 1rem; font-family: var(--display); font-size: .92rem; color: var(--alba); }
+
+/* Aviso de crisis: tarjeta oscura, siempre legible */
+.aviso-crisis { margin-top: var(--gap); padding: 1.4rem 1.6rem; border-radius: var(--radio-chico); background: rgba(21, 35, 43, .45); border: 1px solid rgba(224, 122, 95, .45); border-left: 4px solid #E07A5F; font-size: 1.05rem; }
+.aviso-crisis strong { font-weight: 600; }

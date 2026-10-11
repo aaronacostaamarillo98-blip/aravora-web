@@ -8,9 +8,11 @@
   <meta property="og:title" content="ALVORA · Encuentra al psicólogo que encaje contigo">
   <meta property="og:description" content="Psicólogos verificados según tu modalidad, horario y presupuesto. Gratis.">
   <meta property="og:image" content="https://aaronacostaamarillo98-blip.github.io/aravora-web/compartir.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315232B'/%3E%3Cg fill='none' stroke='%239FD4C6' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M12 40a20 20 0 0 1 40 0'/%3E%3Cpath d='M19 40a13 13 0 0 1 26 0' opacity='.6'/%3E%3Cpath d='M26 40a6 6 0 0 1 12 0' opacity='.35'/%3E%3C/g%3E%3Cline x1='9' y1='47' x2='55' y2='47' stroke='%23EDF0EE' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,650&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,650&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+
   <!-- Pixel de Meta (ID 1428355635968530) -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -23,114 +25,179 @@
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1428355635968530&ev=PageView&noscript=1" alt=""></noscript>
   <!-- Fin del Pixel de Meta -->
+
+  <link rel="stylesheet" href="sistema.css?v=3">
   <style>
-    :root { --niebla:#EDF0EE; --papel:#F8FAF9; --tinta:#15232B; --pizarra:#5E6E73; --aurora:#2F6F65; --menta:#9FD4C6; --alba:#CFE3DC; --linea:#D5DDDA; --display:"Bricolage Grotesque", "Segoe UI", sans-serif; --texto:"Newsreader", Georgia, serif; }
-    @media (prefers-color-scheme: dark) { :root { --niebla:#0F181C; --papel:#152127; --tinta:#E4ECE9; --pizarra:#97A8AB; --aurora:#86C9BA; --alba:#1D3A36; --linea:#25353B; } }
-    * { box-sizing: border-box; }
-    body { margin:0; background:var(--niebla); color:var(--tinta); font-family:var(--texto); font-size:1.15rem; line-height:1.6; }
-    a { color:var(--aurora); }
-    :focus-visible { outline:3px solid var(--aurora); outline-offset:3px; }
-    .contenedor { width:min(100% - 3rem, 1040px); margin:0 auto; }
-    header { padding:1.4rem 0; }
-    header .contenedor { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-    .logo { font-family:var(--display); font-weight:650; font-size:1.3rem; text-decoration:none; color:var(--tinta); }
-    header nav a { font-family:var(--display); font-size:1rem; text-decoration:none; }
-    h1, h2, h3 { font-family:var(--display); font-weight:650; letter-spacing:-0.02em; line-height:1.1; margin:0; }
-    .hero { padding:clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5rem); }
-    .etiqueta { display:inline-block; font-family:var(--display); font-size:.95rem; color:var(--aurora); border:1.5px solid var(--aurora); border-radius:999px; padding:.3rem .9rem; margin:0 0 1.4rem; }
-    .hero h1 { font-size:clamp(2.4rem, 6vw, 4.2rem); max-width:15ch; }
-    .hero .bajada { margin-top:1.3rem; max-width:48ch; color:var(--pizarra); font-size:1.25rem; }
-    .boton { display:inline-block; font-family:var(--display); font-size:1.05rem; text-decoration:none; background:var(--aurora); color:#F8FAF9; border:2px solid var(--aurora); border-radius:999px; padding:.95rem 1.6rem; }
-    .boton:hover { background:transparent; color:var(--aurora); }
-    .boton-secundario { background:transparent; color:var(--aurora); }
-    .boton-secundario:hover { background:var(--aurora); color:#F8FAF9; }
-    .acciones { margin-top:2rem; display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; }
-    .nota { font-size:1rem; color:var(--pizarra); margin-top:1rem; }
-    section.bloque { padding:clamp(3rem, 7vw, 5rem) 0; border-top:1px solid var(--linea); }
-    section.bloque h2 { font-size:clamp(1.8rem, 4vw, 2.6rem); max-width:20ch; }
-    .pasos { list-style:none; padding:0; margin:2.4rem 0 0; display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem; counter-reset:paso; }
-    .pasos li { counter-increment:paso; border-top:3px solid var(--aurora); padding-top:1.1rem; }
-    .pasos li::before { content:counter(paso); font-family:var(--display); font-weight:650; font-size:1.8rem; color:var(--aurora); display:block; }
-    .pasos h3 { font-size:1.25rem; margin:.4rem 0 .5rem; }
-    .pasos p, .dos p { margin:0; color:var(--pizarra); }
-    .dos { margin-top:2.4rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
-    .tarjeta { background:var(--papel); border:1px solid var(--linea); border-radius:22px; padding:1.8rem; }
-    .tarjeta h3 { font-size:1.25rem; margin-bottom:.6rem; }
-    .crisis { margin-top:2.4rem; background:#FBECE8; color:#5A3A33; border-left:5px solid #B5523E; border-radius:14px; padding:1.3rem 1.5rem; }
-    @media (prefers-color-scheme: dark) { .crisis { background:#2A1B18; color:#F0D6CF; } }
-    .psicologos { background:var(--tinta); color:var(--niebla); border-radius:28px; padding:clamp(2rem, 5vw, 3.2rem); }
-    .psicologos h2 { color:var(--niebla); }
-    .psicologos p { color:#C9D4D0; max-width:52ch; }
-    .psicologos .boton { background:var(--menta); border-color:var(--menta); color:#15232B; }
-    .psicologos .boton:hover { background:transparent; color:var(--menta); }
-    @media (prefers-color-scheme: dark) { .psicologos { background:#1B2A31; } }
-    footer { padding:2.5rem 0 3rem; border-top:1px solid var(--linea); font-size:1rem; color:var(--pizarra); }
-    footer nav { display:flex; gap:1.2rem; flex-wrap:wrap; margin-top:.8rem; font-family:var(--display); }
-    @media (max-width: 760px) { .pasos, .dos { grid-template-columns:1fr; } }
+    /* ALVORA: piezas propias de esta página (el resto viene de sistema.css) */
+    .alvora-hero { text-align: center; }
+    .alvora-hero h1 { max-width: 15ch; margin-inline: auto; }
+    .alvora-hero .bajada { margin-inline: auto; }
+    .alvora-hero .acciones { justify-content: center; }
+    .alvora-hero .bloque { padding: clamp(2.2rem, 6vw, 4.5rem) clamp(1.4rem, 5vw, 4rem); --brillo: rgba(159, 212, 198, .30); }
+    .pasos-alvora { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); counter-reset: paso; }
+    .pasos-alvora li { counter-increment: paso; padding: 2rem 1.8rem; }
+    .pasos-alvora li::before { content: "0" counter(paso); display: block; font-family: var(--display); font-size: .82rem; letter-spacing: .16em; color: var(--alba); }
+    .pasos-alvora h3, .dos h3 { margin: 1.1rem 0 .6rem; }
+    .pasos-alvora p, .dos p { color: var(--alba); font-size: 1.05rem; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+    .dos .tarjeta { padding: 2rem 1.8rem; }
+    .dos h3 { margin-top: 0; }
+    .dos a { color: var(--menta); }
+    .psicologos { padding: clamp(2.2rem, 6vw, 4rem) clamp(1.4rem, 5vw, 3.5rem); text-align: center; --brillo: rgba(159, 212, 198, .18); }
+    .psicologos h2 { margin-inline: auto; }
+    .psicologos p { margin: 1.1rem auto 0; max-width: 50ch; color: var(--niebla); }
+    .psicologos .acciones { margin-top: 1.8rem; display: flex; justify-content: center; }
+    @media (max-width: 860px) { .pasos-alvora, .dos { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <header>
+
+  <canvas id="cielo" aria-hidden="true"></canvas>
+
+  <header class="cabecera">
     <div class="contenedor">
-      <a class="logo" href="index.html">aravora</a>
-      <nav aria-label="Principal"><a href="index.html#kits">Kits</a></nav>
+      <a href="index.html" class="marca" aria-label="aravora, inicio">
+        <svg viewBox="0 0 240 160" aria-hidden="true">
+          <g class="arcos" fill="none" stroke-width="12" stroke-linecap="round">
+            <path d="M20 130a100 100 0 0 1 200 0"/>
+            <path d="M54 130a66 66 0 0 1 132 0" opacity=".6"/>
+            <path d="M87 130a33 33 0 0 1 66 0" opacity=".35"/>
+          </g>
+          <line x1="8" y1="148" x2="232" y2="148" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+        </svg>
+        <span class="palabra">aravora</span>
+      </a>
+      <div class="navegacion">
+        <nav class="menu" aria-label="Principal">
+          <a href="index.html#metodo">Cómo trabajamos</a>
+          <a href="index.html#kits">Kits</a>
+          <a href="index.html#packs">Packs</a>
+          <a href="alvora.html" aria-current="page">ALVORA</a>
+        </nav>
+        <a href="index.html#pausa" class="boton boton-pausa"><span class="respira" aria-hidden="true"></span>Prueba una pausa gratis</a>
+        <button class="abrir-menu" type="button" aria-expanded="false" aria-controls="hoja-menu" aria-label="Abrir el menú"><span></span></button>
+      </div>
+      <nav class="hoja-menu" id="hoja-menu" aria-label="Menú" hidden>
+        <a href="index.html#metodo">Cómo trabajamos</a>
+        <a href="index.html#kits">Kits</a>
+        <a href="index.html#packs">Packs</a>
+        <a href="alvora.html" aria-current="page">ALVORA</a>
+      </nav>
     </div>
   </header>
+
   <main>
-    <section class="hero">
+    <section class="pagina-hero alvora-hero">
       <div class="contenedor">
-        <p class="etiqueta">ALVORA · beta</p>
-        <h1>Encuentra al psicólogo que encaje contigo.</h1>
-        <p class="bajada">Cuéntanos lo básico y te sugerimos dos psicólogos verificados según tu modalidad, horario y presupuesto. Sin costo para ti.</p>
-        <div class="acciones">
-          <a class="boton" data-wa="Hola, quiero encontrar un psicólogo con ALVORA.
+        <div class="bloque tarjeta resplandor">
+          <p class="etiqueta">ALVORA · Beta · Solo en Paraguay</p>
+          <h1>Encuentra al psicólogo que encaje <em>contigo</em>.</h1>
+          <p class="bajada">Cuéntanos lo básico y te sugerimos dos psicólogos verificados según tu modalidad, horario y presupuesto. Sin costo para ti.</p>
+          <div class="acciones">
+            <a class="boton" data-wa="Hola, quiero encontrar un psicólogo con ALVORA.
 • Modalidad (presencial u online):
 • Ciudad o zona:
 • Días y horarios que me quedan bien:
 • Presupuesto por sesión:
 • Tema general (ansiedad, estrés, pareja, duelo, autoestima, otro):
 • Confirmo que tengo 18 años o más." href="#" target="_blank" rel="noopener">Buscar psicólogo por WhatsApp</a>
+          </div>
+          <p class="nota-chica">Estamos en beta: los cupos son limitados. Respondemos en menos de 24 horas.</p>
         </div>
-        <p class="nota">Estamos en beta: los cupos son limitados. Respondemos en menos de 24 horas.</p>
       </div>
     </section>
 
-    <section class="bloque">
+    <section>
       <div class="contenedor">
-        <h2>Así funciona</h2>
-        <ol class="pasos">
-          <li><h3>Cuéntanos lo básico</h3><p>Modalidad, zona, horarios y presupuesto. No hace falta que cuentes detalles personales: eso lo hablas con tu psicólogo.</p></li>
-          <li><h3>Recibe dos opciones</h3><p>En menos de 24 horas te enviamos dos profesionales verificados, con su enfoque y su forma de trabajar.</p></li>
-          <li><h3>Elige y escríbele</h3><p>Te pasamos su contacto y coordinas directamente tu primera sesión, a tu ritmo.</p></li>
+        <div class="encabezado">
+          <p class="etiqueta">Paso a paso</p>
+          <h2>Así <em>funciona</em></h2>
+        </div>
+        <ol class="pasos-alvora">
+          <li class="tarjeta"><h3>Cuéntanos lo básico</h3><p>Modalidad, zona, horarios y presupuesto. No hace falta que cuentes detalles personales: eso lo hablas con tu psicólogo.</p></li>
+          <li class="tarjeta"><h3>Recibe dos opciones</h3><p>En menos de 24 horas te enviamos dos profesionales verificados, con su enfoque y su forma de trabajar.</p></li>
+          <li class="tarjeta"><h3>Elige y escríbele</h3><p>Te pasamos su contacto y coordinas directamente tu primera sesión, a tu ritmo.</p></li>
         </ol>
       </div>
     </section>
 
-    <section class="bloque">
+    <section>
       <div class="contenedor">
-        <h2>Lo que significa «verificado»</h2>
+        <div class="encabezado">
+          <p class="etiqueta">Confianza</p>
+          <h2>Lo que significa <em>«verificado»</em></h2>
+        </div>
         <div class="dos">
           <div class="tarjeta"><h3>Revisamos cada perfil</h3><p>Solo sugerimos profesionales con título de Licenciatura en Psicología y registro profesional vigente ante la autoridad de salud. Revisamos ambos documentos antes de publicar cada perfil.</p></div>
           <div class="tarjeta"><h3>Tus datos, al mínimo</h3><p>Solo te pedimos lo necesario para sugerirte profesionales, y nunca vendemos tu información. Lee nuestra <a href="privacidad.html">política de privacidad</a>.</p></div>
         </div>
-        <p class="crisis"><strong>ALVORA no es un servicio de emergencias.</strong> Si estás en crisis o en peligro, llama ahora al 911 o al número de emergencias de tu país. ALVORA es para mayores de 18 años: si eres menor, pide a un adulto de confianza que te acompañe a buscar ayuda.</p>
+        <p class="aviso-crisis"><strong>ALVORA no es un servicio de emergencias.</strong> Si estás en crisis o en peligro, llama ahora al 911 o al número de emergencias de tu país. ALVORA es para mayores de 18 años: si eres menor, pide a un adulto de confianza que te acompañe a buscar ayuda.</p>
       </div>
     </section>
 
-    <section class="bloque">
+    <section>
       <div class="contenedor">
-        <div class="psicologos">
-          <h2>¿Eres psicólogo o psicóloga?</h2>
+        <div class="psicologos tarjeta resplandor">
+          <p class="etiqueta">Para profesionales</p>
+          <h2>¿Eres psicólogo o <em>psicóloga</em>?</h2>
           <p>Súmate a la beta de ALVORA y recibe consultas de personas que buscan justo lo que ofreces. Durante la beta es gratis: sin comisión ni suscripción.</p>
           <div class="acciones"><a class="boton" data-wa="Hola, soy psicólogo/a y quiero sumarme a la beta de ALVORA." href="#" target="_blank" rel="noopener">Quiero sumarme</a></div>
         </div>
       </div>
     </section>
   </main>
-  <footer>
+
+  <!-- 8 · PIE: el amanecer, por columnas y con el sello -->
+  <footer class="pie-sitio">
     <div class="contenedor">
-      <p>ALVORA es un servicio de aravora. El contenido es orientativo y no reemplaza la atención de un profesional de la salud.</p>
-      <nav aria-label="Enlaces del pie"><a href="index.html">Inicio</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a><a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a></nav>
+      <p class="aviso tarjeta">
+        El contenido de aravora es educativo y no reemplaza la atención de un profesional de salud mental.
+        <strong>Si estás en riesgo o en crisis, llama al 911</strong> o acude al servicio de urgencias más cercano.
+      </p>
+      <div class="pie-columnas">
+        <div class="pie-marca">
+          <div class="sello" aria-hidden="true">
+            <svg viewBox="0 0 140 140">
+              <defs><path id="sello-circulo" d="M70,70 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/></defs>
+              <g class="anillo"><text class="letras"><textPath href="#sello-circulo" textLength="333" lengthAdjust="spacing">psicología con evidencia · aravora ·</textPath></text></g>
+              <circle cx="70" cy="70" r="38" fill="rgba(21, 35, 43, .35)" stroke="rgba(237, 240, 238, .28)"/>
+              <g transform="translate(46 56) scale(.2)">
+                <g fill="none" stroke="#9FD4C6" stroke-width="14" stroke-linecap="round"><path d="M20 130a100 100 0 0 1 200 0"/><path d="M54 130a66 66 0 0 1 132 0" opacity=".6"/><path d="M87 130a33 33 0 0 1 66 0" opacity=".35"/></g>
+                <line x1="8" y1="148" x2="232" y2="148" stroke="#EDF0EE" stroke-width="14" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <p>Psicología con evidencia, convertida en herramientas simples.</p>
+        </div>
+        <nav class="pie-columna" aria-label="Kits">
+          <h3>Kits</h3>
+          <a href="index.html#kit-001">Kit #001 · Energía</a>
+          <a href="index.html#kit-002">Kit #002 · Ansiedad</a>
+          <a href="index.html#kit-003">Kit #003 · Sueño</a>
+          <a href="index.html#packs">Packs</a>
+        </nav>
+        <nav class="pie-columna" aria-label="aravora">
+          <h3 class="minuscula">aravora</h3>
+          <a href="index.html#metodo">Cómo trabajamos</a>
+          <a href="index.html#quien">Quién hace aravora</a>
+          <a href="alvora.html">ALVORA</a>
+        </nav>
+        <nav class="pie-columna" aria-label="Contacto">
+          <h3>Contacto</h3>
+          <a href="https://wa.me/595992955763" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/aravora.studio" target="_blank" rel="noopener">Facebook</a>
+        </nav>
+        <nav class="pie-columna" aria-label="Legal">
+          <h3>Legal</h3>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="terminos.html">Términos</a>
+        </nav>
+      </div>
+      <div class="final">
+        <p class="derechos">© 2026 aravora</p>
+        <p class="derechos">Material educativo · No reemplaza a un profesional</p>
+      </div>
     </div>
   </footer>
   <script>
@@ -141,5 +208,7 @@
       a.addEventListener("click", function () { if (typeof window.fbq === "function") window.fbq("track", "Contact"); });
     });
   </script>
+  <script src="cielo.js?v=1"></script>
+  <script src="sitio.js?v=1"></script>
 </body>
 </html>

@@ -30,142 +30,8 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1428355635968530&ev=PageView&noscript=1" alt=""></noscript>
   <!-- Fin del Pixel de Meta -->
 
+  <link rel="stylesheet" href="sistema.css?v=3">
   <style>
-    /* ================= SISTEMA ARAVORA · WEB NOCTURNA (de la noche al amanecer) ================= */
-    :root {
-      /* Fondo de la web: se aclara al bajar */
-      --crepusculo: #1F3540;
-      --hora-azul: #2B4B53;
-      --amanecer: #3D6563;
-      /* Marca */
-      --niebla: #EDF0EE;        /* texto normal */
-      --alba: #CFE3DC;          /* texto secundario y etiquetas */
-      --menta: #9FD4C6;         /* botones y acentos */
-      --aurora-claro: #86C9BA;  /* palabra en cursiva de los títulos */
-      --tinta: #15232B;         /* texto sobre botones Menta */
-      --violeta: #4F4A94;       /* Kit #002 */
-      --noche: #34598A;         /* Kit #003 */
-      /* Superficies */
-      --tarjeta: rgba(237, 240, 238, .07);
-      --borde: rgba(237, 240, 238, .13);
-      /* Tipografías */
-      --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-      --serif: "Newsreader", Georgia, "Times New Roman", serif;
-      /* Medidas comunes */
-      --ancho: 1140px;
-      --radio: 28px;
-      --radio-chico: 16px;
-      --seccion: clamp(4.5rem, 9vw, 7.5rem);
-      --gap: clamp(1rem, 2.2vw, 1.5rem);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html {
-      /* Respaldo sin JavaScript: el mismo recorrido de color, sin estrellas */
-      background: linear-gradient(180deg, var(--crepusculo) 0%, var(--hora-azul) 55%, var(--amanecer) 100%);
-      scroll-behavior: smooth;
-      scroll-padding-top: 5rem;
-    }
-    body {
-      margin: 0;
-      color: var(--niebla);
-      font-family: var(--serif);
-      font-size: 1.1875rem;
-      line-height: 1.62;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; }
-    /* Nada se sale por los costados (los resplandores sobresalen a propósito): evita que el celular achique la página */
-    html, body { overflow-x: clip; }
-    p { margin: 0; }
-    #cielo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
-
-    .contenedor { width: min(100% - 2.5rem, var(--ancho)); margin-inline: auto; }
-    section { padding-block: var(--seccion); }
-
-    /* Etiqueta pequeña arriba de cada título */
-    .etiqueta {
-      display: inline-flex; align-items: center; gap: .65em;
-      margin: 0 0 1.1rem;
-      font-family: var(--display); font-size: .78rem; font-weight: 500;
-      letter-spacing: .16em; text-transform: uppercase;
-      color: var(--alba);
-    }
-    .etiqueta::before {
-      content: ""; width: .45em; height: .45em; border-radius: 50%;
-      background: var(--menta); box-shadow: 0 0 10px var(--menta);
-    }
-
-    /* Títulos: Newsreader, una palabra en cursiva en Aurora claro */
-    h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1.08; margin: 0; }
-    h1 em, h2 em, h3 em { font-style: italic; font-weight: 400; color: var(--aurora-claro); }
-    h1 { font-size: clamp(2.6rem, 6.4vw, 5rem); }
-    h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); max-width: 22ch; }
-    h3 { font-size: 1.45rem; }
-    .encabezado { margin-bottom: clamp(2rem, 4vw, 3rem); }
-    .encabezado .intro { margin-top: 1rem; max-width: 52ch; color: var(--alba); }
-    .centrado { text-align: center; }
-    .centrado h2, .centrado .intro { margin-inline: auto; }
-    .secundario { color: var(--alba); }
-
-    /* Botones */
-    .boton {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      padding: .9rem 1.5rem; border: 0; border-radius: 999px; cursor: pointer;
-      font-family: var(--display); font-weight: 500; font-size: 1rem; line-height: 1.2; text-decoration: none;
-      background: var(--menta); color: var(--tinta);
-      box-shadow: 0 10px 34px rgba(159, 212, 198, .28);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .boton:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(159, 212, 198, .45); }
-    .boton-secundario { background: transparent; color: var(--niebla); border: 1px solid rgba(237, 240, 238, .38); box-shadow: none; }
-    .boton-secundario:hover { color: var(--menta); border-color: var(--menta); box-shadow: none; }
-    :focus-visible { outline: 2px solid var(--menta); outline-offset: 3px; }
-
-    /* Tarjetas translúcidas */
-    .tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); }
-    @media (min-width: 860px) { .tarjeta { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); } }
-
-    /* Resplandor suave detrás de portadas y bloques destacados */
-    .resplandor { position: relative; isolation: isolate; }
-    .resplandor::before {
-      content: ""; position: absolute; inset: -14%; z-index: -1; pointer-events: none;
-      background: radial-gradient(closest-side, var(--brillo, rgba(159, 212, 198, .30)), rgba(47, 111, 101, .10) 60%, transparent);
-      filter: blur(14px);
-    }
-
-    /* Insignias de color */
-    .insignia {
-      display: inline-flex; align-items: center; gap: .45em;
-      padding: .38rem .85rem; border-radius: 999px;
-      font-family: var(--display); font-size: .84rem; font-weight: 500; line-height: 1.2;
-    }
-    .ins-001 { background: var(--aurora-claro); color: var(--tinta); }
-    .ins-002 { background: var(--violeta); color: var(--niebla); }
-    .ins-003 { background: var(--noche); color: var(--niebla); }
-    .ins-ahorro { background: rgba(159, 212, 198, .18); color: var(--niebla); border: 1px solid rgba(159, 212, 198, .35); }
-
-    /* ============ HEADER ============ */
-    .cabecera {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(31, 53, 64, .62);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--borde);
-    }
-    .cabecera .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: .85rem; }
-    .marca {
-      display: flex; align-items: center; gap: .7rem;
-      color: var(--niebla); text-decoration: none;
-      font-family: "Poppins", var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -0.02em;
-    }
-    .marca svg { width: 44px; height: 30px; }
-    .marca .arcos { stroke: var(--menta); }
-    .navegacion { display: flex; align-items: center; gap: 1.6rem; }
-    .menu { display: flex; gap: 1.6rem; font-family: var(--display); font-size: .95rem; }
-    .menu a { color: var(--alba); text-decoration: none; }
-    .menu a:hover { color: var(--niebla); }
-    .cabecera .boton { padding: .6rem 1.1rem; font-size: .92rem; }
-
     /* ============ HERO: maqueta central con funciones a los costados ============ */
     .hero { padding-top: clamp(3rem, 7vw, 5.5rem); }
     .hero .titular { text-align: center; }
@@ -237,9 +103,24 @@
     .kit-item[data-kit="001"] { --brillo: rgba(134, 201, 186, .42); }
     .kit-item[data-kit="002"] { --brillo: rgba(122, 116, 210, .55); }
     .kit-item[data-kit="003"] { --brillo: rgba(84, 132, 196, .55); }
-    .kit-portada { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
-    .kit-portada img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); transition: transform .3s ease; }
-    .kit-portada:hover img { transform: translateY(-4px) rotate(-.6deg); }
+    /* Celular en perspectiva 3D con páginas reales del kit (se enderezan al pasar el mouse) */
+    .kit-portada { display: block; width: 100%; padding: 1.2rem 0; border: 0; background: none; cursor: zoom-in; perspective: 1400px; }
+    .tel {
+      position: relative; display: block; width: min(250px, 68vw); aspect-ratio: 10 / 15; margin-inline: auto;
+      padding: 9px; border-radius: 40px;
+      background: linear-gradient(150deg, #33454F 0%, #18252C 45%, #0E171C 100%);
+      box-shadow: 0 0 0 1.5px rgba(237, 240, 238, .14), 26px 40px 60px rgba(4, 10, 14, .55), 0 0 70px var(--brillo, rgba(159, 212, 198, .3));
+      transform: rotateY(-18deg) rotateX(7deg) rotateZ(1.5deg); transform-style: preserve-3d;
+      transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+    }
+    .tel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; transform: translateZ(-14px) translateX(9px); background: #0B1317; }   /* canto del celular */
+    .tel::after { content: ""; position: absolute; inset: 9px; border-radius: 31px; pointer-events: none; background: linear-gradient(115deg, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, 0) 38%); }   /* reflejo del vidrio */
+    .pantalla { position: relative; display: block; height: 100%; border-radius: 31px; overflow: hidden; background: #EDF0EE; }
+    .pantalla::before { content: ""; position: absolute; z-index: 2; left: 50%; top: 9px; width: 30%; height: 14px; margin-left: -15%; border-radius: 10px; background: #0E171C; }
+    .pantalla img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0; transition: opacity 1s ease; }
+    .pantalla img.activa { opacity: 1; }
+    .kit-portada:hover .tel, .kit-portada:focus-visible .tel { transform: rotateY(-6deg) rotateX(3deg) rotateZ(0deg) translateY(-4px); }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .kit-item h3 { font-size: clamp(1.6rem, 2.6vw, 2rem); margin-top: 1rem; }
     .kit-item .resumen { margin-top: .9rem; color: var(--alba); }
     .rotulo { margin-top: 1.3rem; font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--alba); }
@@ -281,15 +162,15 @@
     .alvora .texto { margin: 1.2rem auto 0; max-width: 46ch; color: var(--alba); }
     .alvora .acciones { margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
 
-    /* ============ PIE: el amanecer ============ */
-    .pie-sitio { padding-block: 1rem clamp(3rem, 6vw, 4.5rem); }
-    .pie-sitio .aviso { padding: 1.5rem 1.7rem; font-size: 1.02rem; background: rgba(21, 35, 43, .32); } /* el aviso del 911 siempre bien legible */
-    .pie-sitio .aviso strong { font-weight: 600; color: var(--niebla); }
-    .pie-sitio .final { margin-top: 1.6rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-    .enlaces { display: flex; flex-wrap: wrap; gap: 1.4rem; font-family: var(--display); font-size: .95rem; }
-    .enlaces a { color: var(--alba); text-decoration: none; }
-    .enlaces a:hover { color: var(--niebla); }
-    .derechos { color: var(--alba); font-family: var(--display); font-size: .9rem; }
+    /* ============ QUIÉN HACE ARAVORA (lugar reservado) ============ */
+    .autor-bloque { display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: center; padding: clamp(1.6rem, 4vw, 3rem); }
+    .autor-isotipo { aspect-ratio: 1; display: grid; place-items: center; padding: 18%; border-radius: 50%; border: 1px solid var(--borde); background: rgba(21, 35, 43, .28); --brillo: rgba(159, 212, 198, .32); }
+    .autor-isotipo svg { width: 100%; height: auto; overflow: visible; }
+    .firma { margin-top: 1.6rem; padding-top: 1.1rem; border-top: 1px solid var(--borde); font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--niebla); }
+    .firma span { font-family: var(--display); font-style: normal; font-size: .92rem; color: var(--alba); }
+    .autor .texto { margin-top: 1.2rem; max-width: 56ch; color: var(--niebla); }
+    .autor .texto p + p { margin-top: .85rem; }
+    @media (max-width: 860px) { .autor-bloque { grid-template-columns: 1fr; } .autor-isotipo { max-width: 200px; margin-inline: auto; } }
 
     /* ============ TRAMO FINAL (Amanecer): contraste ============
        Desde Packs, el fondo es más claro: el texto secundario pasa a Niebla y la palabra
@@ -325,13 +206,13 @@
       .puntos span.activo { background: var(--menta); transform: scale(1.25); }
     }
     @media (max-width: 860px) {
-      .menu { display: none; }
       .fichas { grid-template-columns: repeat(2, 1fr); }
       .ficha { padding: 1.2rem 1.1rem; }
       .ficha .dato { font-size: clamp(1.25rem, 6.2vw, 1.8rem); }
       .principios, .ofertas { grid-template-columns: 1fr; }
       .kit-item { grid-template-columns: 1fr; }
-      .kit-portada { max-width: 260px; margin-inline: auto; }
+      .kit-portada { max-width: 300px; margin-inline: auto; }
+      .tel { transform: rotateY(-12deg) rotateX(5deg) rotateZ(1deg); }
     }
     /* Precios de las fichas en una línea desde 360 px (más angosto, pueden ocupar dos) */
     @media (min-width: 360px) and (max-width: 860px) {
@@ -344,7 +225,6 @@
       .funcion { min-width: 0; padding: .75rem .9rem; font-size: .92rem; }
       .funcion svg { width: 34px; height: 34px; padding: 7px; }
       .oferta { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-      .cabecera .boton { display: none; }
     }
     /* Chips en una sola línea desde 340 px de ancho (en pantallas más angostas pueden ocupar dos) */
     @media (min-width: 340px) and (max-width: 520px) {
@@ -352,7 +232,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .boton, .kit-portada img, .ficha, .disco { transition: none !important; }
+      .boton, .tel, .pantalla img, .ficha, .disco { transition: none !important; }
     }
   </style>
 </head>
@@ -371,7 +251,7 @@
           </g>
           <line x1="8" y1="148" x2="232" y2="148" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
         </svg>
-        aravora
+        <span class="palabra">aravora</span>
       </a>
       <div class="navegacion">
         <nav class="menu" aria-label="Principal">
@@ -380,8 +260,15 @@
           <a href="#packs">Packs</a>
           <a href="alvora.html">ALVORA</a>
         </nav>
-        <a href="#kits" class="boton">Ver los kits</a>
+        <a href="#pausa" class="boton boton-pausa"><span class="respira" aria-hidden="true"></span>Prueba una pausa gratis</a>
+        <button class="abrir-menu" type="button" aria-expanded="false" aria-controls="hoja-menu" aria-label="Abrir el menú"><span></span></button>
       </div>
+      <nav class="hoja-menu" id="hoja-menu" aria-label="Menú" hidden>
+        <a href="#metodo">Cómo trabajamos</a>
+        <a href="#kits">Kits</a>
+        <a href="#packs">Packs</a>
+        <a href="alvora.html">ALVORA</a>
+      </nav>
     </div>
   </header>
 
@@ -409,7 +296,7 @@
             </div>
           </div>
 
-          <aside class="pausa tarjeta resplandor" aria-labelledby="pausa-titulo">
+          <aside class="pausa tarjeta resplandor" id="pausa" aria-labelledby="pausa-titulo">
             <h2 id="pausa-titulo">Prueba una pausa de un minuto</h2>
             <p class="instruccion">Inhala mientras el círculo crece, exhala mientras se achica.</p>
             <div class="orbita">
@@ -493,8 +380,13 @@
         </div>
 
         <article class="kit-item tarjeta" data-kit="001" id="kit-001">
-          <button class="kit-portada resplandor" type="button" data-vista="001" aria-label="Ver por dentro el Kit #001">
-            <img src="img/kit001-portada.webp" alt="Portada del Kit #001: ¿Por qué estoy tan cansado, si dormí?" width="640" height="905" loading="lazy">
+          <button class="kit-portada kit-tel resplandor" type="button" data-vista="001" aria-label="Ver por dentro el Kit #001">
+            <span class="tel" aria-hidden="true"><span class="pantalla">
+              <img class="activa" src="img/kit001-portada.webp" alt="" width="640" height="905" loading="lazy">
+              <img src="kit001-pagina1.webp" alt="" width="900" height="1273" loading="lazy">
+              <img src="kit001-pagina2.webp" alt="" width="900" height="1273" loading="lazy">
+            </span></span>
+            <span class="sr-only">Portada del Kit #001: ¿Por qué estoy tan cansado, si dormí?</span>
           </button>
           <div>
             <span class="insignia ins-001">Kit #001 · Energía</span>
@@ -515,8 +407,13 @@
         </article>
 
         <article class="kit-item tarjeta" data-kit="002" id="kit-002">
-          <button class="kit-portada resplandor" type="button" data-vista="002" aria-label="Ver por dentro el Kit #002">
-            <img src="img/kit002-portada.webp" alt="Portada del Kit #002: ¿Por qué siento ansiedad, si no pasa nada?" width="640" height="905" loading="lazy">
+          <button class="kit-portada kit-tel resplandor" type="button" data-vista="002" aria-label="Ver por dentro el Kit #002">
+            <span class="tel" aria-hidden="true"><span class="pantalla">
+              <img class="activa" src="img/kit002-portada.webp" alt="" width="640" height="905" loading="lazy">
+              <img src="kit002-pagina1.webp" alt="" width="900" height="1273" loading="lazy">
+              <img src="kit002-pagina2.webp" alt="" width="900" height="1273" loading="lazy">
+            </span></span>
+            <span class="sr-only">Portada del Kit #002: ¿Por qué siento ansiedad, si no pasa nada?</span>
           </button>
           <div>
             <span class="insignia ins-002">Kit #002 · Ansiedad</span>
@@ -537,8 +434,13 @@
         </article>
 
         <article class="kit-item tarjeta" data-kit="003" id="kit-003">
-          <button class="kit-portada resplandor" type="button" data-vista="003" aria-label="Ver por dentro el Kit #003">
-            <img src="img/kit003-portada.webp" alt="Portada del Kit #003: ¿Por qué me acuesto tan tarde, si mañana madrugo?" width="640" height="905" loading="lazy">
+          <button class="kit-portada kit-tel resplandor" type="button" data-vista="003" aria-label="Ver por dentro el Kit #003">
+            <span class="tel" aria-hidden="true"><span class="pantalla">
+              <img class="activa" src="img/kit003-portada.webp" alt="" width="640" height="905" loading="lazy">
+              <img src="kit003-pagina1.webp" alt="" width="900" height="1273" loading="lazy">
+              <img src="kit003-pagina2.webp" alt="" width="900" height="1273" loading="lazy">
+            </span></span>
+            <span class="sr-only">Portada del Kit #003: ¿Por qué me acuesto tan tarde, si mañana madrugo?</span>
           </button>
           <div>
             <span class="insignia ins-003">Kit #003 · Sueño</span>
@@ -623,6 +525,34 @@
       </div>
     </section>
 
+    <!-- 6b · QUIÉN HACE ARAVORA: sin foto, con el isotipo y la firma de Aaron -->
+    <section class="autor" id="quien">
+      <div class="contenedor">
+        <div class="autor-bloque tarjeta">
+          <div class="autor-isotipo resplandor" aria-hidden="true">
+            <svg viewBox="0 0 240 160">
+              <g fill="none" stroke="var(--menta)" stroke-width="10" stroke-linecap="round">
+                <path d="M20 130a100 100 0 0 1 200 0"/>
+                <path d="M54 130a66 66 0 0 1 132 0" opacity=".6"/>
+                <path d="M87 130a33 33 0 0 1 66 0" opacity=".35"/>
+              </g>
+              <line x1="8" y1="148" x2="232" y2="148" stroke="var(--niebla)" stroke-width="10" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="etiqueta">Quién hace aravora</p>
+            <h2>Psicología que se <em>entiende</em></h2>
+            <div class="texto">
+              <p>Soy Aaron Acosta, formado en psicología clínica y fundador de aravora.</p>
+              <p>Creé aravora con una idea simple: que todas las personas puedan acceder a herramientas de psicología que les ayuden a entenderse un poco más, sin que el precio o el lenguaje técnico sean una barrera.</p>
+              <p>Cada kit parte de lo que la ciencia ya sabe y lo convierte en algo claro y práctico, que puedes usar a tu ritmo. No reemplaza la atención de un profesional, pero puede ser un buen primer paso.</p>
+            </div>
+            <p class="firma">Aaron Acosta <span>· Fundador de aravora</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 7 · ALVORA: bloque destacado -->
     <section class="alvora" id="alvora">
       <div class="contenedor">
@@ -652,21 +582,56 @@
     </div>
   </dialog>
 
-  <!-- 8 · PIE: el amanecer -->
+  <!-- 8 · PIE: el amanecer, por columnas y con el sello -->
   <footer class="pie-sitio">
     <div class="contenedor">
       <p class="aviso tarjeta">
         El contenido de aravora es educativo y no reemplaza la atención de un profesional de salud mental.
         <strong>Si estás en riesgo o en crisis, llama al 911</strong> o acude al servicio de urgencias más cercano.
       </p>
-      <div class="final">
-        <nav class="enlaces" aria-label="Enlaces del pie">
+      <div class="pie-columnas">
+        <div class="pie-marca">
+          <div class="sello" aria-hidden="true">
+            <svg viewBox="0 0 140 140">
+              <defs><path id="sello-circulo" d="M70,70 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/></defs>
+              <g class="anillo"><text class="letras"><textPath href="#sello-circulo" textLength="333" lengthAdjust="spacing">psicología con evidencia · aravora ·</textPath></text></g>
+              <circle cx="70" cy="70" r="38" fill="rgba(21, 35, 43, .35)" stroke="rgba(237, 240, 238, .28)"/>
+              <g transform="translate(46 56) scale(.2)">
+                <g fill="none" stroke="#9FD4C6" stroke-width="14" stroke-linecap="round"><path d="M20 130a100 100 0 0 1 200 0"/><path d="M54 130a66 66 0 0 1 132 0" opacity=".6"/><path d="M87 130a33 33 0 0 1 66 0" opacity=".35"/></g>
+                <line x1="8" y1="148" x2="232" y2="148" stroke="#EDF0EE" stroke-width="14" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <p>Psicología con evidencia, convertida en herramientas simples.</p>
+        </div>
+        <nav class="pie-columna" aria-label="Kits">
+          <h3>Kits</h3>
+          <a href="#kit-001">Kit #001 · Energía</a>
+          <a href="#kit-002">Kit #002 · Ansiedad</a>
+          <a href="#kit-003">Kit #003 · Sueño</a>
+          <a href="#packs">Packs</a>
+        </nav>
+        <nav class="pie-columna" aria-label="aravora">
+          <h3 class="minuscula">aravora</h3>
+          <a href="#metodo">Cómo trabajamos</a>
+          <a href="#quien">Quién hace aravora</a>
+          <a href="alvora.html">ALVORA</a>
+        </nav>
+        <nav class="pie-columna" aria-label="Contacto">
+          <h3>Contacto</h3>
+          <a href="https://wa.me/595992955763" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a>
           <a href="https://facebook.com/aravora.studio" target="_blank" rel="noopener">Facebook</a>
+        </nav>
+        <nav class="pie-columna" aria-label="Legal">
+          <h3>Legal</h3>
           <a href="privacidad.html">Privacidad</a>
           <a href="terminos.html">Términos</a>
         </nav>
+      </div>
+      <div class="final">
         <p class="derechos">© 2026 aravora</p>
+        <p class="derechos">Material educativo · No reemplaza a un profesional</p>
       </div>
     </div>
   </footer>
@@ -715,6 +680,19 @@
     });
     document.getElementById("vista-cerrar").addEventListener("click", function () { vista.close(); });
     vista.addEventListener("click", function (e) { if (e.target === vista) vista.close(); });
+
+    /* ========= Celulares de los kits: pasan las páginas reales solo cuando están a la vista ========= */
+    (function () {
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      document.querySelectorAll(".pantalla").forEach(function (pantalla, k) {
+        var imgs = pantalla.querySelectorAll("img"), i = 0, reloj = null;
+        function siguiente() { imgs[i].classList.remove("activa"); i = (i + 1) % imgs.length; imgs[i].classList.add("activa"); }
+        new IntersectionObserver(function (e) {
+          if (e[0].isIntersecting && !reloj) { setTimeout(function () { if (!reloj) reloj = setInterval(siguiente, 3200); }, k * 500); }
+          if (!e[0].isIntersecting && reloj) { clearInterval(reloj); reloj = null; }
+        }, { threshold: .4 }).observe(pantalla);
+      });
+    })();
 
     /* ========= Pausa de respiración: 6 ciclos de 4 s inhalando y 6 s exhalando ========= */
     const disco = document.getElementById("disco");
@@ -781,121 +759,7 @@
     })();
   </script>
 
-  <script>
-    /* ========= Cielo de la página: de la noche al amanecer =========
-       Canvas fijo detrás de todo. El color sigue el scroll: Crepúsculo → Hora azul → Amanecer,
-       con un resplandor Aurora + Menta que crece hacia abajo. Estrellas Menta y Alba que titilan,
-       parallax leve con el cursor y el scroll. Menos estrellas en celular, estático con movimiento
-       reducido y en pausa cuando la pestaña no se ve. */
-    (function () {
-      var canvas = document.getElementById("cielo");
-      if (!canvas || !canvas.getContext) return;
-      var ctx = canvas.getContext("2d");
-      var quieto = window.matchMedia("(prefers-reduced-motion: reduce)");
-      var TONOS = [[31, 53, 64], [43, 75, 83], [61, 101, 99]];   // Crepúsculo, Hora azul, Amanecer
-      var COLORES = ["159,212,198", "207,227,220"];                // Menta y Alba
-      var W = 0, H = 0, dpr = 1, celular = null, estrellas = [];
-      var mouseX = 0, mouseY = 0, suaveX = 0, suaveY = 0;
-      var corriendo = false, raf = 0, ultimo = 0, pendiente = false;
-
-      var semilla = 11;   // azar con semilla: el cielo es siempre el mismo
-      function azar() { semilla = (semilla * 16807) % 2147483647; return (semilla - 1) / 2147483646; }
-
-      function sembrar() {
-        semilla = 11; estrellas = [];
-        var cantidad = celular ? 60 : 160;
-        for (var i = 0; i < cantidad; i++) {
-          estrellas.push({
-            x: azar(), y: azar(),                 // posición relativa a la pantalla (0 a 1)
-            r: .5 + azar() * 1.25,
-            prof: .2 + azar() * .8,               // las más "cercanas" se mueven más
-            fase: azar() * 6.283, vel: .5 + azar() * 1.5,
-            color: COLORES[azar() < .62 ? 0 : 1], base: .35 + azar() * .5
-          });
-        }
-      }
-
-      function medir() {
-        var esCelular = window.innerWidth < 760;
-        dpr = Math.min(window.devicePixelRatio || 1, esCelular ? 1.5 : 2);
-        W = window.innerWidth; H = window.innerHeight;
-        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        if (esCelular !== celular) { celular = esCelular; sembrar(); }
-      }
-
-      function progreso() {
-        var max = document.documentElement.scrollHeight - window.innerHeight;
-        return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      }
-      function tono(p) {
-        var a = p < .5 ? TONOS[0] : TONOS[1], b = p < .5 ? TONOS[1] : TONOS[2], k = p < .5 ? p / .5 : (p - .5) / .5;
-        return a.map(function (c, i) { return Math.round(c + (b[i] - c) * k); });
-      }
-
-      function dibujar(t) {
-        var p = progreso(), mov = !quieto.matches;
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = "rgb(" + tono(p).join(",") + ")";
-        ctx.fillRect(0, 0, W, H);
-
-        // Resplandor Aurora + Menta desde abajo: crece al bajar (el amanecer)
-        var a = .06 + .16 * p, R = Math.max(W, H) * (.7 + .3 * p);   // suave: el texto del tramo final tiene que seguir leyéndose
-        var g = ctx.createRadialGradient(W * .5, H * 1.12, 0, W * .5, H * 1.12, R);
-        g.addColorStop(0, "rgba(159,212,198," + (a * .9).toFixed(3) + ")");
-        g.addColorStop(.45, "rgba(47,111,101," + (a * .7).toFixed(3) + ")");
-        g.addColorStop(1, "rgba(47,111,101,0)");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-
-        // Una nebulosa Aurora muy suave arriba a la derecha (profundidad)
-        var n = ctx.createRadialGradient(W * .82, H * .12, 0, W * .82, H * .12, Math.max(W, H) * .45);
-        n.addColorStop(0, "rgba(47,111,101," + (.22 * (1 - p * .6)).toFixed(3) + ")");
-        n.addColorStop(1, "rgba(47,111,101,0)");
-        ctx.fillStyle = n; ctx.fillRect(0, 0, W, H);
-
-        // Estrellas: titilan y se mueven apenas con el cursor y el scroll; se apagan un poco al amanecer
-        suaveX += (mouseX - suaveX) * .08; suaveY += (mouseY - suaveY) * .08;
-        var sc = window.scrollY;
-        for (var i = 0; i < estrellas.length; i++) {
-          var e = estrellas[i];
-          var brillo = mov ? e.base + Math.sin(t / 1000 * e.vel + e.fase) * .25 : e.base;
-          var x = e.x * W + (mov ? suaveX * 12 * e.prof : 0);
-          var y = e.y * H - (mov ? sc * .06 * e.prof : 0) + (mov ? suaveY * 8 * e.prof : 0);
-          y = ((y % H) + H) % H;
-          ctx.globalAlpha = Math.max(0, Math.min(1, brillo)) * (1 - p * .55);
-          ctx.fillStyle = "rgb(" + e.color + ")";
-          ctx.beginPath(); ctx.arc(x, y, e.r, 0, 6.283); ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-      }
-
-      function cuadro(t) {
-        if (!corriendo) return;
-        if (t - ultimo > 33) { dibujar(t); ultimo = t; }   // ~30 cuadros por segundo alcanzan
-        raf = requestAnimationFrame(cuadro);
-      }
-      function actualizar() {
-        var debe = !document.hidden && !quieto.matches;
-        if (debe && !corriendo) { corriendo = true; raf = requestAnimationFrame(cuadro); }
-        if (!debe && corriendo) { corriendo = false; cancelAnimationFrame(raf); }
-        if (!corriendo) dibujar(0);   // versión estática
-      }
-
-      medir(); actualizar();
-      document.documentElement.classList.add("cielo-activo");
-      document.addEventListener("visibilitychange", actualizar);
-      window.addEventListener("scroll", function () {
-        if (corriendo || pendiente) return;   // en modo estático, solo redibuja el color al bajar
-        pendiente = true;
-        requestAnimationFrame(function () { pendiente = false; dibujar(0); });
-      }, { passive: true });
-      window.addEventListener("pointermove", function (ev) {
-        mouseX = ev.clientX / W * 2 - 1; mouseY = ev.clientY / H * 2 - 1;
-      }, { passive: true });
-      var espera;
-      window.addEventListener("resize", function () { clearTimeout(espera); espera = setTimeout(function () { medir(); actualizar(); }, 120); });
-      if (quieto.addEventListener) quieto.addEventListener("change", actualizar); else quieto.addListener(actualizar);
-    })();
-  </script>
+  <script src="cielo.js?v=1"></script>
+  <script src="sitio.js?v=1"></script>
 </body>
 </html>
