@@ -46,6 +46,7 @@ button { font: inherit; color: inherit; }
 [id] { scroll-margin-top: 24px; }
 
 .raiz { position: relative; min-height: 100vh; overflow: hidden; }
+@supports (overflow: clip) { .raiz { overflow: visible; overflow-x: clip; } }   /* clip no rompe position: sticky */
 .raiz > *:not(.cielo) { position: relative; z-index: 1; }
 .pagina-inicio .raiz { background: linear-gradient(180deg, #15232B 0%, #1F3540 22%, #23404A 55%, #2B4B53 80%, #3D6563 100%); }
 .pagina-alvora .raiz { background: linear-gradient(180deg, #15232B 0%, #1F3540 25%, #23404A 60%, #2B4B53 85%, #3D6563 100%); }
@@ -111,19 +112,6 @@ button { font: inherit; color: inherit; }
 .faq-item h3 { margin-bottom: 8px; font-weight: 500; font-size: 21px; }
 .faq-item p { font-size: 17px; line-height: 1.6; color: var(--alba); }
 
-/* Preguntas como acordeón (inicio) */
-details.faq-item { padding: 0; }
-details.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; padding: 14px 0; cursor: pointer; list-style: none; }
-details.faq-item summary::-webkit-details-marker { display: none; }
-details.faq-item summary h3 { margin: 0; transition: color .2s ease; }
-details.faq-item summary:hover h3 { color: var(--menta); }
-details.faq-item > p { max-width: 640px; padding-bottom: 24px; }
-.faq-signo { position: relative; flex: none; width: 36px; height: 36px; border: 1px solid var(--linea-fuerte); border-radius: 999px; transition: background-color .2s ease, border-color .2s ease; }
-.faq-signo::before, .faq-signo::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; margin: -.75px 0 0 -6px; border-radius: 2px; background: var(--niebla); transition: transform .25s ease, background-color .2s ease; }
-.faq-signo::after { transform: rotate(90deg); }
-details[open] .faq-signo { border-color: var(--menta); background: var(--menta); }
-details[open] .faq-signo::before, details[open] .faq-signo::after { background: var(--tinta); }
-details[open] .faq-signo::after { transform: rotate(0deg); }
 
 /* Pie */
 .pie { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; padding-top: 40px; padding-bottom: 56px; border-top: 1px solid var(--linea-media); font-family: var(--sans); font-size: 14px; color: var(--niebla); }
@@ -132,17 +120,6 @@ details[open] .faq-signo::after { transform: rotate(0deg); }
 .pie-enlaces a { color: var(--niebla); }
 .pie-enlaces a:hover { color: var(--menta); }
 
-/* Pie del inicio: marca y enlaces arriba; aviso y derechos abajo */
-.pie--inicio { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 0; align-items: center; padding-top: 48px; }
-.pie-marca { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.pie-lema { font-family: var(--serif); font-size: 17px; color: var(--alba); }
-.pie--inicio .pie-enlaces { gap: 28px; }
-.pie--inicio .pie-enlaces a { text-decoration: none; }
-.pie--inicio .pie-enlaces a:hover { text-decoration: underline; }
-.pie--inicio .pie-aviso { max-width: none; padding-top: 28px; padding-right: max(0px, calc(100% - 620px)); border-top: 1px solid var(--linea); color: var(--alba); }
-.pie-aviso strong { font-weight: 500; color: var(--niebla); }
-.pie-derechos { align-self: stretch; padding-top: 28px; padding-left: 40px; border-top: 1px solid var(--linea); color: var(--alba); text-align: right; }
-.pie--inicio .pie-enlaces { padding-left: 40px; }
 
 /* Aparición suave al llegar con el scroll (solo si sitio.js la activa) */
 .animar [data-aparece] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
@@ -211,6 +188,14 @@ details[open] .faq-signo::after { transform: rotate(0deg); }
 .packs-cabeza p:not(.rotulo) { font-size: 18px; line-height: 1.6; color: var(--alba); }
 .packs-rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
 .pack { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding: 40px; border-radius: 28px; }
+/* Miniaturas de los kits que trae cada pack, en abanico */
+.pack { position: relative; }
+.pack-minis { position: absolute; top: 34px; right: 36px; display: flex; }
+.pack-minis img { width: 68px; border-radius: 5px; box-shadow: 0 10px 22px rgba(0, 0, 0, .35); }
+.pack-minis img + img { margin-left: -22px; }
+.pack-minis img:first-child { transform: rotate(-6deg); }
+.pack-minis img:last-child { transform: rotate(6deg); }
+.pack-minis img:nth-child(2):not(:last-child) { position: relative; z-index: 1; transform: translateY(-6px); }
 .pack h3 { font-size: 38px; line-height: 1.1; }
 .pack-texto { font-size: 17px; line-height: 1.6; color: var(--alba); }
 .pack-precio { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
@@ -242,24 +227,7 @@ details[open] .faq-signo::after { transform: rotate(0deg); }
 .pausa-accion { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
 .pausa-ciclo { font-family: var(--sans); font-size: 14px; color: var(--alba); font-variant-numeric: tabular-nums; }
 
-/* Quién hace aravora */
-.quien { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 40px; align-items: start; padding-bottom: 120px; }
-.quien-cuerpo { margin: 0; display: flex; flex-direction: column; gap: 32px; }
-.quien-cita { margin: 0; font-size: clamp(26px, 2.9vw, 40px); line-height: 1.3; letter-spacing: -.4px; }
-.quien-persona { display: flex; align-items: center; gap: 14px; padding-top: 24px; border-top: 1px solid var(--linea); }
-.quien-foto { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid var(--linea-media); border-radius: 999px; background: var(--hora-azul); }
-.quien-foto svg { width: 30px; height: 20px; }
-.quien-nombre { font-size: 18px; }
-.quien-nombre span { display: block; font-family: var(--sans); font-size: 14px; color: var(--alba); }
 
-/* alvora, en el inicio */
-.banda { padding-bottom: 100px; }
-.banda-caja { position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; padding: 56px 48px; border: 1px solid rgba(237, 240, 238, .14); border-radius: 28px; background: var(--tinta); box-shadow: 0 30px 60px rgba(0, 0, 0, .25); }
-.banda-caja::before { content: ""; position: absolute; right: -120px; bottom: -220px; width: 520px; height: 520px; border-radius: 999px; background: radial-gradient(closest-side, rgba(159, 212, 198, .2), rgba(159, 212, 198, 0)); pointer-events: none; }
-.banda-caja > * { position: relative; }
-.banda-texto { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.banda-texto h2 { font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; }
-.banda-botones { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* Barra fija de «Escríbenos»: solo celular */
 .barra-fija { display: none; }
@@ -439,6 +407,9 @@ details[open] .faq-signo::after { transform: rotate(0deg); }
   .packs { gap: 16px; padding-top: 0; padding-bottom: 40px; }
   .packs-rejilla { gap: 16px; }
   .pack { align-items: stretch; gap: 14px; padding: 28px 24px; border-radius: 24px; }
+  .pack-minis { position: static; margin: 2px 0 6px 4px; }
+  .pack-minis img { width: 58px; }
+  .pack-minis img + img { margin-left: -16px; }
   .pack h3 { font-size: 30px; }
   .pack-precio { gap: 10px; }
   .cifra { font-size: 40px; letter-spacing: 0; }
@@ -454,27 +425,7 @@ details[open] .faq-signo::after { transform: rotate(0deg); }
   .pausa-texto h2 { font-size: 30px; }
   .pausa-texto > p:not(.rotulo) { font-size: 16px; line-height: 1.55; }
 
-  .quien { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-bottom: 40px; }
-  .quien-cuerpo { gap: 22px; }
-  .quien-cita { font-size: 24px; line-height: 1.32; letter-spacing: 0; }
-  .quien-persona { padding-top: 18px; }
-  details.faq-item { padding: 0; }
-  details.faq-item summary { min-height: 60px; padding: 10px 0; gap: 14px; }
-  details.faq-item > p { padding-bottom: 18px; }
-  .faq-signo { width: 32px; height: 32px; }
-  .pie--inicio { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 32px; }
-  .pie--inicio .pie-enlaces { gap: 0 24px; }
-  .pie--inicio .pie-aviso { padding-top: 20px; padding-right: 0; }
-  .pie--inicio .pie-enlaces { padding-left: 0; }
-  .pie-derechos { padding: 0; border-top: 0; text-align: left; }
-  .banda-caja::before { right: -200px; bottom: -300px; }
 
-  .banda { padding-bottom: 40px; }
-  .banda-caja { gap: 20px; padding: 28px 24px; border-radius: 24px; }
-  .banda-texto { flex-basis: 100%; }
-  .banda-texto .rotulo { display: block; }
-  .banda-texto h2 { font-size: 28px; }
-  .banda-botones { flex: 1 1 100%; flex-direction: column; }
 
   .barra-fija { position: fixed; z-index: 20; left: 12px; right: 12px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; border: 1px solid rgba(237, 240, 238, .16); border-radius: 999px; background: rgba(21, 35, 43, .92); box-shadow: 0 16px 40px rgba(0, 0, 0, .4); font-family: var(--sans); font-size: 14px; color: var(--alba); }
   .barra-fija .boton { padding: 12px 20px; }
@@ -543,7 +494,89 @@ details[open] .faq-signo::after { transform: rotate(0deg); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .boton, .pildora, .pieza-portada img, .respira-aro, .faq-signo, .faq-signo::before, .faq-signo::after { transition: none !important; }
+  .boton, .pildora, .pieza-portada img, .respira-aro, .faq-mas, .barra-fija { transition: none !important; }
+}
+
+/* ================= FINAL DEL INICIO (de la Pausa al pie) =================
+   Mismo patrón de encabezado que arriba (rótulo con punto + título con una palabra en cursiva)
+   y el mismo aire entre secciones: 160 px en computadora, 96 px en celular. */
+.tramo, .pausa.tramo { padding-bottom: 160px; }
+.tramo em, .alvora-final em { color: var(--menta); }   /* tramo final del cielo: la cursiva va en Menta */
+
+/* El cielo estrellado termina antes de la Pausa (sitio.js mide dónde): ningún punto entre las letras del final */
+.pagina-inicio .cielo { bottom: auto; height: var(--cielo-alto, 100%); }
+
+/* Manifiesto */
+.manifiesto-caja { display: flex; flex-direction: column; align-items: center; gap: 24px; max-width: 720px; margin: 0 auto; text-align: center; }
+.isotipo { display: block; width: 32px; }
+.isotipo svg { display: block; width: 32px; height: 21px; }
+.manifiesto-cita { margin: 0; font-size: clamp(30px, 2.6vw, 34px); line-height: 1.32; letter-spacing: -.3px; }
+.manifiesto-firma { font-family: var(--sans); font-size: 14px; line-height: 1.55; color: var(--alba); }
+.manifiesto-firma span { display: block; }
+
+/* Preguntas: título fijo a la izquierda y acordeón a la derecha */
+.faq.faq--final { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 64px; align-items: start; }
+.faq-cabeza { position: sticky; top: 40px; display: flex; flex-direction: column; gap: 14px; }
+.faq--final h2 { font-size: clamp(36px, 4vw, 56px); }
+.faq--final .faq-item { padding: 0; border-top: 1px solid var(--linea); }
+.faq--final .faq-item:last-child { border-bottom: 1px solid var(--linea); }
+.faq--final summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 76px; padding: 16px 0; cursor: pointer; list-style: none; }
+.faq--final summary::-webkit-details-marker { display: none; }
+.faq--final summary h3 { margin: 0; }
+.faq--final .faq-item > p { max-width: 600px; padding: 0 44px 26px 0; }
+.faq-mas { position: relative; flex: none; width: 20px; height: 20px; transition: transform .2s ease; }   /* el «+» gira 45° y queda «×» */
+.faq-mas::before, .faq-mas::after { content: ""; position: absolute; left: 0; top: 50%; width: 20px; height: 1.5px; margin-top: -.75px; border-radius: 2px; background: var(--menta); }
+.faq-mas::after { transform: rotate(90deg); }
+details[open] > summary .faq-mas { transform: rotate(45deg); }
+
+/* Cierre */
+.cierre { display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+.cierre .titulo-seccion { font-size: clamp(40px, 5vw, 68px); }
+.boton--grande { min-height: 64px; margin-top: 14px; padding: 20px 44px; font-size: 18px; }
+
+/* alvora: tarjeta secundaria, después del cierre */
+.alvora-final { padding-bottom: 120px; }
+.tarjeta-alvora { display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between; max-width: 980px; margin: 0 auto; padding: 36px 40px; border: 1px solid var(--linea); border-radius: 28px; background: rgba(237, 240, 238, .05); }
+.tarjeta-alvora-texto { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.tarjeta-alvora h2 { font-size: clamp(22px, 2vw, 26px); line-height: 1.25; }
+.tarjeta-alvora-enlaces { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
+.enlace-suave { font-family: var(--sans); font-size: 15px; color: var(--alba); }
+
+/* Pie mínimo */
+.pie.pie--minimo { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px 48px; align-items: start; padding-top: 36px; padding-bottom: 48px; border-top: 1px solid var(--linea); font-size: 13px; }
+.pie--minimo .marca svg { width: 28px; height: 18px; }
+.pie--minimo .logotipo { font-size: 18px; letter-spacing: -.3px; }
+.pie--minimo .pie-aviso { max-width: 520px; line-height: 1.6; color: var(--alba); }
+.pie--minimo .pie-aviso a { color: var(--niebla); }
+.pie-legal { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 24px; color: var(--alba); }
+.pie-legal a { color: var(--niebla); text-decoration: none; }
+.pie-legal a:hover { text-decoration: underline; }
+
+/* La barra fija del celular se esconde cuando el Cierre o el pie entran en pantalla */
+.barra-fija { transition: opacity .25s ease, transform .25s ease, visibility 0s linear 0s; }
+.barra-fija.oculta { opacity: 0; transform: translateY(16px); visibility: hidden; pointer-events: none; transition-delay: 0s, 0s, .25s; }
+
+@media (max-width: 720px) {
+  .tramo, .pausa.tramo { padding-bottom: 96px; }
+  .manifiesto-caja { gap: 20px; }
+  .manifiesto-cita { font-size: 24px; letter-spacing: 0; }
+  .faq.faq--final { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .faq-cabeza { position: static; }
+  .faq--final h2 { font-size: 30px; }
+  .faq--final summary { min-height: 64px; padding: 12px 0; gap: 16px; }
+  .faq--final .faq-item > p { padding: 0 0 20px; }
+  .cierre { gap: 18px; }
+  .cierre .titulo-seccion { font-size: 36px; line-height: 1.08; }
+  .boton--grande { width: 100%; min-height: 60px; margin-top: 10px; padding: 18px 24px; font-size: 17px; }
+  .alvora-final { padding-bottom: 72px; }
+  .tarjeta-alvora { padding: 26px 22px; border-radius: 24px; }
+  .tarjeta-alvora-texto { flex-basis: 100%; }
+  .tarjeta-alvora-texto .rotulo { display: block; }
+  .tarjeta-alvora h2 { font-size: 22px; }
+  .enlace-suave { display: inline-flex; align-items: center; min-height: 48px; }
+  .pie.pie--minimo { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-top: 28px; padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
+  .pie-legal { justify-content: flex-start; }
+  .pie-legal a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 
 /* ================= CIELO ESTRELLADO =================

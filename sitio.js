@@ -85,6 +85,33 @@
     bloques.forEach(function (b) { obs.observe(b); });
   })();
 
+  /* ========= El cielo estrellado termina antes de la Pausa =========
+     Mide dónde empieza la Pausa y le pasa ese alto al CSS (--cielo-alto). Sin JS, el cielo cubre toda la página. */
+  (function () {
+    var raiz = document.querySelector(".raiz"), pausa = document.getElementById("pausa");
+    if (!raiz || !pausa) return;
+    function medir() {
+      var alto = pausa.getBoundingClientRect().top - raiz.getBoundingClientRect().top - 24;
+      raiz.style.setProperty("--cielo-alto", Math.max(0, Math.round(alto)) + "px");
+    }
+    medir();
+    window.addEventListener("load", medir);
+    window.addEventListener("resize", medir);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
+  })();
+
+  /* ========= Barra fija del celular: se esconde cuando el Cierre o el pie entran en pantalla ========= */
+  (function () {
+    var barra = document.querySelector(".barra-fija");
+    var zonas = [document.getElementById("cierre"), document.getElementById("pie")].filter(Boolean);
+    if (!barra || !zonas.length || !("IntersectionObserver" in window)) return;
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) { e.target._enPantalla = e.isIntersecting; });
+      barra.classList.toggle("oculta", zonas.some(function (z) { return z._enPantalla; }));
+    });
+    zonas.forEach(function (z) { obs.observe(z); });
+  })();
+
   /* ========= Pausa de un minuto: 6 ciclos de 4 s inhalando y 6 s exhalando ========= */
   (function () {
     var aro = document.getElementById("aro"), fase = document.getElementById("fase");

@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilo.css?v=20261012">
+  <link rel="stylesheet" href="estilo.css?v=20261014">
 
   <!-- Pixel de Meta (ID 1428355635968530) -->
   <script>
@@ -197,6 +197,10 @@
         </div>
         <div class="packs-rejilla">
           <article class="pack pack--oscuro">
+            <div class="pack-minis" aria-hidden="true">
+              <img src="img/kit001-portada.webp" alt="" width="640" height="905" loading="lazy">
+              <img src="img/kit002-portada.webp" alt="" width="640" height="905" loading="lazy">
+            </div>
             <p class="rotulo">2 piezas</p>
             <h3>Energía + <em>Ansiedad</em></h3>
             <p class="pack-texto">Kits N.º 001 y N.º 002.</p>
@@ -207,6 +211,11 @@
             <a class="boton boton--linea" data-wa="Hola, quiero el pack Energía + Ansiedad" data-producto="Pack #001 + #002" data-valor="30000" href="#" target="_blank" rel="noopener">Quiero el pack</a>
           </article>
           <article class="pack pack--claro">
+            <div class="pack-minis" aria-hidden="true">
+              <img src="img/kit001-portada.webp" alt="" width="640" height="905" loading="lazy">
+              <img src="img/kit002-portada.webp" alt="" width="640" height="905" loading="lazy">
+              <img src="img/kit003-portada.webp" alt="" width="640" height="905" loading="lazy">
+            </div>
             <p class="rotulo">La más elegida · 3 piezas</p>
             <h3>Colección <em>completa</em></h3>
             <p class="pack-texto solo-compu">Energía, ansiedad y sueño: los 3 kits juntos.</p>
@@ -242,7 +251,7 @@
       </section>
 
       <!-- Pausa gratis -->
-      <section class="pausa ancho" id="pausa">
+      <section class="pausa tramo ancho" id="pausa">
         <div class="pausa-caja" data-aparece>
           <div class="respira">
             <svg class="respira-progreso" viewBox="0 0 200 200" aria-hidden="true"><circle class="pista" cx="100" cy="100" r="97"/><circle class="avance" id="avance" cx="100" cy="100" r="97"/></svg>
@@ -261,52 +270,59 @@
         </div>
       </section>
 
-      <!-- Quién hace aravora -->
-      <section class="quien ancho" data-aparece>
-        <p class="rotulo"><span class="punto"></span>Quién hace aravora</p>
-        <figure class="quien-cuerpo">
-          <blockquote class="quien-cita">«Me formé en psicología clínica y creé aravora para que cualquiera pueda acceder a herramientas de psicología <em>accesibles y económicas</em> para entenderse mejor.»</blockquote>
-          <figcaption class="quien-persona">
-            <!-- PENDIENTE: reemplazar por la foto de Aaron (img/aaron.webp, cuadrada). Mientras tanto va el sol de aravora. -->
-            <div class="quien-foto" aria-hidden="true"><svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <p class="quien-nombre">Aaron Acosta<span>Fundador de aravora</span></p>
-          </figcaption>
-        </figure>
+      <!-- Manifiesto: quién hace aravora -->
+      <section class="manifiesto tramo ancho" data-aparece>
+        <div class="manifiesto-caja">
+          <span class="isotipo" aria-hidden="true"><svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <p class="rotulo"><span class="punto"></span>Quién hace aravora</p>
+          <blockquote class="manifiesto-cita">«Me formé en psicología clínica y creé aravora para que cualquiera pueda acceder a herramientas de psicología <em>accesibles y económicas</em> para entenderse mejor.»</blockquote>
+          <p class="manifiesto-firma">Aaron Acosta<span>Fundador de aravora</span></p>
+        </div>
       </section>
 
       <!-- Preguntas frecuentes -->
-      <section class="faq ancho" data-aparece>
-        <h2>Preguntas <em>frecuentes</em></h2>
+      <section class="faq faq--final tramo ancho" data-aparece>
+        <div class="faq-cabeza">
+          <p class="rotulo"><span class="punto"></span>Ayuda</p>
+          <h2 class="titulo-seccion">Preguntas <em>frecuentes</em></h2>
+        </div>
         <div class="faq-lista">
-          <details class="faq-item" open>
-            <summary><h3>¿Cómo pago?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+          <details class="faq-item">
+            <summary><h3>¿Cómo pago?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
             <p>Por transferencia, en el mismo chat de WhatsApp.</p>
           </details>
           <details class="faq-item">
-            <summary><h3>¿Cuándo lo recibo?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <summary><h3>¿Cuándo lo recibo?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
             <p>Te enviamos el PDF por WhatsApp apenas confirmamos tu pago.</p>
           </details>
           <details class="faq-item">
-            <summary><h3>¿Puedo usarlo en el celular?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <summary><h3>¿Puedo usarlo en el celular?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
             <p>Sí. Puedes completarlo con Adobe Acrobat Reader (gratis) o imprimirlo.</p>
           </details>
           <details class="faq-item">
-            <summary><h3>¿Reemplaza a un psicólogo?</h3><span class="faq-signo" aria-hidden="true"></span></summary>
+            <summary><h3>¿Reemplaza a un psicólogo?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
             <p>No. Es material educativo y de autocuidado. Si necesitas más apoyo, alvora puede ayudarte a encontrar un profesional.</p>
           </details>
         </div>
       </section>
 
-      <!-- alvora -->
-      <section class="banda ancho">
-        <div class="banda-caja" data-aparece>
-          <div class="banda-texto">
+      <!-- Cierre -->
+      <section class="cierre tramo ancho" id="cierre" data-aparece>
+        <p class="rotulo"><span class="punto"></span>WhatsApp</p>
+        <h2 class="titulo-seccion">¿Tienes dudas? <em>Escríbenos</em>.</h2>
+        <a class="boton boton--grande" data-wa="Hola, quiero consultar por los kits de aravora" data-producto="Consulta" href="#" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      </section>
+
+      <!-- alvora: tarjeta secundaria -->
+      <section class="alvora-final ancho" data-aparece>
+        <div class="tarjeta-alvora">
+          <div class="tarjeta-alvora-texto">
             <p class="rotulo"><span class="logotipo-mini">alvora</span> · Beta en Paraguay · Gratis</p>
             <h2>Encontrar al profesional adecuado no debería ser cuestión de <em>suerte</em>.</h2>
           </div>
-          <div class="banda-botones">
-            <a class="boton" href="alvora.html">Buscar psicólogo/a</a>
-            <a class="boton boton--linea" href="alvora.html#profesionales">Soy psicólogo/a</a>
+          <div class="tarjeta-alvora-enlaces">
+            <a class="boton boton--linea boton--chico" href="alvora.html">Buscar psicólogo/a</a>
+            <a class="enlace-suave" href="alvora.html#profesionales">Soy psicólogo/a</a>
           </div>
         </div>
       </section>
@@ -314,22 +330,17 @@
     </main>
 
     <!-- Pie -->
-    <footer class="pie pie--inicio ancho">
-      <div class="pie-marca">
-        <a href="#inicio" class="marca" aria-label="aravora, inicio">
+    <footer class="pie pie--minimo ancho" id="pie">
+      <a href="#inicio" class="marca" aria-label="aravora, inicio">
         <svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="logotipo">aravora</span>
       </a>
-        <p class="pie-lema">Psicología con evidencia, convertida en herramientas simples.</p>
-      </div>
-      <nav class="pie-enlaces" aria-label="Enlaces del pie">
-        <a href="https://instagram.com/aravora.studio" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://facebook.com/aravora.studio" target="_blank" rel="noopener">Facebook</a>
+      <p class="pie-aviso">Material educativo. No reemplaza la atención de un profesional de salud mental. Si estás en riesgo o en crisis, llama al <a href="tel:911">911</a> o acude a urgencias.</p>
+      <div class="pie-legal">
         <a href="privacidad.html">Privacidad</a>
         <a href="terminos.html">Términos</a>
-      </nav>
-      <p class="pie-aviso">Material educativo. No reemplaza la atención de un profesional de salud mental. <strong>Si estás en riesgo o en crisis, llama al 911 o acude a urgencias.</strong></p>
-      <p class="pie-derechos">© 2026 aravora</p>
+        <span>© 2026 aravora</span>
+      </div>
     </footer>
   </div>
 
@@ -352,6 +363,6 @@
     </div>
   </dialog>
 
-  <script src="sitio.js?v=20261012"></script>
+  <script src="sitio.js?v=20261014"></script>
 </body>
 </html>
