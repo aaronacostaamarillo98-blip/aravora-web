@@ -144,3 +144,36 @@ a.caso-tarjeta:hover { border-color: var(--menta); color: var(--niebla); }
 [hidden] { display: none !important; }
 .pie-aviso a { white-space: nowrap; }
 .plan .nota { text-align: left; }
+.asistentes-texto .asistentes-demo { padding-left: 14px; border-left: 2px solid var(--menta); font-family: var(--sans); font-size: 15px; line-height: 1.55; color: var(--niebla); }
+
+/* Portada con notebook y celular realistas */
+.heroweb-dispositivos { position: relative; }
+.heroweb-dispositivos::before { content: ""; position: absolute; inset: -6% -4%; border-radius: 999px; background: radial-gradient(closest-side, rgba(159, 212, 198, .22), rgba(159, 212, 198, 0)); }
+.heroweb-dispositivos img { position: relative; width: 112%; max-width: none; margin-left: -6%; }
+@media (min-width: 961px) { .heroweb { grid-template-columns: minmax(0, 11fr) minmax(0, 12fr); gap: 32px; } .heroweb-dispositivos img { width: 118%; } }
+/* Celulares realistas en casos */
+.caso-tel { width: 100%; filter: drop-shadow(0 20px 30px rgba(0, 0, 0, .25)); }
+.chatx{width:100%;max-width:420px;margin-left:auto;margin-right:auto;border-radius:28px;overflow:hidden;background:#0B141A;border:1px solid rgba(237,240,238,.14);box-shadow:0 40px 80px rgba(0,0,0,.45);font-family:var(--sans)}
+.chatx-tabs{display:flex;gap:6px;padding:12px;background:#0f1c23;overflow-x:auto}
+.chatx-tabs button{flex:none;padding:7px 11px;border:1px solid rgba(237,240,238,.18);border-radius:999px;background:transparent;color:var(--alba);font-size:13.5px;cursor:pointer}
+.chatx-tabs button[aria-selected=true]{background:var(--menta);border-color:var(--menta);color:var(--tinta);font-weight:500}
+.chatx-cab{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#1F2C33}
+.chatx-av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:15px;color:#0B141A;background:var(--menta)}
+.chatx-nom{font-size:16px;font-weight:500;color:#E9EDEF;line-height:1.2}
+.chatx-est{font-size:13px;color:#8FD9B6}
+.chatx-cuerpo{display:flex;flex-direction:column;gap:6px;min-height:380px;padding:18px 14px;background-color:#0B141A;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:18px 18px}
+.chatx-dia{align-self:center;margin-bottom:6px;padding:5px 12px;border-radius:8px;background:#1F2C33;color:#8696A0;font-size:12px}
+.msg{position:relative;max-width:82%;padding:8px 12px 20px;border-radius:10px;font-size:15.5px;line-height:1.4;color:#E9EDEF;animation:entra .3s ease both}
+.msg--cli{align-self:flex-end;background:#005C4B;border-top-right-radius:2px}
+.msg--asi{align-self:flex-start;background:#202C33;border-top-left-radius:2px}
+.msg small{position:absolute;right:10px;bottom:4px;font-size:11px;color:rgba(233,237,239,.6)}
+.msg--cli small::after{content:" ✓✓";color:#53BDEB;letter-spacing:-2px}
+.escribe{align-self:flex-start;display:flex;gap:4px;padding:12px 14px;border-radius:10px;background:#202C33}
+.escribe i{width:7px;height:7px;border-radius:50%;background:#8696A0;animation:punto 1.2s infinite}
+.escribe i:nth-child(2){animation-delay:.2s}.escribe i:nth-child(3){animation-delay:.4s}
+.chatx-pie{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1F2C33}
+.chatx-pie span{flex:1;padding:10px 14px;border-radius:999px;background:#2A3942;color:#8696A0;font-size:14px}
+.chatx-pie b{width:40px;height:40px;border-radius:50%;background:var(--menta);display:grid;place-items:center;color:var(--tinta);font-size:16px}
+.chatx-nota{padding:8px 16px 12px;background:#1F2C33;color:#8696A0;font-size:12px;text-align:center}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes punto{0%,60%,100%{opacity:.3}30%{opacity:1}}

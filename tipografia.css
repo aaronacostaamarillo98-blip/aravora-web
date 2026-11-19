@@ -1,0 +1,21 @@
+/* aravora · tipografía para leer mejor (opción B, 2026-11-19)
+   Titulares en Newsreader; todo lo que se lee de corrido en la sans de la marca, en blanco y más grande. */
+.bajada, .caso-texto > p:not(.rotulo), .problema-cabeza p, .paso p, .plan-para, .plan-lista, .elegir-cabeza p,
+.caso-tarjeta-texto > p:not(.rotulo), .asistentes-texto > p:not(.rotulo), .faq-item p, .elegir-resultado p, .pildora,
+.manifiesto-firma, .pieza-texto, .pieza-lista, .pieza-resumen, .pack-texto, .coleccion-cabeza p, .packs-cabeza p:not(.rotulo), .pausa-texto p:not(.rotulo) {
+  font-family: var(--sans) !important; color: var(--niebla) !important;
+}
+.bajada, .caso-texto > p:not(.rotulo), .problema-cabeza p, .asistentes-texto > p:not(.rotulo), .pieza-texto { font-size: 18px !important; line-height: 1.6 !important; }
+.paso p, .plan-para, .plan-lista, .caso-tarjeta-texto > p:not(.rotulo), .faq-item p, .elegir-cabeza p, .pieza-lista, .pack-texto { font-size: 17px !important; line-height: 1.55 !important; }
+.rotulo { font-size: 13px !important; letter-spacing: 2px !important; color: var(--niebla) !important; font-weight: 500; }
+.portada-datos, .plan-meta, .planes-nota, .casos-nota, .nota, .plan-precio .nota, .navegador-barra, .chat-rotulo, .elegir-form legend, .basado, .pie-aviso, .pie-legal { font-size: 15px !important; color: var(--niebla) !important; }
+.plan--destacado .plan-para, .plan--destacado .plan-lista, .plan--destacado .plan-meta, .plan--destacado .plan-precio .nota, .plan--destacado .rotulo,
+.pack--claro .pack-texto, .pack--claro .rotulo, .pack--claro .nota { color: var(--tinta) !important; }
+em { color: #A9DED0 !important; }
+.caso-caja, .elegir-caja, .caso-tarjeta, .plan:not(.plan--destacado) { background: rgba(237, 240, 238, .08) !important; }
+/* Botones un poco más firmes */
+.boton { font-size: 17px !important; font-weight: 600 !important; min-height: 54px; }
+.boton--chico { font-size: 15px !important; min-height: 46px; }
+.pack--claro em, .plan--destacado em, .pack--claro .rotulo { color: var(--aurora) !important; }
+.pieza h3 em { color: var(--acento) !important; }
+.logotipo-punto { font-weight: 500; color: var(--menta); }

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>aravora · Páginas web y asistentes de IA en Paraguay</title>
+  <title>aravora.studio · Páginas web y asistentes de IA en Paraguay</title>
   <meta name="description" content="Páginas web para negocios y consultorios de Paraguay, desde 149.000 Gs. por mes. Primera versión en 48 horas y consultas directo a tu WhatsApp.">
   <meta name="theme-color" content="#15232B">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="aravora · Páginas web y asistentes de IA en Paraguay">
+  <meta property="og:title" content="aravora.studio · Páginas web y asistentes de IA en Paraguay">
   <meta property="og:description" content="Desde 149.000 Gs. por mes. Primera versión en 48 horas.">
   <meta property="og:url" content="https://aaronacostaamarillo98-blip.github.io/aravora-web/">
   <meta property="og:image" content="https://aaronacostaamarillo98-blip.github.io/aravora-web/compartir.jpg">
@@ -18,7 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilo.css?v=20261119">
-  <link rel="stylesheet" href="webs.css?v=20261119">
+  <link rel="stylesheet" href="webs.css?v=20261119b">
+  <link rel="stylesheet" href="tipografia.css?v=20261119">
 
   <!-- Pixel de Meta (ID 1428355635968530) -->
   <script>
@@ -52,7 +53,7 @@
     <header class="cabecera ancho">
       <a href="#inicio" class="marca" aria-label="aravora, inicio">
         <svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="logotipo">aravora</span>
+        <span class="logotipo">aravora<span class="logotipo-punto">.studio</span></span>
       </a>
       <button class="abrir-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="#EDF0EE" stroke-width="1.6" stroke-linecap="round"/></svg></button>
       <nav class="menu" id="menu" aria-label="Principal">
@@ -80,10 +81,7 @@
             <span>Desde 149.000 Gs. por mes</span><span aria-hidden="true">·</span><span>Dominio incluido</span><span aria-hidden="true">·</span><span>Primera versión en 48 horas</span>
           </div>
         </div>
-        <div class="heroweb-telefonos" aria-hidden="true">
-          <div class="telefono telefono--atras"><img src="img/demo-barberia-movil.webp" alt="" width="600" height="1194"></div>
-          <div class="telefono telefono--frente"><img src="img/caso-etm-movil.webp" alt="" width="600" height="1194"></div>
-        </div>
+        <div class="heroweb-dispositivos"><img src="img/dispositivos.webp" alt="La web de Entrena tu mente en una notebook y la demo de una barbería en un celular" width="1600" height="1040"></div>
       </section>
 
       <!-- 2. Caso real -->
@@ -224,7 +222,7 @@
         <h2 class="titulo-seccion" id="casos-titulo">Webs <em>reales</em>, en el celular.</h2>
         <div class="casos-rejilla">
           <a class="caso-tarjeta" href="https://entrenatumente.space" target="_blank" rel="noopener">
-            <div class="telefono"><img src="img/caso-etm-movil.webp" alt="La web de Entrena tu mente en un celular" width="600" height="1194" loading="lazy"></div>
+            <img class="caso-tel" src="img/tel-etm.webp" alt="La web de Entrena tu mente en un celular" width="760" height="1340" loading="lazy">
             <div class="caso-tarjeta-texto">
               <p class="rotulo"><span class="punto"></span>Caso real · Psicología</p>
               <h3>Entrena tu mente</h3>
@@ -232,7 +230,7 @@
             </div>
           </a>
           <div class="caso-tarjeta">
-            <div class="telefono"><img src="img/demo-barberia-movil.webp" alt="Demo de la web de una barbería en un celular" width="600" height="1194" loading="lazy"></div>
+            <img class="caso-tel" src="img/tel-tava.webp" alt="Demo de la web de una barbería en un celular" width="760" height="1340" loading="lazy">
             <div class="caso-tarjeta-texto">
               <p class="rotulo"><span class="punto"></span>Demo · Barbería</p>
               <h3>Así quedaría una barbería</h3>
@@ -250,14 +248,15 @@
             <p class="rotulo"><span class="punto"></span>Para empresas · Nuevo</p>
             <h2 id="asistentes-titulo">Un asistente que responde <em>por vos</em>.</h2>
             <p>Conoce tus productos, precios y fichas técnicas, y responde consultas en tu WhatsApp o tu web a cualquier hora. Lo armamos con la información de tu empresa.</p>
-            <a class="boton" data-wa="Hola, quiero una demo del asistente de IA para mi empresa" data-producto="Demo asistente IA" href="#" target="_blank" rel="noopener">Pedí una demo</a>
+            <p class="asistentes-demo">La demo es gratis: te la armamos con preguntas reales de tu negocio y la probás en tu celular. Si te gusta, elegís el plan.</p>
+            <a class="boton" data-wa="Hola, quiero la demo gratis del asistente de IA para mi empresa" data-producto="Demo asistente IA" href="#" target="_blank" rel="noopener">Pedí tu demo gratis</a>
           </div>
-          <div class="chat" aria-label="Ejemplo de conversación con un asistente">
-            <p class="chat-rotulo">Ejemplo de conversación</p>
-            <p class="burbuja burbuja--cliente">Hola, ¿tienen el filtro de aceite para una Hilux 2018? ¿Cuánto sale?</p>
-            <p class="burbuja burbuja--asistente">¡Hola! Sí, tenemos el filtro original en stock. Te paso el precio y la ficha técnica. ¿Lo retirás o te lo enviamos?</p>
-            <p class="burbuja burbuja--cliente">Lo retiro mañana.</p>
-            <p class="burbuja burbuja--asistente">Listo, te lo dejo separado. Cualquier duda, escribime acá.</p>
+          <div class="chatx" id="chatx" aria-label="Ejemplos de conversación con un asistente">
+            <div class="chatx-tabs" role="tablist"><button type="button" data-k="psico" role="tab">Psicología</button><button type="button" data-k="barber" role="tab">Barbería</button><button type="button" data-k="ferre" role="tab">Repuestos</button><button type="button" data-k="tienda" role="tab">Tienda online</button></div>
+            <div class="chatx-cab"><span class="chatx-av">CP</span><div><p class="chatx-nom">Consultorio Psicología</p><p class="chatx-est">Asistente · responde al instante</p></div></div>
+            <div class="chatx-cuerpo" aria-live="polite"></div>
+            <div class="chatx-pie" aria-hidden="true"><span>Escribí un mensaje</span><b>➤</b></div>
+            <p class="chatx-nota">Conversaciones de ejemplo</p>
           </div>
         </div>
       </section>
@@ -343,14 +342,14 @@
     <footer class="pie pie--minimo ancho" id="pie">
       <a href="#inicio" class="marca" aria-label="aravora, inicio">
         <svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="logotipo">aravora</span>
+        <span class="logotipo">aravora<span class="logotipo-punto">.studio</span></span>
       </a>
       <p class="pie-aviso">Páginas web, asistentes de IA y productos digitales. Paraguay · WhatsApp <a data-wa="Hola, quiero consultar por una página web" data-producto="Consulta web" href="#" target="_blank" rel="noopener">0992 955 763</a></p>
       <div class="pie-legal">
         <a href="kits.html">Kits</a>
         <a href="privacidad.html">Privacidad</a>
         <a href="terminos.html">Términos</a>
-        <span>© 2026 aravora</span>
+        <span>© 2026 aravora.studio</span>
       </div>
     </footer>
   </div>
@@ -362,6 +361,7 @@
   </div>
 
   <script src="sitio.js?v=20261119"></script>
-  <script src="webs.js?v=20261119"></script>
+  <script src="webs.js?v=20261119b"></script>
+  <script src="chat.js?v=20261119"></script>
 </body>
 </html>
