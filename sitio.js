@@ -120,8 +120,8 @@
     if (!aro || !fase || !ciclo || !boton) return;
     var TOTAL_CICLOS = 6;
     var FASES = [
-      { texto: "Inhala", ms: 4000, escala: 1.6 },
-      { texto: "Exhala", ms: 6000, escala: 1 }
+      { texto: "Inhalá", ms: 4000, escala: 1.6 },
+      { texto: "Exhalá", ms: 6000, escala: 1 }
     ];
     var activa = false, temporizador = null, ciclosHechos = 0;
     var TOTAL_MS = TOTAL_CICLOS * (FASES[0].ms + FASES[1].ms);
@@ -154,8 +154,8 @@
       aro.style.transitionDuration = "800ms";
       aro.style.transform = "scale(1)";
       if (!completa) progreso(false, 0);
-      fase.textContent = completa ? "Listo" : "Inhala";
-      ciclo.textContent = completa ? "¿Cómo te sientes ahora?" : "";
+      fase.textContent = completa ? "Listo" : "Inhalá";
+      ciclo.textContent = completa ? "¿Cómo te sentís ahora?" : "";
       boton.textContent = completa ? "Repetir pausa" : "Empezar pausa";
     }
 
