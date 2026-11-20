@@ -16,3 +16,43 @@
   .pagina-webs .casos { padding-bottom: 72px; }
   .heroweb { padding-bottom: 48px; }
 }
+
+/* ===== Orden de la portada (auditoría 2026-11-19): mismo encabezado y mismo ritmo en cada sección ===== */
+.pagina-webs main > section { padding-top: 0; padding-bottom: 112px; }
+.pagina-webs .heroweb { padding-bottom: 96px; }
+.pagina-webs .casos, .pagina-webs .problema, .pagina-webs .planes, .pagina-webs .como { gap: 0; }
+.pagina-webs .casos > .rotulo, .pagina-webs .como > .rotulo { margin-bottom: 14px; }
+.pagina-webs .casos > .titulo-seccion, .pagina-webs .como > .titulo-seccion { margin-bottom: 40px; }
+.pagina-webs .casos-nota { margin-top: 20px; }
+/* El problema: rótulo y título arriba, el texto debajo, sin columnas sueltas */
+.pagina-webs .problema-cabeza { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 40px; }
+.pagina-webs .problema-cabeza h2 { flex: none; }
+.pagina-webs .problema-cabeza p:not(.rotulo) { flex: none; max-width: 640px; margin-top: 6px; }
+/* Planes: el interruptor queda debajo del título */
+.pagina-webs .planes-cabeza { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 40px; }
+.pagina-webs .planes-cabeza .interruptor { margin-top: 10px; }
+.pagina-webs .planes > .planes-nota { margin-top: 28px; }
+/* Asistentes: los planes y la tarjeta a medida quedan dentro del mismo bloque */
+.pagina-webs .ia-planes { margin-top: 56px; }
+.pagina-webs .a-medida { flex-direction: column; align-items: center; text-align: center; gap: 18px; padding: 36px 32px; }
+.pagina-webs .a-medida .tarjeta-alvora-texto { flex: none; align-items: center; max-width: 720px; }
+.pagina-webs .a-medida .rotulo { justify-content: center; }
+.pagina-webs .a-medida .tarjeta-alvora-enlaces { justify-content: center; }
+/* Preguntas frecuentes: título arriba y la lista debajo, sin hueco al costado */
+.pagina-webs .faq { display: flex; flex-direction: column; gap: 0; padding-bottom: 112px; }
+.pagina-webs .faq-cabeza { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+.pagina-webs .faq h2 { flex: none; }
+.pagina-webs .faq-lista { flex: none; width: 100%; max-width: 860px; }
+/* Quién está detrás y cierre: mismo ritmo */
+.pagina-webs .manifiesto, .pagina-webs .cierre { padding-bottom: 112px; }
+.pagina-webs .alvora-final { padding-bottom: 80px; }
+@media (max-width: 720px) {
+  .pagina-webs main > section, .pagina-webs .faq, .pagina-webs .manifiesto, .pagina-webs .cierre { padding-bottom: 72px; }
+  .pagina-webs .heroweb { padding-bottom: 64px; }
+  .pagina-webs .casos > .titulo-seccion, .pagina-webs .como > .titulo-seccion, .pagina-webs .problema-cabeza, .pagina-webs .planes-cabeza { margin-bottom: 28px; }
+  .pagina-webs .a-medida { padding: 28px 22px; }
+  .pagina-webs .a-medida h2 { font-size: 21px; }
+  .pagina-webs .alvora-final { padding-bottom: 56px; }
+}
+.pagina-webs .problema-cabeza > *, .pagina-webs .planes-cabeza > *, .pagina-webs .faq > *, .pagina-webs .faq-cabeza > * { flex: none !important; }
+.cierre-correo { font-family: var(--sans); font-size: 16px; color: var(--niebla); } .cierre-correo a, .pie-aviso a[href^="mailto"] { white-space: nowrap; }
