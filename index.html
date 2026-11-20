@@ -14,12 +14,14 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315232B'/%3E%3Cg fill='none' stroke='%239FD4C6' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M12 40a20 20 0 0 1 40 0'/%3E%3Cpath d='M19 40a13 13 0 0 1 26 0' opacity='.6'/%3E%3Cpath d='M26 40a6 6 0 0 1 12 0' opacity='.35'/%3E%3C/g%3E%3Cline x1='9' y1='47' x2='55' y2='47' stroke='%23EDF0EE' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preload" as="image" href="img/dispositivos.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilo.css?v=20261119">
   <link rel="stylesheet" href="webs.css?v=20261119b">
   <link rel="stylesheet" href="tipografia.css?v=20261119">
+  <link rel="stylesheet" href="calma.css?v=20261119">
 
   <!-- Pixel de Meta (ID 1428355635968530) -->
   <script>
@@ -81,23 +83,33 @@
             <span>Desde 149.000 Gs. por mes</span><span aria-hidden="true">·</span><span>Dominio incluido</span><span aria-hidden="true">·</span><span>Primera versión en 48 horas</span>
           </div>
         </div>
-        <div class="heroweb-dispositivos"><img src="img/dispositivos.webp" alt="La web de Entrena tu mente en una notebook y la demo de una barbería en un celular" width="1600" height="1040"></div>
+        <div class="heroweb-dispositivos"><img src="img/dispositivos.webp" fetchpriority="high" alt="La web de Entrena tu mente en una notebook y la demo de una barbería en un celular" width="1600" height="1040"></div>
       </section>
 
-      <!-- 2. Caso real -->
-      <section class="caso ancho" aria-labelledby="caso-titulo">
-        <div class="caso-caja">
-          <div class="caso-texto">
-            <p class="rotulo"><span class="punto"></span>Caso real</p>
-            <h2 id="caso-titulo"><strong>Entrena tu mente</strong> tenía pacientes por recomendación, pero en internet no estaba.</h2>
-            <p>Hoy tiene perfiles de sus psicólogos, tests gratis y una charla de 15 minutos, con WhatsApp directo.</p>
-            <a class="enlace-flecha" href="https://entrenatumente.space" target="_blank" rel="noopener">Ver la web → entrenatumente.space</a>
-          </div>
-          <div class="caso-navegador">
-            <div class="navegador-barra" aria-hidden="true"><i></i><i></i><i></i><span>entrenatumente.space</span></div>
-            <img src="img/caso-etm-compu.webp" alt="Portada de la web de Entrena tu mente en una computadora" width="1400" height="955" loading="lazy">
+
+
+      <!-- 6. Casos y demos -->
+      <section class="casos ancho" id="casos" aria-labelledby="casos-titulo">
+        <h2 class="titulo-seccion" id="casos-titulo">Webs <em>reales</em>, en el celular.</h2>
+        <div class="casos-rejilla">
+          <a class="caso-tarjeta" href="https://entrenatumente.space" target="_blank" rel="noopener">
+            <img class="caso-tel" src="img/tel-etm.webp" alt="La web de Entrena tu mente en un celular" width="760" height="1340" loading="lazy">
+            <div class="caso-tarjeta-texto">
+              <p class="rotulo"><span class="punto"></span>Caso real · Psicología</p>
+              <h3>Entrena tu mente</h3>
+              <p>Tenía pacientes por recomendación, pero en internet no estaba. Hoy tiene perfiles, tests gratis y una charla de 15 minutos, con WhatsApp directo. <span class="subrayado">Ver la web →</span></p>
+            </div>
+          </a>
+          <div class="caso-tarjeta">
+            <img class="caso-tel" src="img/tel-tava.webp" alt="Demo de la web de una barbería en un celular" width="760" height="1340" loading="lazy">
+            <div class="caso-tarjeta-texto">
+              <p class="rotulo"><span class="punto"></span>Demo · Barbería</p>
+              <h3>Así quedaría una barbería</h3>
+              <p>Turnos con un toque, cortes y precios a la vista y ubicación en Google Maps.</p>
+            </div>
           </div>
         </div>
+        <p class="casos-nota">Las demos son ejemplos para que veas cómo quedaría la web de tu rubro.</p>
       </section>
 
       <!-- 3. El problema -->
@@ -181,65 +193,12 @@
           </article>
         </div>
 
-        <p class="planes-nota"><span class="si-mensual">En el plan mensual, la cuota incluye alojamiento, renovación del dominio, 2 rondas de cambios por mes y soporte por WhatsApp. Permanencia mínima de 12 meses. </span>¿Necesitás más páginas? Se cotizan aparte.</p>
+        <p class="planes-nota"><span class="si-mensual">En el plan mensual pagás primero la activación, te entregamos tu web y la cuota empieza recién el mes siguiente. La cuota incluye alojamiento, renovación del dominio, 2 rondas de cambios por mes y soporte por WhatsApp. Permanencia mínima de 12 meses. </span>¿Necesitás más páginas? Se cotizan aparte.</p>
       </section>
 
-      <!-- 5. Cuestionario -->
-      <section class="elegir ancho" id="elegir" aria-labelledby="elegir-titulo">
-        <div class="elegir-caja">
-          <div class="elegir-cabeza">
-            <h2 id="elegir-titulo">¿No sabés cuál <em>te conviene</em>?</h2>
-            <p>Tres preguntas y te decimos.</p>
-          </div>
-          <form class="elegir-form" id="elegir-form">
-            <fieldset>
-              <legend>1. ¿Qué querés que haga tu web?</legend>
-              <label class="pildora"><input type="radio" name="objetivo" value="Landing">Presentar mi negocio</label>
-              <label class="pildora"><input type="radio" name="objetivo" value="Profesional">Recibir consultas o turnos</label>
-              <label class="pildora"><input type="radio" name="objetivo" value="Tienda">Vender productos</label>
-            </fieldset>
-            <fieldset>
-              <legend>2. ¿Ya tenés logo y fotos?</legend>
-              <label class="pildora"><input type="radio" name="material" value="sí">Sí</label>
-              <label class="pildora"><input type="radio" name="material" value="algunas">Algunas</label>
-              <label class="pildora"><input type="radio" name="material" value="todavía no">Todavía no</label>
-            </fieldset>
-            <fieldset>
-              <legend>3. ¿Cómo preferís pagar?</legend>
-              <label class="pildora"><input type="radio" name="pago" value="mensual">Por mes</label>
-              <label class="pildora"><input type="radio" name="pago" value="unico">De una vez</label>
-            </fieldset>
-          </form>
-          <div class="elegir-resultado" id="elegir-resultado" aria-live="polite">
-            <p id="elegir-texto">Respondé las tres y te mostramos el plan.</p>
-            <a class="boton" id="elegir-boton" hidden data-wa="Hola, quiero consultar por una página web" data-producto="Cuestionario" href="#" target="_blank" rel="noopener">Escribinos con este plan</a>
-          </div>
-        </div>
-      </section>
 
-      <!-- 6. Casos y demos -->
-      <section class="casos ancho" id="casos" aria-labelledby="casos-titulo">
-        <h2 class="titulo-seccion" id="casos-titulo">Webs <em>reales</em>, en el celular.</h2>
-        <div class="casos-rejilla">
-          <a class="caso-tarjeta" href="https://entrenatumente.space" target="_blank" rel="noopener">
-            <img class="caso-tel" src="img/tel-etm.webp" alt="La web de Entrena tu mente en un celular" width="760" height="1340" loading="lazy">
-            <div class="caso-tarjeta-texto">
-              <p class="rotulo"><span class="punto"></span>Caso real · Psicología</p>
-              <h3>Entrena tu mente</h3>
-              <p>Perfiles verificados, tests gratis y charla de 15 minutos. <span class="subrayado">Ver la web →</span></p>
-            </div>
-          </a>
-          <div class="caso-tarjeta">
-            <img class="caso-tel" src="img/tel-tava.webp" alt="Demo de la web de una barbería en un celular" width="760" height="1340" loading="lazy">
-            <div class="caso-tarjeta-texto">
-              <p class="rotulo"><span class="punto"></span>Demo · Barbería</p>
-              <h3>Así quedaría una barbería</h3>
-              <p>Turnos con un toque, cortes y precios a la vista y ubicación en Google Maps.</p>
-            </div>
-          </div>
-        </div>
-        <p class="casos-nota">Las demos son ejemplos para que veas cómo quedaría la web de tu rubro.</p>
-      </section>
+
+
 
       <!-- 7. Asistentes de IA -->
       <section class="asistentes ancho" id="asistentes" aria-labelledby="asistentes-titulo">
@@ -259,6 +218,60 @@
             <p class="chatx-nota">Conversaciones de ejemplo</p>
           </div>
         </div>
+              <div class="ia-planes">
+          <h3 class="ia-planes-titulo">Planes del asistente</h3>
+          <div class="planes-rejilla">
+            <article class="plan">
+              <p class="rotulo">Básico</p>
+              <p class="plan-para">Responde lo que más te preguntan</p>
+              <p class="plan-precio"><span class="cifra">350.000 <span>Gs./mes</span></span><span class="nota">y 1.290.000 Gs. de activación</span></p>
+              <ul class="plan-lista">
+                <li>Horarios, precios, servicios y ubicación</li>
+                <li>Pasa la conversación a una persona cuando no sabe</li>
+                <li>Hasta 500 conversaciones por mes</li>
+                <li>1 actualización de información por mes</li>
+              </ul>
+              <a class="boton boton--linea plan-boton" data-wa="Hola, quiero el asistente de IA Básico" data-producto="Asistente Básico" data-valor="350000" href="#" target="_blank" rel="noopener">Quiero el Básico</a>
+            </article>
+            <article class="plan plan--destacado">
+              <p class="rotulo">Intermedio · Recomendado</p>
+              <p class="plan-para">Atiende, toma datos y recibe pedidos</p>
+              <p class="plan-precio"><span class="cifra">690.000 <span>Gs./mes</span></span><span class="nota">y 2.590.000 Gs. de activación</span></p>
+              <ul class="plan-lista">
+                <li>Todo lo del Básico</li>
+                <li>Catálogo, precios y fichas técnicas (hasta 200 productos)</li>
+                <li>Toma nombre y teléfono del cliente</li>
+                <li>Recibe pedidos o reservas y te avisa</li>
+                <li>Reporte mensual de lo que pregunta la gente</li>
+                <li>Hasta 1.500 conversaciones por mes</li>
+              </ul>
+              <a class="boton boton--tinta plan-boton" data-wa="Hola, quiero el asistente de IA Intermedio" data-producto="Asistente Intermedio" data-valor="690000" href="#" target="_blank" rel="noopener">Quiero el Intermedio</a>
+            </article>
+            <article class="plan">
+              <p class="rotulo">Pro</p>
+              <p class="plan-para">Conectado a los sistemas de tu empresa</p>
+              <p class="plan-precio"><span class="cifra">1.290.000 <span>Gs./mes</span></span><span class="nota">y 4.900.000 Gs. de activación</span></p>
+              <ul class="plan-lista">
+                <li>Todo lo del Intermedio</li>
+                <li>Stock y precios que se actualizan solos</li>
+                <li>Seguimiento automático de clientes</li>
+                <li>Mejoras cada mes</li>
+                <li>Hasta 4.000 conversaciones por mes</li>
+              </ul>
+              <a class="boton boton--linea plan-boton" data-wa="Hola, quiero el asistente de IA Pro" data-producto="Asistente Pro" data-valor="1290000" href="#" target="_blank" rel="noopener">Quiero el Pro</a>
+            </article>
+          </div>
+          <p class="planes-nota">Cada plan incluye un canal a elección: tu web, WhatsApp o Instagram. Cada canal extra suma 500.000 Gs. de activación y 200.000 Gs. por mes. Pagás primero la activación, te entregamos el asistente y la cuota empieza el mes siguiente. Cada plan tiene un tope de conversaciones por mes, así nunca te llega un cobro sorpresa: cuando llegás al tope, te avisamos y el asistente pasa las nuevas consultas a tu WhatsApp de siempre. Si querés más, ampliás tu plan cuando quieras.</p>
+          <div class="tarjeta-alvora a-medida">
+            <div class="tarjeta-alvora-texto">
+              <p class="rotulo"><span class="punto"></span>Proyectos a medida</p>
+              <h2>¿Necesitás algo más grande? Asistentes conectados a tus sistemas, apps y automatizaciones <em>hechos para tu empresa</em>.</h2>
+            </div>
+            <div class="tarjeta-alvora-enlaces">
+              <a class="boton boton--chico" data-wa="Hola, quiero cotizar un proyecto a medida" data-producto="Proyecto a medida" href="#" target="_blank" rel="noopener">Pedí tu cotización</a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- 8. Cómo trabajamos -->
@@ -273,7 +286,7 @@
       </section>
 
       <!-- 9. Quién está detrás -->
-      <section class="manifiesto tramo ancho" data-aparece>
+      <section class="manifiesto tramo ancho">
         <div class="manifiesto-caja">
           <span class="isotipo" aria-hidden="true"><svg viewBox="0 0 34 22" fill="none" aria-hidden="true"><path d="M3 18a14 14 0 0 1 28 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round"/><path d="M8 18a9 9 0 0 1 18 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M13 18a4 4 0 0 1 8 0" stroke="#9FD4C6" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/><path d="M1 20.5h32" stroke="#EDF0EE" stroke-width="2" stroke-linecap="round"/></svg></span>
           <p class="rotulo"><span class="punto"></span>Quién está detrás</p>
@@ -283,7 +296,7 @@
       </section>
 
       <!-- 10. Preguntas frecuentes -->
-      <section class="faq faq--final tramo ancho" data-aparece>
+      <section class="faq faq--final tramo ancho">
         <div class="faq-cabeza">
           <p class="rotulo"><span class="punto"></span>Ayuda</p>
           <h2 class="titulo-seccion">Preguntas <em>frecuentes</em></h2>
@@ -296,6 +309,10 @@
           <details class="faq-item">
             <summary><h3>¿Desde cuándo corren las 48 horas?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
             <p>Desde que nos mandás textos, fotos y logo.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3>¿Cómo funciona el plan mensual?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
+            <p>Pagás primero la activación y te entregamos tu web lista. La cuota mensual empieza recién el mes siguiente.</p>
           </details>
           <details class="faq-item">
             <summary><h3>¿Qué pasa con el dominio?</h3><span class="faq-mas" aria-hidden="true"></span></summary>
@@ -317,14 +334,14 @@
       </section>
 
       <!-- Cierre -->
-      <section class="cierre tramo ancho" id="cierre" data-aparece>
+      <section class="cierre tramo ancho" id="cierre">
         <p class="rotulo"><span class="punto"></span>WhatsApp</p>
         <h2 class="titulo-seccion">¿Hablamos de <em>tu web</em>?</h2>
         <a class="boton boton--grande" data-wa="Hola, quiero consultar por una página web" data-producto="Consulta web" href="#" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
       </section>
 
       <!-- 11. Productos digitales -->
-      <section class="alvora-final ancho" data-aparece>
+      <section class="alvora-final ancho">
         <div class="tarjeta-alvora">
           <div class="tarjeta-alvora-texto">
             <p class="rotulo"><span class="punto"></span>Productos digitales</p>

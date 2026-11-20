@@ -177,3 +177,10 @@ a.caso-tarjeta:hover { border-color: var(--menta); color: var(--niebla); }
 .chatx-nota{padding:8px 16px 12px;background:#1F2C33;color:#8696A0;font-size:12px;text-align:center}
 @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes punto{0%,60%,100%{opacity:.3}30%{opacity:1}}
+
+/* Planes del asistente */
+.ia-planes { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+.ia-planes-titulo { font-size: clamp(28px, 2.6vw, 36px); line-height: 1.1; }
+.ia-planes .plan-precio .cifra { font-size: 32px; }
+.plan-precio .desde { margin: 0 0 2px; }
+.a-medida { max-width: none; margin-top: 8px; }

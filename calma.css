@@ -1,0 +1,18 @@
+/* aravora · cielo calmo (2026-11-19): estrellas quietas que titilan apenas, sin fugaces ni movimiento.
+   Evita que la página "tiemble" al bajar y la hace más liviana en el celular. */
+.capa { animation: none !important; will-change: auto !important; }
+.c3 { filter: none !important; animation: titila-suave 7s ease-in-out infinite !important; will-change: opacity !important; }
+.fugaz { display: none !important; }
+@keyframes titila-suave { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { .c3 { animation: none !important; } }
+
+/* Ritmo de la portada: sin huecos grandes */
+.pagina-webs .tramo { padding-bottom: 96px; }
+.pagina-webs .alvora-final { padding-bottom: 72px; }
+.planes-nota { margin: 0 auto; text-align: center; }
+.pagina-webs .casos { padding-bottom: 104px; }
+@media (max-width: 720px) {
+  .pagina-webs .tramo { padding-bottom: 64px; }
+  .pagina-webs .casos { padding-bottom: 72px; }
+  .heroweb { padding-bottom: 48px; }
+}
