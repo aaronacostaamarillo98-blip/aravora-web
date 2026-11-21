@@ -56,3 +56,31 @@
 }
 .pagina-webs .problema-cabeza > *, .pagina-webs .planes-cabeza > *, .pagina-webs .faq > *, .pagina-webs .faq-cabeza > * { flex: none !important; }
 .cierre-correo { font-family: var(--sans); font-size: 16px; color: var(--niebla); } .cierre-correo a, .pie-aviso a[href^="mailto"] { white-space: nowrap; }
+
+/* ===== Portada que engancha (2026-11-19): todo lo clave en la primera pantalla ===== */
+.pagina-webs .heroweb { min-height: 0; padding-top: 24px; padding-bottom: 72px; gap: 40px; align-items: center; }
+.pagina-webs .heroweb-texto { gap: 20px; }
+.pagina-webs .heroweb h1 { font-size: clamp(38px, 4.2vw, 60px); line-height: 1.04; letter-spacing: -1px; }
+.pagina-webs .heroweb .bajada { font-size: 18px !important; max-width: 520px; }
+.hero-precios { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 540px; }
+.hero-precio { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--linea-media); border-radius: 16px; background: rgba(237, 240, 238, .06); color: var(--niebla); text-decoration: none; font-family: var(--sans); transition: border-color .2s ease; }
+.hero-precio:hover { border-color: var(--menta); color: var(--niebla); }
+.hero-precio span { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--alba); }
+.hero-precio b { font-weight: 500; font-size: 24px; letter-spacing: -.5px; line-height: 1.15; }
+.hero-precio small { font-size: 13px; color: var(--alba); }
+.hero-precio--top { background: var(--niebla); border-color: var(--niebla); color: var(--tinta); }
+.hero-precio--top span, .hero-precio--top small { color: var(--hora-azul); }
+.hero-precio--top:hover { color: var(--tinta); }
+.hero-prueba { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-family: var(--sans); font-size: 14px; color: var(--niebla); }
+.hero-prueba a { color: var(--menta); }
+.pagina-webs .heroweb .portada-acciones { gap: 12px 20px; }
+@media (min-width: 961px) { .pagina-webs .heroweb { grid-template-columns: minmax(0, 11fr) minmax(0, 12fr); } }
+@media (max-width: 720px) {
+  .pagina-webs .heroweb { padding-top: 8px; gap: 28px; }
+  .pagina-webs .heroweb h1 { font-size: 38px; }
+  .pagina-webs .heroweb .bajada { font-size: 17px !important; }
+  .hero-precio { padding: 10px 10px; }
+  .hero-precio b { font-size: 19px; }
+  .hero-precio span { font-size: 11px; letter-spacing: .5px; }
+  .pagina-webs .heroweb .portada-acciones .boton { flex: 1 1 100%; }
+}
