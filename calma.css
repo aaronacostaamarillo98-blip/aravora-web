@@ -84,3 +84,13 @@
   .hero-precio span { font-size: 11px; letter-spacing: .5px; }
   .pagina-webs .heroweb .portada-acciones .boton { flex: 1 1 100%; }
 }
+
+/* Fotos reales (MacBook / iPhone) */
+.heroweb-dispositivos::before { display: none; }
+.pagina-webs .heroweb-dispositivos img { width: 100% !important; margin: 0 !important; border-radius: 26px; border: 1px solid var(--linea); box-shadow: 0 40px 80px rgba(0,0,0,.45); }
+.pagina-webs .portada-acciones { margin-top: 8px; }
+.pagina-webs .hero-prueba { margin-top: 18px; font-size: 15px; color: var(--alba); opacity: .8; letter-spacing: .2px; }
+.pagina-webs .caso-tarjeta { grid-template-columns: minmax(0,1fr) !important; gap: 24px; padding: 18px 18px 30px; align-items: start; }
+.pagina-webs .caso-tarjeta-texto { padding: 0 12px; }
+.caso-foto { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; display: block; }
+.pagina-webs .heroweb .portada-acciones { max-width: 540px; justify-content: center; }
