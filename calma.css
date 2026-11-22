@@ -94,3 +94,9 @@
 .pagina-webs .caso-tarjeta-texto { padding: 0 12px; }
 .caso-foto { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; display: block; }
 .pagina-webs .heroweb .portada-acciones { max-width: 540px; justify-content: center; }
+@media (min-width: 961px) { .pagina-webs .casos-rejilla { grid-template-columns: repeat(3, minmax(0,1fr)); } .pagina-webs .caso-tarjeta h3 { font-size: 26px; } }
+.pagina-webs .caso-tarjeta { align-content: start; }
+.pagina-webs .caso-tarjeta { display: flex !important; flex-direction: column; padding-bottom: 22px; }
+.pagina-webs .caso-tarjeta-texto { flex: 1 1 auto !important; }
+.caso-boton { font-family: var(--sans); align-self: flex-start; margin: 4px 12px 0; padding: 11px 20px; border: 1px solid var(--linea-media, rgba(237,240,238,.25)); border-radius: 999px; font-size: 15px; font-weight: 600; color: var(--niebla); transition: background .2s, color .2s, border-color .2s; }
+a.caso-tarjeta:hover .caso-boton { background: var(--menta); border-color: var(--menta); color: #0E1A1F; }
