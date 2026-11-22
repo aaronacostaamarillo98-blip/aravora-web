@@ -100,3 +100,7 @@
 .pagina-webs .caso-tarjeta-texto { flex: 1 1 auto !important; }
 .caso-boton { font-family: var(--sans); align-self: flex-start; margin: 4px 12px 0; padding: 11px 20px; border: 1px solid var(--linea-media, rgba(237,240,238,.25)); border-radius: 999px; font-size: 15px; font-weight: 600; color: var(--niebla); transition: background .2s, color .2s, border-color .2s; }
 a.caso-tarjeta:hover .caso-boton { background: var(--menta); border-color: var(--menta); color: #0E1A1F; }
+.pagina-webs .heroweb .hero-precios, .pagina-webs .heroweb .portada-acciones, .pagina-webs .heroweb .hero-prueba { width: 100%; max-width: 540px; box-sizing: border-box; }
+.pagina-webs .heroweb .portada-acciones { display: flex; justify-content: center; }
+.pagina-webs .heroweb .hero-prueba { text-align: center; }
+.pagina-webs .heroweb .hero-prueba { justify-content: center; }
