@@ -101,10 +101,10 @@ a { color: inherit; text-decoration: none; }
 .card p { color: var(--mut); }
 
 /* Pasos */
-.pasos { counter-reset: paso; }
-.paso { border-top: 2px solid var(--txt); padding-top: 22px; }
+.pasos { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 24px; }
+.paso { border-top: 2px solid var(--txt); padding-top: 22px; display: grid; grid-template-rows: subgrid; grid-row: span 3; align-content: start; }
 .paso-n { font-weight: 800; font-size: 15px; color: var(--verde); letter-spacing: .1em; margin-bottom: 10px; }
-.paso h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.paso h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; align-self: start; }
 .paso p { color: var(--mut); }
 
 /* Seguridad */
@@ -170,12 +170,14 @@ a { color: inherit; text-decoration: none; }
   .hero .cont { grid-template-columns: 1fr; gap: 48px; }
   .franja ul { grid-template-columns: repeat(2, 1fr); }
   .grid3 { grid-template-columns: 1fr; }
-  .seg { grid-template-columns: repeat(2, 1fr); }
+  .seg, .pasos { grid-template-columns: repeat(2, 1fr); }
+  .paso { margin-bottom: 36px; }
   .faq, .contacto { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 600px) {
   body { font-size: 17px; }
-  .grid2, .seg { grid-template-columns: 1fr; }
+  .grid2, .seg, .pasos { grid-template-columns: 1fr; }
+  .paso { display: block; margin-bottom: 28px; }
   .franja ul { grid-template-columns: 1fr; gap: 14px; }
   .botones .btn { width: 100%; white-space: normal; text-align: center; }
   .nav .cont { gap: 12px; }
